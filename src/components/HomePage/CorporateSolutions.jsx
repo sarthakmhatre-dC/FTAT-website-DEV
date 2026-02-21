@@ -31,7 +31,7 @@ const CorporateSolutions = () => {
 
   return (
     <section className="w-full bg-white py-24">
-      <div className="max-w-8xl mx-auto px-6 lg:px-12">
+      <div className="max-w-8xl mx-10 px-6 lg:px-12">
         {/* Header Section */}
         <div className="mb-16 text-center lg:text-left">
           <span className="text-[#E23744] font-bold tracking-[0.3em] text-[10px] uppercase">

@@ -3,9 +3,9 @@ import { User, Mail, Phone, MapPin, Car, Calendar, Users, Briefcase, FileText } 
 
 const RentalForm = () => {
   return (
-    <section className="relative w-full pb-24">
+    <section className="relative w-full pb-24 max-w-8xl mx-auto">
       {/* 1. Hero Header Area with Background Image */}
-      <div className="relative w-full h-[90vh] flex overflow-hidden">
+      <div className="relative w-full h-[90vh] flex overflow-hidden ">
         <div 
           className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
           style={{ 
@@ -15,7 +15,7 @@ const RentalForm = () => {
         {/* Subtle Brand Gradient Overlay */}
         <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#2D2D2D] via-[#2D2D2D]/80 to-transparent" />
 
-        <div className="relative z-20 max-w-8xl mx-auto px-6 lg:px-12 w-full mt-30">
+        <div className="relative z-20 max-w-8xl mx-10 px-8 lg:px-16 w-full mt-30">
           <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight">
             Premium Car <br />
             <span className="text-[#EDA749]">Rental Service</span>

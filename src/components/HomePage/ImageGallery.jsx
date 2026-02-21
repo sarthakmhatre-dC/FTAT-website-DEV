@@ -27,7 +27,7 @@ const ImageGallery = () => {
 
   return (
     <section className="w-full bg-white py-24 overflow-hidden">
-      <div className="max-w-8xl mx-auto px-6 lg:px-12 mb-16">
+      <div className="max-w-8xl mx-10 px-8 lg:px-16 mb-16">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           {/* Title & Description */}
           <div className="max-w-2xl">
@@ -79,7 +79,7 @@ const ImageGallery = () => {
             {[...galleryImages, ...galleryImages].map((img, i) => (
               <div 
                 key={i} 
-                className="inline-block w-[400px] h-[300px] mx-3 overflow-hidden rounded-2xl bg-[#F4F4F2] shadow-sm border border-gray-100 group/item"
+                className="inline-block w-[35rem] h-[30rem] mx-3 overflow-hidden rounded-2xl bg-[#F4F4F2] shadow-sm border border-gray-100 group/item"
               >
                 <img 
                   src={img} 

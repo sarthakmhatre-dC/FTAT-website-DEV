@@ -76,7 +76,7 @@ const TariffRateList = () => {
 
   return (
     <section className="w-full py-24 bg-[#F4F4F2]/50">
-      <div className="max-w-8xl mx-auto px-6 lg:px-12">
+      <div className="max-w-8xl mx-10 px-8 lg:px-16">
         
         {/* Header & Segment Controller */}
         <div className="text-center mb-16">

@@ -65,10 +65,10 @@ const Testimonials = () => {
 
   return (
     <section className="w-full bg-[#F4F4F2] py-24 overflow-hidden">
-      <div className="max-w-8xl mx-auto px-6 lg:px-12">
+      <div className="max-w-8xl mx-auto px-8 lg:px-16">
         
         {/* Header Section */}
-        <div className="mb-16">
+        <div className="mb-16 ml-10">
           <div className="flex items-center gap-2 mb-4">
             <Quote size={20} className="text-[#E23744] fill-[#E23744]" />
             <span className="text-[#E23744] font-bold tracking-[0.3em] text-[10px] uppercase">
@@ -86,7 +86,7 @@ const Testimonials = () => {
         </div>
 
         {/* Card Swiper with Scroll-Snap */}
-        <div className="relative">
+        <div className="relative max-w-8xl mx-auto px-8 lg:px-16">
           <div 
             ref={scrollRef}
             className="flex overflow-x-hidden scroll-smooth gap-8 pb-10"

@@ -1,118 +1,123 @@
-import React, { useState, useRef } from 'react';
-import { ChevronLeft, ChevronRight, X, Heart, Download } from 'lucide-react';
+import React, { useState } from 'react';
+import { ChevronLeft, ChevronRight, X, Heart, Download, ImageIcon } from 'lucide-react';
+import { galleryImages } from '../../data/galleryData'; // Import your data
 
-// Sub-component for each independent row
-const GalleryRow = ({ images, direction, onImageClick }) => {
-  const scrollRef = useRef(null);
-  const [isPaused, setIsPaused] = useState(false);
+const ImageGalleryGrid = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [selectedImage, setSelectedImage] = useState(null);
+  
+  const imagesPerPage = 12; // 3 columns x 4 rows
+  const totalPages = Math.ceil(galleryImages.length / imagesPerPage);
+  
+  // Pagination Logic
+  const indexOfLastImage = currentPage * imagesPerPage;
+  const indexOfFirstImage = indexOfLastImage - imagesPerPage;
+  const currentImages = galleryImages.slice(indexOfFirstImage, indexOfLastImage);
 
-  // Manual navigation moves the scroll position of the wrapper
-  const handleManualNav = (dir) => {
-    if (scrollRef.current) {
-      const cardWidth = 424; // Card (400px) + Gap (24px)
-      const scrollAmount = dir === 'left' ? -cardWidth : cardWidth;
-      scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Optional: scroll to grid top
   };
 
   return (
-    <div className="relative group w-full mb-8">
-      {/* Row Navigation Chevrons */}
-      <button 
-        onClick={() => handleManualNav('left')}
-        className="absolute left-6 top-1/2 -translate-y-1/2 z-40 p-4 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full text-white opacity-0 group-hover:opacity-100 transition-all hover:bg-[#E23744] shadow-2xl"
-      >
-        <ChevronLeft size={24} />
-      </button>
+    <section className="relative w-full py-24 bg-[#1e2542] overflow-hidden">
+      {/* Brand Background */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(62,77,134,0.3)_0%,rgba(20,26,48,1)_100%)] z-0" />
+      
+      <div className="relative z-10 max-w-8xl mx-auto px-6 lg:px-12">
+        {/* Header Section */}
+        <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
+          <div>
+            <span className="text-[#E23744] font-bold tracking-[0.4em] text-[10px] uppercase mb-4 block">
+              Curated Fleet Gallery
+            </span>
+            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight">
+              Platform's <span className="text-[#EDA749]">Gallery</span>
+            </h2>
+            <div className="mt-6 h-1.5 w-24 bg-[#E23744] rounded-full shadow-[0_0_20px_rgba(226,55,104,0.3)]" />
+          </div>
+          <div className="bg-white/5 backdrop-blur-md border border-white/10 px-6 py-3 rounded-2xl">
+            <p className="text-white/60 text-xs font-bold uppercase tracking-widest">
+              Showing {indexOfFirstImage + 1} - {Math.min(indexOfLastImage, galleryImages.length)} of {galleryImages.length} Assets
+            </p>
+          </div>
+        </div>
 
-      <button 
-        onClick={() => handleManualNav('right')}
-        className="absolute right-6 top-1/2 -translate-y-1/2 z-40 p-4 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full text-white opacity-0 group-hover:opacity-100 transition-all hover:bg-[#E23744] shadow-2xl"
-      >
-        <ChevronRight size={24} />
-      </button>
-
-      {/* Infinite Scroll Wrapper */}
-      <div 
-        ref={scrollRef}
-        className="overflow-x-hidden scroll-smooth select-none"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
-        {/* The 'animate' class is applied to this inner div which contains doubled content */}
-        <div className={`flex gap-6 w-max ${direction} ${isPaused ? 'pause-animation' : ''}`}>
-          {/* Doubling the array ensures the loop is mathematically seamless */}
-          {[...images, ...images].map((img, idx) => (
+        {/* 3x4 Static Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+          {currentImages.map((img) => (
             <div
-              key={`${img.id}-${idx}`}
-              onClick={() => onImageClick(img)}
-              className="relative w-[400px] h-[280px] rounded-[2.5rem] overflow-hidden cursor-pointer border border-white/5 bg-[#2D2D2D] shadow-lg group/item"
+              key={img.id}
+              onClick={() => setSelectedImage(img)}
+              className="group relative h-[400px] rounded-[2.5rem] overflow-hidden cursor-pointer border border-white/5 bg-[#2D2D2D] shadow-2xl transition-all duration-500 hover:-translate-y-2"
             >
               <img 
                 src={img.src} 
-                className="w-full h-full object-cover opacity-60 group-hover/item:opacity-100 transition-all duration-700 group-hover/item:scale-110 ease-out" 
+                className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110 ease-out" 
                 alt={img.title} 
               />
               
-              {/* Individual Image Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent p-10 flex flex-col justify-end opacity-0 group-hover/item:opacity-100 transition-all duration-500">
-                <span className="text-[#E23744] font-bold tracking-[0.3em] text-[9px] uppercase mb-2">Fleet Detail</span>
-                <h4 className="text-white font-black uppercase text-xl tracking-tighter">{img.title}</h4>
+              {/* Premium Overlay Info */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#2D2D2D] via-transparent to-transparent p-10 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-all duration-500">
+                <span className="text-[#E23744] font-bold tracking-[0.3em] text-[9px] uppercase mb-2">
+                  {img.category} Selection
+                </span>
+                <h4 className="text-white font-black uppercase text-2xl tracking-tighter">
+                  {img.title}
+                </h4>
+                <div className="mt-4 flex items-center gap-2 text-white/60 text-[10px] font-bold uppercase tracking-widest">
+                  <ImageIcon size={14} /> View Details
+                </div>
               </div>
             </div>
           ))}
         </div>
-      </div>
-    </div>
-  );
-};
 
-const ImageGalleryGrid = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+        {/* Premium Pagination Controls */}
+        <div className="flex items-center justify-center gap-4">
+          <button 
+            disabled={currentPage === 1}
+            onClick={() => paginate(currentPage - 1)}
+            className="p-4 rounded-full bg-white/5 border border-white/10 text-white disabled:opacity-20 disabled:cursor-not-allowed hover:bg-[#E23744] transition-all"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          
+          <div className="flex items-center gap-2">
+            {Array.from({ length: totalPages }).map((_, i) => (
+              <button
+                key={i + 1}
+                onClick={() => paginate(i + 1)}
+                className={`w-12 h-12 rounded-xl font-bold transition-all ${
+                  currentPage === i + 1 
+                  ? 'bg-[#E23744] text-white shadow-lg' 
+                  : 'bg-white/5 text-white/40 hover:bg-white/10'
+                }`}
+              >
+                {i + 1}
+              </button>
+            ))}
+          </div>
 
-  // Generating 9 Rows with 4 images each (which become 8 for the infinite loop)
-  const rowData = Array.from({ length: 9 }).map((_, i) => ({
-    id: i,
-    direction: i % 2 === 0 ? 'animate-gallery-left' : 'animate-gallery-right',
-    images: [
-      { id: `r${i}-a`, src: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800", title: "Premium Ride" },
-      { id: `r${i}-b`, src: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800", title: "Corporate Class" },
-      { id: `r${i}-c`, src: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800", title: "Scenic Fleet" },
-      { id: `r${i}-d`, src: "https://images.unsplash.com/photo-1555214107-f2e7c48c636f?w=800", title: "Urban Executive" }
-    ]
-  }));
-
-  return (
-    <section className="relative w-full py-24 bg-[#1e2542] overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(62,77,134,0.3)_0%,rgba(20,26,48,1)_100%)] z-0" />
-      
-      <div className="relative z-10 max-w-8xl mx-auto px-6 lg:px-12">
-        <div className="mb-20">
-          <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight">
-            Platform's <span className="text-[#EDA749]">Gallery</span>
-          </h2>
-          <div className="mt-6 h-1.5 w-24 bg-[#E23744] rounded-full shadow-[0_0_20px_rgba(226,55,104,0.3)]" />
+          <button 
+            disabled={currentPage === totalPages}
+            onClick={() => paginate(currentPage + 1)}
+            className="p-4 rounded-full bg-white/5 border border-white/10 text-white disabled:opacity-20 disabled:cursor-not-allowed hover:bg-[#E23744] transition-all"
+          >
+            <ChevronRight size={24} />
+          </button>
         </div>
-
-        {rowData.map((row) => (
-          <GalleryRow 
-            key={row.id} 
-            images={row.images} 
-            direction={row.direction} 
-            onImageClick={setSelectedImage} 
-          />
-        ))}
       </div>
 
-      {/* Premium Detail Modal */}
+      {/* Detail Modal (Preserved from existing UI) */}
       {selectedImage && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/90 backdrop-blur-xl animate-in fade-in duration-300">
-          <div className="relative w-full max-w-5xl bg-white rounded-[3rem] overflow-hidden flex flex-col md:flex-row shadow-2xl animate-in zoom-in-95 duration-500">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/90 backdrop-blur-xl transition-all duration-300">
+          <div className="relative w-full max-w-5xl bg-white rounded-[3rem] overflow-hidden flex flex-col md:flex-row shadow-2xl">
             <button onClick={() => setSelectedImage(null)} className="absolute top-8 right-8 p-3 bg-gray-100 rounded-full hover:rotate-90 transition-transform z-10">
               <X size={20} />
             </button>
-            <div className="md:w-1/2 h-[400px] md:h-auto overflow-hidden">
-              <img src={selectedImage.src} className="w-full h-full object-cover" alt="Selected" />
+            <div className="md:w-1/2 h-[450px] md:h-auto overflow-hidden">
+              <img src={selectedImage.src} className="w-full h-full object-cover" alt="Detail" />
             </div>
             <div className="p-12 md:w-1/2 flex flex-col justify-center">
               <span className="text-[#E23744] font-bold tracking-[0.4em] text-[10px] uppercase mb-4">Enterprise Selection</span>
@@ -122,7 +127,7 @@ const ImageGalleryGrid = () => {
                 unrivaled fleet quality and meticulous safety standards.
               </p>
               <div className="flex gap-4">
-                <button className="flex-1 py-5 bg-[#E23744] text-white font-bold rounded-2xl text-[10px] uppercase tracking-[0.2em] shadow-xl shadow-red-900/10 hover:shadow-red-900/30 transition-all">
+                <button className="flex-1 py-5 bg-[#E23744] text-white font-bold rounded-2xl text-[10px] uppercase tracking-[0.2em] shadow-xl hover:-translate-y-1 transition-all">
                   Book This Fleet
                 </button>
                 <button className="flex-1 py-5 border-2 border-gray-100 text-[#2D2D2D] font-bold rounded-2xl text-[10px] uppercase tracking-[0.2em] hover:bg-[#F4F4F2] transition-all">

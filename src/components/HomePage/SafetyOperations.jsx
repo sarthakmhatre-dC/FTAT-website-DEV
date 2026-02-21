@@ -51,7 +51,7 @@ const SafetyOperations = () => {
   ];
 
   return (
-    <section className="relative w-full py-32 text-white overflow-hidden bg-[#1A1A1A]">
+    <section className="relative w-full py-32 text-white overflow-hidden bg-[#1A1A1A] justify-center items-center">
       {/* 1. Subtle Premium Gradient Layer */}
       <div className="absolute inset-0 z-0">
         {/* Deep Radial Glow to lift the center */}
@@ -61,7 +61,7 @@ const SafetyOperations = () => {
         <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#E23744]/5 blur-[120px] rounded-full" />
       </div>
 
-      <div className="relative z-10 max-w-8xl mx-auto px-6 lg:px-12">
+      <div className="relative z-10 max-w-8xl mx-10 px-8 lg:px-16 justify-center items-center">
         
         {/* Header Section: Left Aligned */}
         <div className="max-w-3xl mb-14">
@@ -80,7 +80,7 @@ const SafetyOperations = () => {
         <div className="w-full h-px bg-gradient-to-r from-white/20 via-white/10 to-transparent mb-20" />
 
         {/* Two-Column Feature Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-24 gap-y-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-30 gap-y-16 max-w-7xl px-20 ">
           
           {/* Left Column Group */}
           <div className="space-y-14">

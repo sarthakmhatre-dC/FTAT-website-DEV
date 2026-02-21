@@ -34,7 +34,7 @@ const IndustryServing = () => {
 
   return (
     <section className="w-full bg-[#F4F4F2] py-24 overflow-hidden">
-      <div className="max-w-8xl mx-auto px-6 lg:px-12 mb-16">
+      <div className="max-w-8xl mx-10 px-6 lg:px-12 mb-16">
         <h2 className="text-4xl md:text-5xl font-bold text-[#2D2D2D] tracking-tight">
           Serving Business <span className="text-[#E23744]">Across Industries</span>
         </h2>

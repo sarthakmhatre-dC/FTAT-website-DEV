@@ -37,7 +37,7 @@ const FleetShowCase = () => {
 
   return (
     <section className="w-full bg-white py-24">
-      <div className="max-w-8xl mx-auto px-6 lg:px-12">
+      <div className="max-w-8xl mx-10 px-8 lg:px-16">
         {/* Header Consistent with Solutions Component */}
         <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-2xl">

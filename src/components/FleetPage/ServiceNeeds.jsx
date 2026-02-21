@@ -31,7 +31,7 @@ const ServiceNeeds = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(62,77,134,0.3)_0%,rgba(20,26,48,1)_100%)] z-0" />
 
       {/* 2. Container with max-width 8xl and balanced padding */}
-      <div className="relative z-10 max-w-8xl mx-auto px-6 lg:px-12">
+      <div className="relative z-10 max-w-8xl mx-10 px-8 lg:px-16">
         
         {/* Header Section */}
         <div className="text-center mb-16">
@@ -46,7 +46,7 @@ const ServiceNeeds = () => {
           {needs.map((item, idx) => (
             <div 
               key={idx} 
-              className="group bg-white rounded-[2rem] p-8 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(0,0,0,0.4)] hover:-translate-y-2 flex flex-col items-start"
+              className="group bg-white rounded-[2rem] p-10 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(0,0,0,0.4)] hover:-translate-y-2 flex flex-col items-start"
             >
               {/* 3. Fixed Icon Visibility: text color shifts on group hover */}
               <div className="mb-8 p-5 rounded-2xl bg-[#F4F4F2] text-[#E23744] group-hover:bg-[#E23744] group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-red-900/30">

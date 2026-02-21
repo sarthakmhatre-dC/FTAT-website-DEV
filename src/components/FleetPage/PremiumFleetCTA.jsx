@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link for navigation
 import { ArrowRight, Circle } from 'lucide-react';
 
 const PremiumFleetCTA = () => {
@@ -6,18 +7,18 @@ const PremiumFleetCTA = () => {
     {
       name: "Toyota Innova Hycross",
       image: "https://images.unsplash.com/photo-1619682817481-e994891cd1f5?q=80&w=2070&auto=format&fit=crop",
-      path: "/innova-hycross"
-    },
-    {
-      name: "Toyota Innova Crysta",
-      image: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?q=80&w=2070&auto=format&fit=crop",
-      path: "/innova-crysta"
+      path: "/fleet/innova-hycross" // Matches your dynamic route pattern
     },
     {
       name: "Toyota Fortuner",
       image: "https://images.unsplash.com/photo-1632245889029-e406fbdd14ec?q=80&w=2070&auto=format&fit=crop",
-      path: "/fortuner"
-    }
+      path: "/fleet/fortuner"
+    },
+    {
+      name: "Audi A6",
+      image: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?q=80&w=2070&auto=format&fit=crop",
+      path: "/fleet/audi-a6"
+    },
   ];
 
   return (
@@ -25,10 +26,10 @@ const PremiumFleetCTA = () => {
       {/* 1. Subtle Light Theme Gradient */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_0%,rgba(244,244,242,1)_0%,rgba(255,255,255,1)_100%)]" />
 
-      <div className="relative z-10 max-w-8xl mx-auto px-6 lg:px-12">
+      <div className="relative z-10 max-w-8xl mx-10 px-8 lg:px-16">
         
         {/* Header Section */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-20 ">
           <div className="flex items-center justify-center gap-4 mb-6">
             <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-400">Premium</span>
             <Circle size={4} className="fill-[#E23744] text-[#E23744]" />
@@ -41,7 +42,6 @@ const PremiumFleetCTA = () => {
             Types of <span className="text-[#3E4D86]">Premium Cars for Rent</span>
           </h2>
 
-          {/* Justified Text Content */}
           <div className="max-w-5xl mx-auto space-y-6">
             <p className="text-gray-600 leading-relaxed text-justify md:text-[17px] font-medium">
               Our premium car rental range includes some of the most trusted and admired models in India. 
@@ -82,9 +82,13 @@ const PremiumFleetCTA = () => {
                   {car.name}
                 </h3>
                 
-                <button className="inline-flex items-center gap-2 px-8 py-3 bg-white border-2 border-[#E23744] text-[#E23744] font-bold rounded-full transition-all group-hover:bg-[#E23744] group-hover:text-white uppercase text-[11px] tracking-widest">
+                {/* Updated Button to Link for Routing */}
+                <Link 
+                  to={car.path}
+                  className="inline-flex items-center gap-2 px-8 py-3 bg-white border-2 border-[#E23744] text-[#E23744] font-bold rounded-full transition-all group-hover:bg-[#E23744] group-hover:text-white uppercase text-[11px] tracking-widest"
+                >
                   Explore Details <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-                </button>
+                </Link>
               </div>
             </div>
           ))}
