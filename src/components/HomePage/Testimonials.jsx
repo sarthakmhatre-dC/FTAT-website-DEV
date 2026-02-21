@@ -1,14 +1,12 @@
-import React, { useState, useRef } from 'react';
-import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import React, { useRef } from 'react';
+import { ChevronLeft, ChevronRight, Quote, MapPin } from 'lucide-react';
 
 const Testimonials = () => {
   const scrollRef = useRef(null);
 
-  // Logic to slide by exactly one card width
-  // Card width (450px) + Gap (32px / gap-8) = 482px
   const handleScroll = (direction) => {
     if (scrollRef.current) {
-      const cardWidth = 482; 
+      const cardWidth = 482; // Card width (450px) + Gap (32px)
       const scrollAmount = direction === 'left' ? -cardWidth : cardWidth;
       
       scrollRef.current.scrollBy({ 
@@ -20,47 +18,65 @@ const Testimonials = () => {
 
   const partners = [
     {
-      name: "Priya Singh",
-      position: "Logistics Head",
-      company: "GLOBAL SOLUTIONS INC.",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop",
-      message: "Their punctual, seamless, and reliable service has helped strengthening our team focus on our entire productivity."
+      name: "Amit Sharma",
+      location: "Andheri (E)",
+      image: "/testimonials/placeholder-user.jpg",
+      message: "We use their service regularly for corporate travel and Mumbai airport transfers. They are always on time, the cars are clean, and the drivers are professional. Very reliable."
+    },
+    {
+      name: "Neha Patel",
+      location: "Lower Parel",
+      image: "/testimonials/placeholder-user.jpg",
+      message: "Have been using them for office travel and airport drops for years now. Never had an issue. Punctual, well-maintained cars and very courteous drivers."
     },
     {
       name: "Rahul Mehta",
-      position: "Operations Manager",
-      company: "FINTECH INNOVATIONS HUB",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop",
-      message: "We've experienced with their travel for client testing and backup our reflect chauffeurs values. 24/7 help desk is a lifesaver."
+      location: "BKC",
+      image: "/testimonials/placeholder-user.jpg",
+      message: "For corporate meetings and airport pickups, this is our go-to travel partner. Always on schedule and very smooth coordination."
     },
     {
-      name: "Anjali Verma",
-      position: "HR Director",
-      company: "CREATIVE DESIGNS LTD.",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976&auto=format&fit=crop",
-      message: "Redefining employee commute was easy with Facilities Tours. The drivers are professional and background-verified."
+      name: "Pooja Iyer",
+      location: "Powai",
+      image: "/testimonials/placeholder-user.jpg",
+      message: "Early morning airport transfers are always stress-free with them. The driver arrives on time and the car is clean and comfortable. Highly recommended."
     },
-        {
-      name: "Priya Singh",
-      position: "Logistics Head",
-      company: "GLOBAL SOLUTIONS INC.",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop",
-      message: "Their punctual, seamless, and reliable service has helped strengthening our team focus on our entire productivity."
+    {
+      name: "Suresh Nair",
+      location: "Navi Mumbai",
+      image: "/testimonials/placeholder-user.jpg",
+      message: "We book them frequently for corporate guests and senior management travel. Very professional service and dependable every single time."
     },
-        {
-      name: "Priya Singh",
-      position: "Logistics Head",
-      company: "GLOBAL SOLUTIONS INC.",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop",
-      message: "Their punctual, seamless, and reliable service has helped strengthening our team focus on our entire productivity."
+    {
+      name: "Ankit Verma",
+      location: "Goregaon",
+      image: "/testimonials/placeholder-user.jpg",
+      message: "Have used their services multiple times for Mumbai airport drops and office travel. The experience has always been smooth and hassle-free."
     },
-        {
-      name: "Priya Singh",
-      position: "Logistics Head",
-      company: "GLOBAL SOLUTIONS INC.",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop",
-      message: "Their punctual, seamless, and reliable service has helped strengthening our team focus on our entire productivity."
+    {
+      name: "Ritu Malhotra",
+      location: "Bandra West",
+      image: "/testimonials/placeholder-user.jpg",
+      message: "Great service for both corporate travel and airport transfers. Booking is easy and they are very punctual. Definitely trustworthy."
     },
+    {
+      name: "Kunal Shah",
+      location: "Worli",
+      image: "/testimonials/placeholder-user.jpg",
+      message: "We rely on them for client pickups from the airport and internal office travel. The service quality has been consistently excellent."
+    },
+    {
+      name: "Priya Kulkarni",
+      location: "Thane",
+      image: "/testimonials/placeholder-user.jpg",
+      message: "Very professional and reliable. Cars are clean, drivers are polite, and airport transfers are always on time. Perfect for corporate use."
+    },
+    {
+      name: "Mohit Agarwal",
+      location: "Sakinaka",
+      image: "/testimonials/placeholder-user.jpg",
+      message: "Been using their services for our company’s travel and airport runs. Always prompt and well-managed. Would strongly recommend for corporate travel in Mumbai."
+    }
   ];
 
   return (
@@ -68,16 +84,16 @@ const Testimonials = () => {
       <div className="max-w-8xl mx-auto px-8 lg:px-16">
         
         {/* Header Section */}
-        <div className="mb-16 ml-10">
+        <div className="mb-16 md:ml-10">
           <div className="flex items-center gap-2 mb-4">
             <Quote size={20} className="text-[#E23744] fill-[#E23744]" />
             <span className="text-[#E23744] font-bold tracking-[0.3em] text-[10px] uppercase">
-              Testimonials
+              User Experiences
             </span>
           </div>
           <h2 className="text-4xl md:text-6xl font-black text-[#2D2D2D] leading-tight tracking-tight max-w-4xl">
-            Don’t take our word for it! <br />
-            Hear it from our <span className="text-[#3E4D86]">Partners.</span>
+            Trusted by Professionals <br />
+            Across <span className="text-[#3E4D86]">Mumbai.</span>
           </h2>
           <div className="mt-8 flex items-center gap-4">
              <div className="h-1.5 w-32 bg-[#EDA749] rounded-full" />
@@ -85,8 +101,8 @@ const Testimonials = () => {
           </div>
         </div>
 
-        {/* Card Swiper with Scroll-Snap */}
-        <div className="relative max-w-8xl mx-auto px-8 lg:px-16">
+        {/* Card Swiper */}
+        <div className="relative max-w-8xl mx-auto px-4 md:px-8 lg:px-10">
           <div 
             ref={scrollRef}
             className="flex overflow-x-hidden scroll-smooth gap-8 pb-10"
@@ -94,55 +110,59 @@ const Testimonials = () => {
             {partners.map((partner, index) => (
               <div 
                 key={index}
-                className="shrink-0 w-[90vw] md:w-[450px] bg-white rounded-[2.5rem] p-10 shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-gray-100 flex flex-col justify-between"
+                className="shrink-0 w-[85vw] md:w-[400px] bg-white rounded-[2.5rem] p-10 shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-gray-100 flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-start gap-5 mb-8">
-                    <div className="shrink-0 w-20 h-20 rounded-full border-4 border-[#E23744] overflow-hidden p-1 bg-white">
-                      <img src={partner.image} alt={partner.name} className="w-full h-full object-cover rounded-full" />
+                  <div className="flex items-center gap-5 mb-8">
+                    <div className="shrink-0 w-16 h-16 rounded-full border-2 border-[#E23744] overflow-hidden p-1 bg-white">
+                      <img 
+                        src={partner.image} 
+                        alt={partner.name} 
+                        className="w-full h-full object-cover rounded-full transition-all duration-300" 
+                      />
                     </div>
-                    <div className="pt-2">
-                      <h4 className="font-black text-[#2D2D2D] text-sm uppercase tracking-wide">
-                        {partner.company}
+                    <div>
+                      <h4 className="font-black text-[#2D2D2D] text-lg tracking-tight">
+                        {partner.name}
                       </h4>
-                      <p className="text-xs text-gray-400 font-bold uppercase tracking-widest mt-1">
-                        {partner.position}
-                      </p>
+                      <div className="flex items-center gap-1 text-[#3E4D86]">
+                        <MapPin size={12} className="fill-[#3E4D86]/20" />
+                        <span className="text-[10px] font-bold uppercase tracking-widest">
+                          {partner.location}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                  <p className="text-gray-600 italic leading-relaxed text-base mb-10">
+                  <p className="text-gray-600 leading-relaxed text-base mb-6">
                     “{partner.message}”
                   </p>
                 </div>
 
-                <div className="pt-6 border-t border-gray-50 flex items-center justify-between">
-                  <div>
-                    <span className="block font-black text-[#2D2D2D] text-sm uppercase">
-                      {partner.name}
-                    </span>
-                    <span className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">
-                      Corporate Partner
-                    </span>
-                  </div>
-                  <div className="text-[#3E4D86] font-black text-xs tracking-tighter uppercase italic">
-                    Safety <span className="text-[#E23744]">Operations</span>
-                  </div>
-                </div>
+                {/* <div className="pt-6 border-t border-gray-50">
+                   <div className="flex items-center gap-2">
+                      {[...Array(5)].map((_, i) => (
+                        <div key={i} className="w-2 h-2 rounded-full bg-[#EDA749]" />
+                      ))}
+                      <span className="ml-2 text-[10px] text-gray-400 font-bold uppercase tracking-widest">Verified Booking</span>
+                   </div>
+                </div> */}
               </div>
             ))}
           </div>
 
           {/* Premium Controls */}
-          <div className="flex gap-4 mt-8">
+          <div className="flex gap-4 mt-8 md:ml-10">
             <button 
               onClick={() => handleScroll('left')}
               className="p-4 bg-white border border-gray-100 rounded-full shadow-lg hover:bg-[#E23744] hover:text-white transition-all text-[#2D2D2D]"
+              aria-label="Previous"
             >
               <ChevronLeft size={24} />
             </button>
             <button 
               onClick={() => handleScroll('right')}
               className="p-4 bg-white border border-gray-100 rounded-full shadow-lg hover:bg-[#E23744] hover:text-white transition-all text-[#2D2D2D]"
+              aria-label="Next"
             >
               <ChevronRight size={24} />
             </button>

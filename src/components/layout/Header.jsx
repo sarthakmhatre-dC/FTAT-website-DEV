@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronDown, MessageCircle, ArrowUpRight } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 
 const Header = () => {
   const [isResourcesOpen, setIsResourcesOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
     { name: 'Home', href: '/home' },
@@ -14,112 +16,149 @@ const Header = () => {
     { name: 'Clients', href: '/clients' },
   ];
 
-  // Simplified Resources Content
   const resourceItems = [
     { name: 'Blogs', href: '/resources/blogs' },
     { name: 'Terms and Conditions', href: '/resources/terms' },
+    { name: 'Tariff Rates', href: '/resources/tariff' },
   ];
 
   return (
-    <header className="w-full bg-[#F4F4F2]">
-      {/* 1. Top Row: Logo and Brand Info */}
-      <div className="max-w-8xl mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between py-6">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-[#E23744] rounded-lg flex items-center justify-center shadow-sm">
-              <span className="text-white font-bold text-xl">F</span>
-            </div>
-            <span className="text-2xl font-bold tracking-tight text-[#2D2D2D]">
-              FACILITIES<span className="text-[#E23744]">.</span>
-            </span>
-          </div>
+    <header className="w-full bg-[#F4F4F2] font-sans">
+      {/* 1. Top Row: Logo & Action Buttons */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between py-4">
+          {/* Logo */}
+          <Link to="/home" className="flex-shrink-0">
+            <img 
+              src="/logos/Facilities.png" 
+              alt="Facilities Tours and Travels" 
+              className="h-8 md:h-12 w-auto object-contain"
+            />
+          </Link>
           
-          <div className="hidden md:flex flex-col items-end gap-0">
-            <span className="text-[10px] font-bold text-[#2D2D2D] leading-none">Since 1997</span>
-            <h2 className="text-xl font-bold tracking-tight text-[#E23744]">
-              Facilities Tours and Travels Pvt. Ltd.
-            </h2>
-            <p className="text-sm italic font-medium text-[#3E4D86] tracking-wide leading-none">
-              Top Travels, Best Service!
-            </p>
+          {/* Desktop Action Buttons */}
+          <div className="hidden md:flex items-center gap-4">
+            <Link 
+              to="/contact"
+              className="text-[11px] font-bold uppercase tracking-widest px-6 py-2.5 bg-[#3E4D86] text-white hover:bg-[#2D2D2D] transition-all rounded-full shadow-sm"
+            >
+              Contact Us
+            </Link>
+            
+            <a 
+              href="https://wa.me/9321685221" 
+              target="_blank" 
+              rel="noreferrer"
+              className="group flex items-center gap-2 px-4 py-2 bg-[#25D366] text-white rounded-full hover:shadow-lg transition-all"
+            >
+              <FaWhatsapp size={18} />
+              <span className="text-[11px] font-black uppercase tracking-widest">WhatsApp</span>
+            </a>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button 
+            className="md:hidden p-2 text-[#3E4D86]"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
         </div>
       </div>
 
-      {/* 2. Simplified Navbar Row */}
-      <nav className="w-full bg-[#EDA749] shadow-md relative z-50">
-        <div className="max-w-8xl mx-auto px-6 lg:px-12">
-          <ul className="flex items-center justify-center lg:justify-between py-1.5">
-            
-            {/* Nav Links Group */}
-            <div className="flex items-center">
-              {navLinks.map((link) => (
-                <li key={link.name} className="list-none">
-                  <Link
-                    to={link.href}
-                    className="text-white font-bold text-[12px] uppercase tracking-widest px-4 py-3.5 transition-all duration-300 hover:bg-white/10 flex items-center h-full"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-
-              {/* 3. Simplified Resources Dropdown */}
-              <li 
-                className="list-none relative group h-full"
-                onMouseEnter={() => setIsResourcesOpen(true)}
-                onMouseLeave={() => setIsResourcesOpen(false)}
-              >
-                <button className="text-white font-bold text-[12px] uppercase tracking-widest px-4 py-3.5 transition-all duration-300 hover:bg-white/10 flex items-center gap-1 h-full outline-none">
-                  Resources <ChevronDown size={14} className={`transition-transform duration-300 ${isResourcesOpen ? 'rotate-180' : ''}`} />
-                </button>
-
-                {/* Simplified Dropdown Menu */}
-                <div className={`absolute top-full left-0 w-64 bg-white rounded-b-2xl shadow-2xl border-t-4 border-[#E23744] transition-all duration-300 origin-top ${isResourcesOpen ? 'opacity-100 scale-y-100 visible' : 'opacity-0 scale-y-95 invisible'}`}>
-                  <div className="py-2">
-                    {resourceItems.map((item) => (
-                      <Link 
-                        key={item.name} 
-                        to={item.href} 
-                        className="block px-6 py-4 text-[11px] font-black text-[#2D2D2D] uppercase tracking-widest hover:bg-[#F4F4F2] hover:text-[#E23744] transition-colors"
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
-                  </div>
-                  {/* <div className="bg-[#F4F4F2] px-6 py-4 flex justify-between items-center">
-                    <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Enterprise Support</span>
-                    <ArrowUpRight size={14} className="text-gray-300" />
-                  </div> */}
-                </div>
+      {/* 2. Navbar Row (Desktop) */}
+      <nav className="hidden md:block w-full bg-[#EDA749] shadow-md relative z-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <ul className="flex items-center justify-center gap-2 py-0">
+            {navLinks.map((link) => (
+              <li key={link.name}>
+                <Link
+                  to={link.href}
+                  className="text-white font-bold text-[12px] uppercase tracking-widest px-5 py-4 transition-all duration-300 hover:bg-black/10 flex items-center"
+                >
+                  {link.name}
+                </Link>
               </li>
-            </div>
+            ))}
 
-            {/* 4. Action Buttons */}
-            <div className="flex items-center gap-2 ml-4">
-              <Link 
-                to="/contact"
-                className="text-white font-bold text-[12px] uppercase tracking-widest px-6 py-2.5 bg-[#3E4D86] hover:bg-[#2D2D2D] transition-all rounded-full border border-white/10 shadow-sm"
-              >
-                Contact Us
-              </Link>
-              
-              <a 
-                href="https://wa.me/919876543210" 
-                target="_blank" 
-                rel="noreferrer"
-                className="group flex items-center gap-2 px-4 py-2 bg-[#25D366] text-white rounded-full hover:shadow-[0_0_20px_rgba(37,211,102,0.4)] transition-all"
-              >
-                <div className="bg-white rounded-full p-1 group-hover:rotate-12 transition-transform">
-                  <MessageCircle size={14} className="text-[#25D366] fill-[#25D366]" />
-                </div>
-                <span className="text-[10px] font-black uppercase tracking-widest hidden xl:inline">WhatsApp</span>
-              </a>
-            </div>
+            {/* Resources Dropdown */}
+            <li 
+              className="relative group"
+              onMouseEnter={() => setIsResourcesOpen(true)}
+              onMouseLeave={() => setIsResourcesOpen(false)}
+            >
+              <button className="text-white font-bold text-[12px] uppercase tracking-widest px-5 py-4 transition-all duration-300 hover:bg-black/10 flex items-center gap-1 outline-none">
+                Resources <ChevronDown size={14} className={`transition-transform duration-300 ${isResourcesOpen ? 'rotate-180' : ''}`} />
+              </button>
 
+              <div className={`absolute top-full left-0 w-60 bg-white shadow-2xl border-t-4 border-[#3E4D86] transition-all duration-300 origin-top ${isResourcesOpen ? 'opacity-100 scale-y-100 visible' : 'opacity-0 scale-y-95 invisible'}`}>
+                {resourceItems.map((item) => (
+                  <Link 
+                    key={item.name} 
+                    to={item.href} 
+                    className="block px-6 py-3.5 text-[11px] font-bold text-[#2D2D2D] uppercase tracking-wider hover:bg-[#F4F4F2] hover:text-[#3E4D86] transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            </li>
           </ul>
         </div>
       </nav>
+
+      {/* 3. Mobile Menu (Overlay) */}
+      <div className={`fixed inset-0 z-[60] bg-white transition-transform duration-300 ease-in-out transform ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'} md:hidden`}>
+        <div className="flex flex-col h-full">
+          <div className="flex justify-end p-6">
+            <button onClick={() => setIsMobileMenuOpen(false)}>
+              <X size={32} className="text-gray-800" />
+            </button>
+          </div>
+          
+          <div className="flex flex-col items-center justify-center flex-grow space-y-6">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-2xl font-bold text-[#3E4D86] uppercase tracking-tighter"
+              >
+                {link.name}
+              </Link>
+            ))}
+            
+            <div className="h-px w-20 bg-gray-200" />
+            
+            {resourceItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-lg font-medium text-gray-500 uppercase tracking-widest"
+              >
+                {item.name}
+              </Link>
+            ))}
+
+            <div className="pt-8 flex flex-col gap-4 w-full px-12">
+              <Link 
+                to="/contact" 
+                className="w-full py-4 bg-[#3E4D86] text-white text-center rounded-xl font-bold uppercase tracking-widest"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Contact Us
+              </Link>
+              <a 
+                href="https://wa.me/9321685221" 
+                className="w-full py-4 bg-[#25D366] text-white text-center rounded-xl font-bold uppercase tracking-widest flex items-center justify-center gap-2"
+              >
+                <FaWhatsapp size={20} /> WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
   );
 };

@@ -2,23 +2,23 @@ import React from 'react';
 
 import FAQSection from '../components/common/FAQSection';
 import RentalForm from '../components/FleetPage/RentalForm';
-import MetricStrip from '../components/FleetPage/MetricStrip';
+import MetricStrip from '../components/common/MetricStrip';
 import PremiumFleetCTA from '../components/FleetPage/PremiumFleetCTA';
 import ServiceNeeds from '../components/FleetPage/ServiceNeeds';
 import TariffRateList from '../components/FleetPage/TariffRateList';
-import ValueBentoGrid from '../components/FleetPage/ValueBentoGrid';
+import ValueBentoGrid from '../components/common/ValueBentoGrid';
 
 const FleetPage = () => {
   return (
     <div className="flex flex-col">
       {/* Hero Section occupies the top of the main area */}
       <RentalForm />
-      <MetricStrip/>
-      <PremiumFleetCTA/>
-      <ServiceNeeds/>
-      <TariffRateList/>
-      <ValueBentoGrid/>
-      <FAQSection/>
+      <MetricStrip />
+      <PremiumFleetCTA />
+      <ServiceNeeds />
+      <TariffRateList />
+      <ValueBentoGrid />
+      <FAQSection />
 
 
 

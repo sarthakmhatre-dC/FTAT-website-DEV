@@ -36,7 +36,7 @@ const ValueBentoGrid = () => {
                         </h3>
                         <p className="text-gray-500 text-md leading-relaxed font-medium">
                             Enjoy the convenience and flexibility of having access to a fleet of cars as per your need and comfort, tailored for every business requirement.
-                            Easily track and manage rental bookings, expenses, and usage data through our online booking tool that integrates with corporate travel desks.
+                           
                         </p>
                     </div>
 
@@ -49,7 +49,7 @@ const ValueBentoGrid = () => {
                         </h3>
                         <p className="text-gray-500 text-md leading-relaxed font-medium">
                             Easily track and manage rental bookings, expenses, and usage data through our online booking tool that integrates with corporate travel desks.
-                            Easily track and manage rental bookings, expenses, and usage data through our online booking tool that integrates with corporate travel desks.
+                            
                         </p>
                     </div>
 
@@ -80,7 +80,7 @@ const ValueBentoGrid = () => {
                         </h3>
                         <p className="text-gray-500 text-md leading-relaxed font-medium">
                             You can rely on our dedicated team to provide prompt assistance whenever needed, ensuring your operations never stop.
-                            You can rely on our dedicated team to provide prompt assistance whenever needed, ensuring your operations never stop.
+                            
                         </p>
                     </div>
 

@@ -11,6 +11,8 @@ import FleetSubPage from "./subpages/FleetSubPage";
 import BlogsPage from "./pages/BlogsPage";
 import TermsPage from "./pages/TermsPage";
 import "./index.css";
+import TariffPage from "./pages/TariffPage";
+import PackageSubPage from "./subpages/PackageSubPage";
 
 const App = () => {
   return (
@@ -25,6 +27,7 @@ const App = () => {
           {/* Dynamic Subpage Route */}
           {/* The ':carId' parameter allows this one route to handle multiple car pages */}
           <Route path="/fleet/:carId" element={<FleetSubPage />} />
+          <Route path="/packages/:type" element={<PackageSubPage />} />
           
           <Route path="/gallery" element={<GalleryPage/>} />
           <Route path="/contact" element={<ContactPage/>} />
@@ -33,6 +36,7 @@ const App = () => {
           <Route path="/clients" element={<ClientsPage/>} />
           <Route path="/resources/blogs" element={<BlogsPage />} />
           <Route path="/resources/terms" element={<TermsPage />} />
+          <Route path="/resources/tariff" element={<TariffPage/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

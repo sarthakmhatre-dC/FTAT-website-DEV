@@ -17,7 +17,7 @@ const HeroSection = () => {
       {/* Content Container */}
       <div className="relative z-20 max-w-4xl px-6 text-center">
         {/* Animated Badge */}
-        <span className="inline-block px-4 py-1.5 mb-6 text-[11px] font-bold tracking-[0.3em] uppercase bg-[#E23744] text-white rounded-full shadow-lg mt-5">
+        <span className="inline-block px-4 py-1.5 mb-6 para-xs font-bold tracking-[0.3em] uppercase bg-[#E23744] text-white rounded-full shadow-lg mt-5">
           Since 1997
         </span>
 

@@ -1,6 +1,12 @@
+import React from 'react'
+import ClientDirectory from '../components/ClientPage/ClientDirectory'
+
+
 function ClientsPage() {
   return (
-    <div>ClientsPage</div>
+    <>
+        <ClientDirectory/>
+    </>
   )
 }
 export default ClientsPage
