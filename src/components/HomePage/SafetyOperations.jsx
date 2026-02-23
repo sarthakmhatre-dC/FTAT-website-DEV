@@ -65,7 +65,7 @@ const SafetyOperations = () => {
         
         {/* Header Section: Left Aligned */}
         <div className="max-w-3xl mb-14">
-          <span className="text-[#E23744] font-bold tracking-[0.4em] text-[10px] uppercase mb-4 block">
+          <span className="text-[#E23744] font-bold tracking-[0.4em] para-md uppercase mb-4 block">
             Institutional Safety
           </span>
           <h2 className="text-3xl md:text-6xl font-bold tracking-tight mb-6 leading-tight">
@@ -80,7 +80,7 @@ const SafetyOperations = () => {
         <div className="w-full h-px bg-gradient-to-r from-white/20 via-white/10 to-transparent mb-20" />
 
         {/* Two-Column Feature Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-30 gap-y-16 max-w-7xl px-20 ">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-30 gap-y-16 max-w-7xl ">
           
           {/* Left Column Group */}
           <div className="space-y-14">

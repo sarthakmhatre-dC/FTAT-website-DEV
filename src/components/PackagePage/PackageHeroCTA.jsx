@@ -14,16 +14,16 @@ const PackageHeroCTA = () => {
                     {/* Left Content: Typography & Introduction */}
                     <div className="flex-1 max-w-2xl">
                         <div className="flex items-center gap-3 mb-6">
-                            <span className="text-[#E23744] font-bold text-[10px] uppercase tracking-[0.5em]">Curated Travel</span>
+                            <span className="text-[#E23744] font-bold text-md uppercase tracking-[0.5em]">Curated Travel</span>
                             <div className="h-px w-12 bg-gray-200" />
                         </div>
 
-                        <h1 className="text-5xl md:text-7xl font-black text-[#2D2D2D] leading-[0.95] tracking-tighter uppercase mb-8">
+                        <h1 className="heading-1 font-semibold text-[#2D2D2D] leading-[0.95] tracking-tighter uppercase mb-8">
                             Explore Our <br />
                             <span className="text-[#3E4D86]">Premier Packages.</span>
                         </h1>
 
-                        <p className="text-lg text-gray-500 font-medium leading-relaxed text-justify mb-10">
+                        <p className="para-md text-gray-500 font-medium leading-relaxed text-justify mb-10">
                             Discover a world of seamless travel where luxury meets logistics. From meticulously planned
                             leisure escapes to high-efficiency corporate transit, our packages are designed to provide
                             institutional reliability with a touch of personal refinement.
@@ -52,9 +52,9 @@ const PackageHeroCTA = () => {
                     </div>
 
                     {/* Right Content: Premium Visual Cards */}
-                    <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-6 h-fit">
+                    <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-6 h-fit ">
                         {/* Vacation Package Card - Now Clickable */}
-                        <Link to="/packages/vacation" className="group relative h-80 rounded-[2.5rem] overflow-hidden shadow-2xl transition-transform duration-500 hover:-translate-y-2 cursor-pointer">
+                        <Link to="/packages/vacation" className="group relative h-90 rounded-[2.5rem] overflow-hidden shadow-2xl transition-transform duration-500 hover:-translate-y-2 cursor-pointer">
                             <img
                                 src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800"
                                 alt="Vacation"
@@ -68,7 +68,7 @@ const PackageHeroCTA = () => {
                         </Link>
 
                         {/* Corporate Package Card - Now Clickable */}
-                        <Link to="/packages/corporate" className="group relative h-80 rounded-[2.5rem] overflow-hidden shadow-2xl transition-transform duration-500 hover:-translate-y-2 sm:mt-12 cursor-pointer">
+                        <Link to="/packages/corporate" className="group relative h-90 rounded-[2.5rem] overflow-hidden shadow-2xl transition-transform duration-500 hover:-translate-y-2 sm:mt-12 cursor-pointer">
                             <img
                                 src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800"
                                 alt="Corporate"

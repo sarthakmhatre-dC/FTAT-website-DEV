@@ -20,61 +20,61 @@ const Testimonials = () => {
     {
       name: "Amit Sharma",
       location: "Andheri (E)",
-      image: "/testimonials/placeholder-user.jpg",
+      image: "/testimonials/testimonial_1.jpg",
       message: "We use their service regularly for corporate travel and Mumbai airport transfers. They are always on time, the cars are clean, and the drivers are professional. Very reliable."
     },
     {
       name: "Neha Patel",
       location: "Lower Parel",
-      image: "/testimonials/placeholder-user.jpg",
+      image: "/testimonials/testimonial_4.jpg",
       message: "Have been using them for office travel and airport drops for years now. Never had an issue. Punctual, well-maintained cars and very courteous drivers."
     },
     {
       name: "Rahul Mehta",
       location: "BKC",
-      image: "/testimonials/placeholder-user.jpg",
+      image: "/testimonials/testimonial_2.jpg",
       message: "For corporate meetings and airport pickups, this is our go-to travel partner. Always on schedule and very smooth coordination."
     },
     {
       name: "Pooja Iyer",
       location: "Powai",
-      image: "/testimonials/placeholder-user.jpg",
+      image: "/testimonials/testimonial_7.jpg",
       message: "Early morning airport transfers are always stress-free with them. The driver arrives on time and the car is clean and comfortable. Highly recommended."
     },
     {
       name: "Suresh Nair",
       location: "Navi Mumbai",
-      image: "/testimonials/placeholder-user.jpg",
+      image: "/testimonials/testimonial_3.jpg",
       message: "We book them frequently for corporate guests and senior management travel. Very professional service and dependable every single time."
     },
     {
       name: "Ankit Verma",
       location: "Goregaon",
-      image: "/testimonials/placeholder-user.jpg",
+      image: "/testimonials/testimonial_5.jpg",
       message: "Have used their services multiple times for Mumbai airport drops and office travel. The experience has always been smooth and hassle-free."
     },
     {
       name: "Ritu Malhotra",
       location: "Bandra West",
-      image: "/testimonials/placeholder-user.jpg",
+      image: "/testimonials/testimonial_9.jpg",
       message: "Great service for both corporate travel and airport transfers. Booking is easy and they are very punctual. Definitely trustworthy."
     },
     {
       name: "Kunal Shah",
       location: "Worli",
-      image: "/testimonials/placeholder-user.jpg",
+      image: "/testimonials/testimonial_6.jpg",
       message: "We rely on them for client pickups from the airport and internal office travel. The service quality has been consistently excellent."
     },
     {
       name: "Priya Kulkarni",
       location: "Thane",
-      image: "/testimonials/placeholder-user.jpg",
+      image: "/testimonials/testimonial_10.jpg",
       message: "Very professional and reliable. Cars are clean, drivers are polite, and airport transfers are always on time. Perfect for corporate use."
     },
     {
       name: "Mohit Agarwal",
       location: "Sakinaka",
-      image: "/testimonials/placeholder-user.jpg",
+      image: "/testimonials/testimonial_8.jpg",
       message: "Been using their services for our company’s travel and airport runs. Always prompt and well-managed. Would strongly recommend for corporate travel in Mumbai."
     }
   ];
@@ -87,17 +87,16 @@ const Testimonials = () => {
         <div className="mb-16 md:ml-10">
           <div className="flex items-center gap-2 mb-4">
             <Quote size={20} className="text-[#E23744] fill-[#E23744]" />
-            <span className="text-[#E23744] font-bold tracking-[0.3em] text-[10px] uppercase">
+            <span className="text-[#E23744] font-bold tracking-[0.3em] para-md uppercase">
               User Experiences
             </span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-black text-[#2D2D2D] leading-tight tracking-tight max-w-4xl">
+          <h2 className="heading-1 font-bold text-[#2D2D2D] leading-tight tracking-tight max-w-4xl">
             Trusted by Professionals <br />
             Across <span className="text-[#3E4D86]">Mumbai.</span>
           </h2>
           <div className="mt-8 flex items-center gap-4">
              <div className="h-1.5 w-32 bg-[#EDA749] rounded-full" />
-             <div className="h-1.5 w-4 bg-[#EDA749] rounded-full" />
           </div>
         </div>
 
@@ -114,11 +113,11 @@ const Testimonials = () => {
               >
                 <div>
                   <div className="flex items-center gap-5 mb-8">
-                    <div className="shrink-0 w-16 h-16 rounded-full border-2 border-[#E23744] overflow-hidden p-1 bg-white">
+                    <div className="shrink-0 w-16 h-16 rounded-full border-2 border-[#E23744] overflow-hidden bg-white">
                       <img 
                         src={partner.image} 
                         alt={partner.name} 
-                        className="w-full h-full object-cover rounded-full transition-all duration-300" 
+                        className="w-full h-fit object-cover rounded-full transition-all duration-300" 
                       />
                     </div>
                     <div>
@@ -137,15 +136,6 @@ const Testimonials = () => {
                     “{partner.message}”
                   </p>
                 </div>
-
-                {/* <div className="pt-6 border-t border-gray-50">
-                   <div className="flex items-center gap-2">
-                      {[...Array(5)].map((_, i) => (
-                        <div key={i} className="w-2 h-2 rounded-full bg-[#EDA749]" />
-                      ))}
-                      <span className="ml-2 text-[10px] text-gray-400 font-bold uppercase tracking-widest">Verified Booking</span>
-                   </div>
-                </div> */}
               </div>
             ))}
           </div>

@@ -61,11 +61,11 @@ const ValueBentoGrid = () => {
                         <p className="text-gray-500 text-md leading-relaxed font-medium max-w-xl mb-5">
                             From economy cars for everyday use to luxury sedans for executive travel, we operate a fleet designed for every occasion.
                         </p>
-                        <div className="relative w-fit h-fit mt-auto mb-5 justify-center items-center">
+                        <div className="relative w-fit h-fit mb-5 justify-center">
                             <img
-                                src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1000&auto=format&fit=crop&crop=focalpoint&fp-y=0.5"
+                                src="/valueBentoGrid.jpg"
                                 alt="Fleet Range"
-                                className="w-[45rem] h-[18rem] object-contain transition-transform duration-700 hover:scale-105"
+                                className="w-fit h-50 object-contain transition-transform duration-700 hover:scale-105"
                             />
                         </div>
                     </div>

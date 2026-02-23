@@ -7,7 +7,7 @@ const HeroSection = () => {
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 hover:scale-105"
         style={{ 
-          backgroundImage: `url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2021&auto=format&fit=crop')`, // Replace with your actual travel image
+          backgroundImage: `url('/backgroundImages/Herobackground.webp')`, // Replace with your actual travel image
         }}
       />
       

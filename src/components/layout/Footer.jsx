@@ -16,10 +16,10 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="w-full bg-[#1A1A1A] text-white font-sans antialiased">
+    <footer className="w-full bg-[#1A1A1A] text-white antialiased">
       {/* 1. Pre-footer CTA */}
       <div className="border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-8 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="max-w-8xl mx-auto px-8 lg:px-16 py-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <Link to="/home" className="opacity-90 hover:opacity-100 transition-opacity">
             <img
               src="/logos/Facilities.png"
@@ -43,14 +43,19 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
+      <div className="max-w-8xl mx-auto px-8 lg:px-16 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
           
           {/* Column 1: Brand Philosophy */}
           <div className="lg:col-span-4 space-y-6">
             <h3 className="para-sm font-bold uppercase tracking-[0.3em] text-[#EDA749]">Our Excellence</h3>
-            <p className="text-sm leading-relaxed  font-light max-w-sm">
-              Establishing leadership in Ground Transportation through a wide network, state-of-the-art technolog`y, and a commitment to reliability since 1997.
+            <p className="para-sm text-white leading-relaxed  font-light max-w-sm">
+              We establish ourselves as a leader in Ground Transportation 
+              Business, through wide network, state of art technology, 
+              strict quality assurance processes, highly motivated and 
+              experienced manpower, to achieve the larger market share,
+              higher revenues, higher profitability and most
+            reliable service delivery status thus creating value for our Customers.
             </p>
             <div className="flex gap-5 pt-2">
               <Facebook size={18} className=" hover:text-[#EDA749] cursor-pointer transition-all" />
@@ -60,7 +65,7 @@ const Footer = () => {
           </div>
 
           {/* Column 2: Quick Navigation */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 space-y-6 justify-center items-center">
             <h3 className="para-sm font-bold uppercase tracking-[0.3em] text-[#EDA749]">Explore</h3>
             <ul className="space-y-3">
               {quickLinks.map((item) => (

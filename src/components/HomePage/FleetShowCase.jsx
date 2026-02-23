@@ -41,7 +41,7 @@ const FleetShowCase = () => {
         {/* Header Consistent with Solutions Component */}
         <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-2xl">
-            <span className="text-[#E23744] font-bold tracking-[0.3em] text-[10px] uppercase">
+            <span className="text-[#E23744] font-bold tracking-[0.3em] para-md uppercase">
               The Fleet Experience
             </span>
             <h2 className="mt-3 text-4xl md:text-5xl font-bold text-[#2D2D2D] tracking-tight">

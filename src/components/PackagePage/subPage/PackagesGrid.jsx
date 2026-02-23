@@ -78,7 +78,9 @@ const PackagesGrid = ({
             <div className="relative bg-white w-full max-w-5xl rounded-[3.5rem] overflow-hidden flex flex-col md:flex-row shadow-2xl">
               <button 
                 onClick={() => setSelectedPackage(null)}
-                className="absolute top-8 right-8 z-20 w-12 h-12 bg-white/20 hover:bg-white text-white hover:text-[#E23744] rounded-2xl flex items-center justify-center transition-all backdrop-blur-md"
+                className="absolute top-8 right-8 z-20 w-12 h-12 bg-white/20
+                text-[#E23744] hover:rotate-90 transition-transform z-10
+                rounded-2xl flex items-center justify-center transition-all backdrop-blur-md"
               >
                 <X size={24} />
               </button>

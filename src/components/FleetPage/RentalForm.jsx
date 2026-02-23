@@ -64,7 +64,7 @@ const RentalForm = () => {
       <div className="relative w-full h-[90vh] flex overflow-hidden ">
         <div 
           className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop')` }}
+          style={{ backgroundImage: `url('/backgroundImages/FleetPageCTA.webp')` }}
         />
         <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#2D2D2D] via-[#2D2D2D]/80 to-transparent" />
         <div className="relative z-20 max-w-8xl mx-10 px-8 lg:px-16 w-full mt-30">

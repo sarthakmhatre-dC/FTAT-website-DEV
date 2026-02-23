@@ -2,7 +2,7 @@ import React from 'react';
 import HeroSection from "../components/HomePage/HeroSection";
 import TrustBar from "../components/HomePage/TrustBar";
 import IndustryServing from '../components/HomePage/IndustryServing';
-import CorporateSolutions from '../components/HomePage/CorporateSolutions';
+import CorporateSolutions from '../components/common/CorporateSolutions';
 import FleetShowCase from '../components/HomePage/FleetShowCase';
 import SafetyOperations from '../components/HomePage/SafetyOperations';
 import Testimonials from '../components/HomePage/Testimonials';
