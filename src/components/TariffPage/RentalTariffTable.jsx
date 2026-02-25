@@ -12,7 +12,7 @@ const RentalTariffTable = () => {
   return (
     <div className="w-full px-4 md:px-8 lg:px-16 pt-12 md:pt-24 bg-[#F4F4F2]/40 pt-10 md:pt-15">
       <section className="max-w-7xl mx-auto bg-white rounded-[1.5rem] md:rounded-[3rem] shadow-2xl shadow-gray-200/50 border border-gray-100 overflow-hidden">
-        
+
         {/* Header Section */}
         <div className="p-6 md:p-12 border-b border-gray-50 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-xl">
@@ -23,21 +23,34 @@ const RentalTariffTable = () => {
               Flexible local and long-distance packages
             </p>
           </div>
-          
+
           {/* View Switcher */}
-          <div className="flex p-1 bg-[#F4F4F2] rounded-xl w-fit">
-            <button 
-              onClick={() => setView('local')} 
-              className={`px-6 py-2.5 rounded-lg para-xs !font-black uppercase tracking-widest transition-all ${view === 'local' ? 'bg-white text-[#3E4D86] shadow-sm' : 'text-gray-400'}`}
-            >
-              Local
-            </button>
-            <button 
-              onClick={() => setView('outstation')} 
-              className={`px-6 py-2.5 rounded-lg para-xs !font-black uppercase tracking-widest transition-all ${view === 'outstation' ? 'bg-white text-[#3E4D86] shadow-sm' : 'text-gray-400'}`}
-            >
-              Outstation
-            </button>
+          {/* Premium Segmented View Switcher */}
+          <div className="w-full md:w-auto">
+            <div className="flex items-center p-1.5 bg-[#F4F4F2]/80 backdrop-blur-sm rounded-2xl border border-gray-100/50 shadow-inner shrink-0">
+              <button
+                onClick={() => setView('local')}
+                className={`flex-1 md:flex-none px-8 py-3 rounded-xl para-sm !font-black uppercase tracking-widest transition-all duration-500 transform ${view === 'local'
+                    ? 'bg-[#E23744] text-white shadow-[0_4px_20px_rgba(226,55,68,0.2)] scale-105'
+                    : 'text-gray-400 hover:text-[#2D2D2D] hover:bg-white/40 scale-[0.98] hover:scale-100'
+                  }`}
+              >
+                Local
+              </button>
+
+              {/* Elegant Vertical Divider */}
+              <div className={`h-4 w-px bg-gray-300/30 transition-opacity duration-500 ${view === 'local' || view === 'outstation' ? 'opacity-0' : 'opacity-100'}`} />
+
+              <button
+                onClick={() => setView('outstation')}
+                className={`flex-1 md:flex-none px-8 py-3 rounded-xl para-sm !font-black uppercase tracking-widest transition-all duration-500 transform ${view === 'outstation'
+                    ? 'bg-[#E23744] text-white shadow-[0_4px_20px_rgba(226,55,68,0.2)] scale-105'
+                    : 'text-gray-400 hover:text-[#2D2D2D] hover:bg-white/40 scale-[0.98] hover:scale-100'
+                  }`}
+              >
+                Outstation
+              </button>
+            </div>
           </div>
         </div>
 
@@ -129,17 +142,17 @@ const RentalTariffTable = () => {
                       <p className="para-sm !font-black text-[#E23744]">₹{row.out}</p>
                     </div>
                     <div className="text-right">
-                       <p className="para-xs text-gray-400 uppercase">Per Day</p>
+                      <p className="para-xs text-gray-400 uppercase">Per Day</p>
                     </div>
                   </div>
                 )}
               </div>
 
               <div className="flex items-center justify-between pt-4 border-t border-gray-50">
-                 <div className="flex gap-4">
-                    <span className="para-xs !font-bold text-gray-500 uppercase">Extra Km: ₹{row.extraKm}</span>
-                    <span className="para-xs !font-bold text-gray-500 uppercase">Extra Hr: ₹{row.extraHr}</span>
-                 </div>
+                <div className="flex gap-4">
+                  <span className="para-xs !font-bold text-gray-500 uppercase">Extra Km: ₹{row.extraKm}</span>
+                  <span className="para-xs !font-bold text-gray-500 uppercase">Extra Hr: ₹{row.extraHr}</span>
+                </div>
               </div>
             </div>
           ))}

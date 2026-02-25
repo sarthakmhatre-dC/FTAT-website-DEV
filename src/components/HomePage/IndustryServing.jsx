@@ -1,103 +1,143 @@
 import React, { useState, useRef } from 'react';
+import { motion, useAnimationControls } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { industryLogos } from '../../data/industryData';
 
 const IndustryServing = () => {
-  const [isPaused, setIsPaused] = useState(false);
+  // Separate states for hover-pause functionality
+  const [isPaused1, setIsPaused1] = useState(false);
+  const [isPaused2, setIsPaused2] = useState(false);
+  
+  // Ref for manual scrolling overrides
   const row1Ref = useRef(null);
   const row2Ref = useRef(null);
 
-  const row1Logos = ["Reliance", "Tata Group", "Infosys", "HDFC Bank", "Adani", "ICICI", "Mahindra", "Wipro", "L&T", "Axis Bank", "Airtel", "Jio"];
-  const row2Logos = ["Amazon", "Google", "Microsoft", "Accenture", "Deloitte", "KPMG", "Capgemini", "Cognizant", "PwC", "IBM", "Oracle", "SAP"];
+  // Duplicate data for seamless looping
+  const fullRow1 = [...industryLogos.row1, ...industryLogos.row1, ...industryLogos.row1];
+  const fullRow2 = [...industryLogos.row2, ...industryLogos.row2, ...industryLogos.row2];
 
+  /**
+   * Manual Navigation Handler
+   * Uses clientWidth to move the row by 50% of the visible area
+   */
   const handleManualNav = (row, direction) => {
     const container = row === 1 ? row1Ref.current : row2Ref.current;
     if (container) {
-      const cardWidth = 288; // 256px card + 32px margins
-      const scrollTarget = direction === 'left' 
-        ? container.scrollLeft - cardWidth 
-        : container.scrollLeft + cardWidth;
-
-      container.scrollTo({
-        left: scrollTarget,
+      const scrollAmount = container.clientWidth / 2;
+      container.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth'
       });
     }
   };
 
-  const LogoCard = ({ name }) => (
-    <div className="flex-shrink-0 w-64 h-32 bg-white rounded-xl border border-gray-100 shadow-sm flex items-center justify-center p-6 mx-4 hover:shadow-md transition-all duration-300 group">
-      <span className="text-gray-400 font-bold tracking-tight text-xl uppercase opacity-40 group-hover:opacity-100 group-hover:text-[#3E4D86] transition-all">
-        {name}
-      </span>
-    </div>
+  const LogoCard = ({ logo }) => (
+    <motion.div 
+      whileHover={{ scale: 1.1, y: -5 }}
+      className="flex-shrink-0 w-48 h-24 md:w-64 md:h-32 bg-white rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center p-6 mx-3 md:mx-4 transition-all duration-500 hover:shadow-2xl hover:border-[#3E4D86]/30 group cursor-default"
+    >
+      <img 
+        src={logo.src} 
+        alt={logo.name} 
+        className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100 transition-all duration-500"
+      />
+    </motion.div>
   );
 
   return (
-    <section className="w-full bg-[#F4F4F2] py-24 overflow-hidden">
-      <div className="max-w-8xl mx-auto px-8 md:px-16 lg:px-20 mb-16">
+    <section className="w-full bg-[#F4F4F2] py-16 md:py-24 lg:py-32 overflow-hidden">
+      <div className="max-w-8xl mx-auto px-6 md:px-16 lg:px-20 mb-12 md:mb-16">
         <h2 className="heading-2 font-bold text-[#2D2D2D] tracking-tight">
           Serving Business <span className="text-[#E23744]">Across Industries</span>
         </h2>
-        <div className="mt-4 h-1.5 w-20 bg-[#EDA749] rounded-full" />
+        <div className="mt-4 h-1.5 w-24 md:w-32 bg-[#EDA749] rounded-full" />
       </div>
 
-      <div className="space-y-10">
-        {/* Row 1 */}
-        <div className="relative group">
+      <div className="space-y-12 md:space-y-16 relative">
+        
+        {/* Row 1 Wrapper */}
+        <div className="relative group/row overflow-hidden">
+          {/* Left Control */}
           <button 
             onClick={() => handleManualNav(1, 'left')}
-            className="absolute left-8 top-1/2 -translate-y-1/2 z-40 p-3 bg-white border border-gray-100 rounded-full shadow-2xl opacity-0 group-hover:opacity-100 transition-all hover:bg-[#E23744] hover:text-white"
+            className="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 z-50 p-4 bg-white/90 backdrop-blur-md border border-gray-100 rounded-full shadow-2xl transition-all hover:bg-[#E23744] hover:text-white active:scale-90 opacity-100 lg:opacity-0 lg:group-hover/row:opacity-100"
           >
             <ChevronLeft size={24} />
           </button>
+
+          {/* Right Control */}
           <button 
             onClick={() => handleManualNav(1, 'right')}
-            className="absolute right-8 top-1/2 -translate-y-1/2 z-40 p-3 bg-white border border-gray-100 rounded-full shadow-2xl opacity-0 group-hover:opacity-100 transition-all hover:bg-[#E23744] hover:text-white"
+            className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 z-50 p-4 bg-white/90 backdrop-blur-md border border-gray-100 rounded-full shadow-2xl transition-all hover:bg-[#E23744] hover:text-white active:scale-90 opacity-100 lg:opacity-0 lg:group-hover/row:opacity-100"
           >
             <ChevronRight size={24} />
           </button>
 
-          {/* Scrollable Wrapper */}
           <div 
             ref={row1Ref}
-            className="overflow-x-hidden scroll-smooth"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
+            className="flex overflow-x-auto no-scrollbar touch-pan-x"
+            onMouseEnter={() => setIsPaused1(true)}
+            onMouseLeave={() => setIsPaused1(false)}
           >
-            <div className={`flex whitespace-nowrap w-max animate-marquee ${isPaused ? 'pause-animation' : ''}`}>
-              {[...row1Logos, ...row1Logos, ...row1Logos].map((name, i) => (
-                <LogoCard key={`r1-${i}`} name={name} />
+            <motion.div 
+              className="flex"
+              animate={{ x: isPaused1 ? 0 : ["0%", "-33.33%"] }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 40,
+                  ease: "linear",
+                },
+              }}
+            >
+              {fullRow1.map((logo, i) => (
+                <LogoCard key={`r1-${i}`} logo={logo} />
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
 
-        {/* Row 2 */}
-        <div className="relative group">
+        {/* Row 2 Wrapper */}
+        <div className="relative group/row overflow-hidden">
+          {/* Left Control */}
           <button 
             onClick={() => handleManualNav(2, 'left')}
-            className="absolute left-8 top-1/2 -translate-y-1/2 z-40 p-3 bg-white border border-gray-100 rounded-full shadow-2xl opacity-0 group-hover:opacity-100 transition-all hover:bg-[#E23744] hover:text-white"
+            className="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 z-50 p-4 bg-white/90 backdrop-blur-md border border-gray-100 rounded-full shadow-2xl transition-all hover:bg-[#E23744] hover:text-white active:scale-90 opacity-100 lg:opacity-0 lg:group-hover/row:opacity-100"
           >
             <ChevronLeft size={24} />
           </button>
+
+          {/* Right Control */}
           <button 
             onClick={() => handleManualNav(2, 'right')}
-            className="absolute right-8 top-1/2 -translate-y-1/2 z-40 p-3 bg-white border border-gray-100 rounded-full shadow-2xl opacity-0 group-hover:opacity-100 transition-all hover:bg-[#E23744] hover:text-white"
+            className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 z-50 p-4 bg-white/90 backdrop-blur-md border border-gray-100 rounded-full shadow-2xl transition-all hover:bg-[#E23744] hover:text-white active:scale-90 opacity-100 lg:opacity-0 lg:group-hover/row:opacity-100"
           >
             <ChevronRight size={24} />
           </button>
 
           <div 
             ref={row2Ref}
-            className="overflow-x-hidden scroll-smooth"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
+            className="flex overflow-x-auto no-scrollbar touch-pan-x"
+            onMouseEnter={() => setIsPaused2(true)}
+            onMouseLeave={() => setIsPaused2(false)}
           >
-            <div className={`flex whitespace-nowrap w-max animate-marquee-reverse ${isPaused ? 'pause-animation' : ''}`}>
-              {[...row2Logos, ...row2Logos, ...row2Logos].map((name, i) => (
-                <LogoCard key={`r2-${i}`} name={name} />
+            <motion.div 
+              className="flex"
+              animate={{ x: isPaused2 ? 0 : ["-33.33%", "0%"] }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 45,
+                  ease: "linear",
+                },
+              }}
+            >
+              {fullRow2.map((logo, i) => (
+                <LogoCard key={`r2-${i}`} logo={logo} />
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

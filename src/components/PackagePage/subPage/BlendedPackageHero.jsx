@@ -10,7 +10,7 @@ const BlendedPackageHero = ({
 
   return (
     <section className="relative w-full min-h-[70vh] flex items-center bg-white overflow-hidden py-20">
-      <div className="max-w-8xl mx-10 px-8 lg:px-16 w-full text-left">
+      <div className="max-w-8xl mx-auto px-8 md:px-16 lg:px-20 w-full text-left">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           
           {/* Left Side: Blended Image */}
@@ -30,23 +30,23 @@ const BlendedPackageHero = ({
           {/* Right Side: Content */}
           <div className="w-full lg:w-1/2">
             <div className="flex items-center gap-3 mb-6">
-              <Palmtree size={18} className="text-[#E23744]" />
-              <span className="text-[#E23744] font-bold text-[10px] uppercase tracking-[0.5em]">
+              <Palmtree size={24} className="text-[#E23744]" />
+              <span className="text-[#E23744] font-black para-sm md:para-md uppercase tracking-[0.4em] md:tracking-[0.5em]">
                 {tag}
               </span>
             </div>
 
-            <h2 className="text-4xl md:text-6xl font-black text-[#2D2D2D] leading-[0.95] tracking-tighter uppercase mb-8">
+            <h2 className="heading-1 font-black text-[#2D2D2D] leading-[0.95] tracking-tighter mb-8">
               {title}
             </h2>
 
-            <p className="text-lg text-gray-500 font-medium leading-relaxed text-justify mb-10 max-w-xl">
+            <p className="para-lg text-gray-500 font-medium leading-relaxed text-justify mb-10 max-w-xl">
               {description}
             </p>
 
             {/* Static Action Button */}
             <button 
-              className="group flex items-center gap-4 px-10 py-5 bg-[#3E4D86] text-white font-black text-[11px] uppercase tracking-[0.2em] rounded-2xl shadow-xl shadow-blue-900/20 hover:bg-[#2D2D2D] transition-all duration-300"
+              className="group flex items-center gap-4 px-10 py-5 bg-[#3E4D86] text-white font-black para-xs uppercase tracking-[0.2em] rounded-2xl shadow-xl shadow-blue-900/20 hover:bg-[#2D2D2D] transition-all duration-300"
             >
               Explore Our Packages 
               <ArrowDown size={18} className="group-hover:translate-y-1 transition-transform" />

@@ -7,14 +7,13 @@ const ImageGallery = () => {
   const scrollRef = useRef(null);
 
   const galleryImages = [
-    "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2069",
-    "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2070",
-    "https://images.unsplash.com/photo-1494905998402-395d579af36f?q=80&w=2070",
-    "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=2070",
-    "https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=2070",
-    "https://images.unsplash.com/photo-1555214107-f2e7c48c636f?q=80&w=1974",
-    "https://images.unsplash.com/photo-1562610378-51528632f211?q=80&w=1935",
-    "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=2072"
+    "/galleryImages/galleryImage1.webp",
+    "/galleryImages/galleryImage3.webp",
+    "/galleryImages/galleryImage4.webp",
+    "/galleryImages/galleryImage5.webp",
+    "/galleryImages/galleryImage7.jpg",
+    "/galleryImages/galleryImage8.webp",
+    "/galleryImages/galleryImage10.webp",
   ];
 
   const handleManualNav = (direction) => {

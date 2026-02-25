@@ -1,7 +1,24 @@
 import React, { useState } from 'react';
-
+import { useRef } from 'react';
 const TransferTariffTable = () => {
   const [location, setLocation] = useState('hub1');
+
+  // 1. Add this state at the top with your other useState hooks
+  const [viewOpen, setViewOpen] = useState(false);
+
+  // 2. (Optional but Recommended) Add a ref to handle closing when clicking outside
+  const dropdownRef = useRef(null);
+
+  // Function to toggle the dropdown state
+  const toggleDropdown = () => {
+    setViewOpen((prev) => !prev);
+  };
+
+  // Function to handle selection and close the menu
+  const handleSelectLocation = (key) => {
+    setLocation(key); // Updates the table data
+    setViewOpen(false); // Closes the elegant menu
+  };
 
   const locations = {
     hub1: {
@@ -14,7 +31,7 @@ const TransferTariffTable = () => {
     },
     hub3: {
       label: "CSMT / Navi Mumbai",
-      description: "Includes: Mumbai Central, Navi Mumbai Airport & CSTM"
+      description: "Includes: Mumbai Central, Navi Mumbai Airport & CSMT"
     }
   };
 
@@ -45,28 +62,62 @@ const TransferTariffTable = () => {
 
           <div className="w-full md:w-auto">
             {/* Elegant Custom Mobile Dropdown */}
-            <div className="relative md:hidden w-full">
-              <select
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-                className="w-full px-6 py-4 bg-[#EDA749] text-white para-xs !font-black uppercase tracking-widest rounded-xl border-none outline-none appearance-none shadow-lg cursor-pointer"
-              >
-                {Object.keys(locations).map(key => (
-                  <option 
-                    key={key} 
-                    value={key} 
-                    className={location === key ? "bg-[#E23744] text-white" : "bg-white text-[#2D2D2D]"}
-                  >
-                    {locations[key].label}
-                  </option>
-                ))}
-              </select>
-              {/* Dropdown Arrow Indicator */}
-              <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-white">
-                <svg width="12" height="8" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+            {/* Elegant Mobile Dropdown - Modified for proper spacing and theme consistency */}
+            <div className="relative md:hidden w-full group">
+              <div className="relative md:hidden w-full group">
+                {/* Elegant Custom Dropdown Toggle */}
+                <button
+                  onClick={() => setViewOpen(!viewOpen)} // Ensure you add [viewOpen, setViewOpen] = useState(false) at the top
+                  className="w-full flex items-center justify-between px-6 py-4 bg-[#eda749] text-white rounded-2xl shadow-xl transition-all duration-300 active:scale-[0.98]"
+                >
+                  <span className="para-sm !font-black uppercase tracking-[0.2em]">
+                    {locations[location].label}
+                  </span>
+                  <div className={`transition-transform duration-300 ${viewOpen ? 'rotate-180' : ''}`}>
+                    <svg width="12" height="8" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                </button>
+
+                {/* Elegant Floating Menu: Exactly the same width as the button */}
+                {viewOpen && (
+                  <>
+                    {/* Invisible backdrop to close menu when clicking outside */}
+                    <div className="fixed inset-0 z-30" onClick={() => setViewOpen(false)} />
+
+                    <div className="absolute top-full left-0 right-0 mt-2 z-40 bg-white rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] border border-gray-100 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                      {Object.keys(locations).map((key) => (
+                        <button
+                          key={key}
+                          onClick={() => {
+                            setLocation(key);
+                            setViewOpen(false);
+                          }}
+                          className={`w-full text-left px-6 py-4 para-sm uppercase tracking-wider transition-colors border-b last:border-none border-gray-50 ${location === key
+                            ? 'bg-[#E23744]/5 text-[#E23744] !font-black'
+                            : 'text-[#2D2D2D] hover:bg-gray-50'
+                            }`}
+                        >
+                          {locations[key].label}
+                        </button>
+                      ))}
+                    </div>
+                  </>
+                )}
+
+                {/* Institutional Label */}
+                <p className="mt-4 para-xs text-gray-400 !font-bold uppercase tracking-[0.15em] flex items-center gap-2 px-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#EDA749] animate-pulse" />
+                  Select Transfer Destination
+                </p>
               </div>
+
+              {/* Refined Label: Uses Mustard dot to signify active selection */}
+              <p className="mt-4 para-xs text-gray-400 !font-bold uppercase tracking-[0.15em] flex items-center gap-2 px-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#EDA749] animate-pulse" />
+                Select Transfer Destination
+              </p>
             </div>
 
             {/* Desktop Segmented Controller */}
@@ -76,8 +127,8 @@ const TransferTariffTable = () => {
                   <button
                     onClick={() => setLocation(key)}
                     className={`px-6 py-3 rounded-xl para-sm !font-black uppercase tracking-widest transition-all duration-500 transform ${location === key
-                        ? 'bg-[#E23744] text-white shadow-lg scale-105'
-                        : 'text-gray-400 hover:text-[#2D2D2D] hover:bg-white/40 scale-[0.98] hover:scale-100'
+                      ? 'bg-[#E23744] text-white shadow-lg scale-105'
+                      : 'text-gray-400 hover:text-[#2D2D2D] hover:bg-white/40 scale-[0.98] hover:scale-100'
                       }`}
                   >
                     {locations[key].label}
@@ -151,9 +202,9 @@ const TransferTariffTable = () => {
                     <p className="para-xs text-[#3E4D86] mb-1 uppercase tracking-tighter font-bold">Pickup Seeoff</p>
                     <p className="para-sm !font-black text-[#3E4D86]">₹{row[location][2]}</p>
                   </div>
-                  <div className="text-right">
+                  {/* <div className="text-right">
                     <span className="para-xs text-white bg-[#3E4D86] px-2 py-1 rounded-md uppercase text-[8px] font-black">Premium</span>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

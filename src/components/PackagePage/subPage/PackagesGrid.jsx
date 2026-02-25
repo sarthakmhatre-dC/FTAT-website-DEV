@@ -10,20 +10,20 @@ const PackagesGrid = ({
 
   return (
     <section className="w-full py-24 bg-[#F4F4F2]/30">
-      <div className="max-w-8xl mx-10 px-8 lg:px-16">
+      <div className="max-w-8xl mx-auto px-8 md:px-16 lg:px-20">
         
         {/* Header Section */}
         <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="max-w-2xl">
-            <span className="text-[#E23744] font-bold tracking-[0.5em] text-[10px] uppercase block mb-4">
+            <span className="text-[#E23744] font-black para-sm md:para-md uppercase tracking-[0.4em] md:tracking-[0.5em]">
               Explore Excellence
             </span>
-            <h2 className="text-4xl md:text-6xl font-black text-[#2D2D2D] tracking-tighter uppercase leading-none">
+            <h2 className="heading-1 font-black text-[#2D2D2D] tracking-tighter leading-none mt-5">
               {title.split(' ')[0]} <span className="text-[#3E4D86]">{title.split(' ').slice(1).join(' ')}</span>
             </h2>
           </div>
           <div className="pb-2">
-            <p className="text-gray-400 text-xs font-bold uppercase tracking-widest">{subtitle}</p>
+            <p className="text-gray-400 para-sm font-bold uppercase tracking-wide">{subtitle}</p>
           </div>
         </div>
 

@@ -36,7 +36,7 @@ const ProductShowCase = ({
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat scale-105"
         style={{ 
           backgroundImage: `url('/backgroundImages/FleetPageCTA.webp')`, 
-          opacity: 0.03 // Low opacity to keep it white-themed but textured like the CTA
+          opacity: 0.10 // Low opacity to keep it white-themed but textured like the CTA
         }}
       />
 

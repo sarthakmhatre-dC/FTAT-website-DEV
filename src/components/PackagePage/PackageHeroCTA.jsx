@@ -8,7 +8,7 @@ const PackageHeroCTA = () => {
             {/* 1. Background Decorative Layer */}
             <div className="absolute top-0 right-0 w-1/2 h-full bg-[#F4F4F2]/40 -skew-x-12 translate-x-1/4 z-0" />
 
-            <div className="relative z-10 max-w-8xl mx-10 px-8 lg:px-16">
+            <div className="relative z-10 max-w-8xl mx-auto px-8 lg:px-16">
                 <div className="flex flex-col lg:flex-row gap-16 lg:items-center">
 
                     {/* Left Content: Typography & Introduction */}
