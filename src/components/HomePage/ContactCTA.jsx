@@ -15,7 +15,7 @@ const ContactCTA = () => {
         <div className="flex flex-col items-center text-center">
           
           {/* Section Indicator */}
-          <span className="text-[#E23744] font-bold tracking-[0.4em] para-md uppercase mb-6">
+          <span className="text-[#E23744] font-bold lg:tracking-[0.4em] para-md uppercase mb-6">
             Partner with Excellence
           </span>
 

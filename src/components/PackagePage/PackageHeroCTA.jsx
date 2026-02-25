@@ -14,11 +14,11 @@ const PackageHeroCTA = () => {
                     {/* Left Content: Typography & Introduction */}
                     <div className="flex-1 max-w-2xl">
                         <div className="flex items-center gap-3 mb-6">
-                            <span className="text-[#E23744] font-bold text-md uppercase tracking-[0.5em]">Curated Travel</span>
+                            <span className="text-[#E23744] font-black para-sm md:para-md uppercase tracking-[0.4em] md:tracking-[0.5em]">Curated Travel</span>
                             <div className="h-px w-12 bg-gray-200" />
                         </div>
 
-                        <h1 className="heading-1 font-semibold text-[#2D2D2D] leading-[0.95] tracking-tighter uppercase mb-8">
+                        <h1 className="heading-1 font-bold text-[#2D2D2D] leading-[0.95] mb-8">
                             Explore Our <br />
                             <span className="text-[#3E4D86]">Premier Packages.</span>
                         </h1>

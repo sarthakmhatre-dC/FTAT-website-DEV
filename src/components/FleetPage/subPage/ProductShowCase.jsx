@@ -12,9 +12,8 @@ const ProductShowCase = ({
     { icon: <Wind size={20} />, label: "AC" }
   ],
   rating = "4.9",
-  reviews = "15966"
+  reviews = "15,966"
 }) => {
-  // Default fallback images if none provided
   const displayImages = images.length >= 5 ? images : [
     "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?q=80&w=1000",
     "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=500",
@@ -24,56 +23,96 @@ const ProductShowCase = ({
   ];
 
   return (
-    <section className="w-full bg-white py-20 px-6 lg:px-12">
-      <div className="max-w-7xl mx-auto">
+    <section 
+      className="relative w-full overflow-hidden flex flex-col items-center"
+      style={{ 
+        /* Consistent Fluid Padding as per AboutUsCTA */
+        paddingTop: 'clamp(5rem, 9vw, 7rem)', 
+        paddingBottom: 'clamp(5rem, 9vw, 7rem)' 
+      }}
+    >
+      {/* 1. Consistent Background Layer (Optional: replace URL with showcase-specific background if needed) */}
+      <div 
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat scale-105"
+        style={{ 
+          backgroundImage: `url('/backgroundImages/FleetPageCTA.webp')`, 
+          opacity: 0.03 // Low opacity to keep it white-themed but textured like the CTA
+        }}
+      />
+
+      <div className="relative z-20 max-w-8xl mx-auto px-8 sm:px-16 lg:px-20 w-full">
         
-        {/* 1. Header Title */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-black text-[#2D2D2D] tracking-tight">
+        {/* 2. Header Section: Aligned with AboutUsCTA Label Logic */}
+        <div className="mb-12 md:mb-16 text-center md:text-left">
+          <div className="flex flex-col md:flex-row items-center gap-4 mb-8">
+            <span className="text-[#E23744] font-black para-sm md:para-md uppercase tracking-[0.4em] md:tracking-[0.5em]">
+              Fleet Excellence
+            </span>
+            <div className="h-px w-12 bg-[#2D2D2D]/10 hidden md:block" />
+            <div className="h-1 w-8 bg-[#E23744]/20 md:hidden rounded-full" />
+          </div>
+
+          <h2 className="heading-1 font-bold text-[#2D2D2D] leading-[1.1] md:leading-[0.95] tracking-tighter">
             {title}
           </h2>
-          <div className="mt-4 h-1 w-20 bg-[#E23744] mx-auto rounded-full" />
+          <div className="mt-8 h-1.5 w-24 bg-[#E23744] rounded-full hidden md:block" />
         </div>
 
-        {/* 2. Asymmetric Image Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-5 h-[70vh]">
-          {/* Main Large Image: Occupies 2 rows and 2 columns */}
-          <div className="lg:col-span-2 lg:row-span-2 rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-            <img src={displayImages[0]} alt="Main View" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+        {/* 3. Image Grid: Maintained structure but refined borders to match CTA "Premium" look */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6 mb-12 lg:h-[75vh]">
+          <div className="col-span-2 lg:row-span-2 rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl border border-gray-100 h-[300px] md:h-[450px] lg:h-auto">
+            <img 
+              src={displayImages[0]} 
+              alt="Main View" 
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000 ease-out" 
+            />
           </div>
           
-          {/* Smaller Grid Images */}
           {displayImages.slice(1, 5).map((img, idx) => (
-            <div key={idx} className="rounded-2xl overflow-hidden shadow-sm border border-gray-100 h-48 lg:h-auto">
-              <img src={img} alt={`Detail ${idx + 1}`} className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
+            <div 
+              key={idx} 
+              className="col-span-1 rounded-[1.2rem] md:rounded-[2rem] overflow-hidden shadow-lg border border-gray-100 h-32 sm:h-48 lg:h-auto"
+            >
+              <img 
+                src={img} 
+                alt={`Detail ${idx + 1}`} 
+                className="w-full h-full object-cover hover:scale-110 transition-transform duration-1000 ease-out" 
+              />
             </div>
           ))}
         </div>
 
-        {/* 3. Feature Cards & Rating Footer */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 pt-8 border-t border-gray-50">
+        {/* 4. Footer Section: Refined Rating & Features */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-10 pt-12 border-t-2 border-[#E23744]/10">
           
           {/* Feature Badges */}
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="grid grid-cols-3 sm:flex sm:flex-wrap justify-center gap-3 md:gap-5 w-full md:w-auto">
             {features.map((item, idx) => (
-              <div key={idx} className="flex flex-col items-center justify-center w-24 h-24 bg-[#F4F4F2]/50 border border-gray-100 rounded-2xl p-4 transition-all hover:bg-white hover:shadow-xl hover:-translate-y-1">
-                <div className="text-[#3E4D86] mb-2">{item.icon}</div>
-                <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest text-center">
+              <div 
+                key={idx} 
+                className="flex flex-col items-center justify-center aspect-square sm:w-24 sm:h-24 bg-white shadow-md border border-gray-100 rounded-2xl md:rounded-3xl p-3 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 group"
+              >
+                <div className="text-[#3E4D86] group-hover:text-[#E23744] transition-colors duration-300 mb-2">
+                  {item.icon}
+                </div>
+                <span className="para-xs !font-bold text-gray-500 uppercase tracking-widest text-center leading-tight">
                   {item.label}
                 </span>
               </div>
             ))}
           </div>
 
-          {/* Rating Display */}
-          <div className="flex flex-col items-center md:items-end">
-            <div className="flex items-center gap-1 mb-1">
+          {/* Rating Display using CTA-style typography focus */}
+          <div className="flex flex-col items-center md:items-end w-full md:w-auto">
+            <div className="flex items-center gap-1.5 mb-2">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} size={16} className="fill-[#EDA749] text-[#EDA749]" />
+                <Star key={i} size={18} className="fill-[#EDA749] text-[#EDA749]" />
               ))}
-              <span className="ml-2 text-sm font-bold text-[#2D2D2D]">Rating: {rating}</span>
+              <span className="ml-2 para-sm !font-black text-[#2D2D2D]">
+                Rating: {rating}
+              </span>
             </div>
-            <p className="text-xs font-medium text-gray-400 uppercase tracking-widest">
+            <p className="para-xs text-gray-400 uppercase tracking-[0.2em]">
               {reviews} verified reviews
             </p>
           </div>

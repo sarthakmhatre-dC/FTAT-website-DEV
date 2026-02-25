@@ -61,14 +61,14 @@ const SafetyOperations = () => {
         <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#E23744]/5 blur-[120px] rounded-full" />
       </div>
 
-      <div className="relative z-10 max-w-8xl mx-10 px-8 lg:px-16 justify-center items-center">
+      <div className="relative z-10 max-w-8xl mx-auto px-8 lg:px-20 justify-center items-center">
         
         {/* Header Section: Left Aligned */}
         <div className="max-w-3xl mb-14">
-          <span className="text-[#E23744] font-bold tracking-[0.4em] para-md uppercase mb-4 block">
+          <span className="text-[#E23744] font-bold lg:tracking-[0.4em] para-md uppercase mb-4 block">
             Institutional Safety
           </span>
-          <h2 className="text-3xl md:text-6xl font-bold tracking-tight mb-6 leading-tight">
+          <h2 className="heading-2 font-bold tracking-tight mb-6 leading-tight text-white">
             Fleet, Safety & <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">Operations</span>
           </h2>
           <p className="text-lg text-gray-400 font-medium tracking-wide max-w-2xl">

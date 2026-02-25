@@ -66,9 +66,9 @@ const WhoWeAre = () => {
             </div>
 
             {/* Design Element: Institutional Badge */}
-            <div className="absolute -bottom-8 right-12 bg-[#3E4D86] p-8 rounded-[2rem] shadow-2xl hidden md:block">
+            {/* <div className="absolute -bottom-8 right-12 bg-[#3E4D86] p-8 rounded-[2rem] shadow-2xl hidden md:block">
               <Award className="text-[#EDA749]" size={40} />
-            </div>
+            </div> */}
           </div>
 
         </div>

@@ -20,51 +20,54 @@ const ImageGallery = () => {
   const handleManualNav = (direction) => {
     setIsPaused(true);
     if (scrollRef.current) {
-      const scrollAmount = direction === 'left' ? -400 : 400;
+      // Dynamic scroll based on screen width
+      const scrollAmount = direction === 'left' ? -window.innerWidth * 0.7 : window.innerWidth * 0.7;
       scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
   };
 
   return (
-    <section className="w-full bg-white py-24 overflow-hidden">
-      <div className="max-w-8xl mx-10 px-8 lg:px-16 mb-16">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-          {/* Title & Description */}
+    <section className="w-full bg-white py-12 md:py-24 overflow-hidden">
+      <div className="max-w-8xl mx-auto px-8 md:px-16 lg:px-20 mb-10 md:mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-8">
           <div className="max-w-2xl">
-            <h2 className="text-4xl md:text-5xl font-black text-[#2D2D2D] tracking-tight">
+            <h2 className="heading-2 font-bold">
               Platform's <span className="text-[#3E4D86]">Gallery</span>
             </h2>
-            <p className="mt-4 text-gray-500 font-medium text-lg">
+            <p className="mt-3 para-lg text-gray-500 font-medium">
               Want to explore more images?
             </p>
-            <div className="mt-6 h-1.5 w-20 bg-[#EDA749] rounded-full" />
+            <div className="mt-4 md:mt-6 h-1.5 w-16 md:w-20 bg-[#EDA749] rounded-full" />
           </div>
 
-          {/* Navigation Button to Full Gallery Page */}
           <Link 
             to="/gallery" 
-            className="group flex items-center gap-3 px-8 py-4 bg-[#2D2D2D] text-white font-bold rounded-xl hover:bg-[#E23744] transition-all shadow-xl uppercase text-xs tracking-widest"
+            className="group flex items-center justify-center gap-3 px-8 py-4 bg-[#2D2D2D] text-white rounded-xl hover:bg-[#E23744] transition-all shadow-xl w-full md:w-auto"
           >
-            Explore Full Gallery
+            <span className="para-muted text-white !tracking-widest !text-[10px] md:!text-xs">
+              Explore Full Gallery
+            </span>
             <ImageIcon size={18} className="group-hover:rotate-12 transition-transform" />
           </Link>
         </div>
       </div>
 
-      {/* Sliding Gallery Track */}
       <div className="relative group">
-        {/* Manual Navigation Controls */}
+        {/* Navigation Controls - Now visible on all screens */}
         <button 
           onClick={() => handleManualNav('left')}
-          className="absolute left-8 top-1/2 -translate-y-1/2 z-40 p-4 bg-white/90 backdrop-blur-md rounded-full shadow-2xl opacity-0 group-hover:opacity-100 transition-all hover:bg-[#E23744] hover:text-white"
+          className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-40 p-2.5 md:p-4 bg-white/90 backdrop-blur-md rounded-full shadow-xl opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all hover:bg-[#E23744] hover:text-white"
+          aria-label="Scroll Left"
         >
-          <ChevronLeft size={24} />
+          <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
         </button>
+        
         <button 
           onClick={() => handleManualNav('right')}
-          className="absolute right-8 top-1/2 -translate-y-1/2 z-40 p-4 bg-white/90 backdrop-blur-md rounded-full shadow-2xl opacity-0 group-hover:opacity-100 transition-all hover:bg-[#E23744] hover:text-white"
+          className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-40 p-2.5 md:p-4 bg-white/90 backdrop-blur-md rounded-full shadow-xl opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all hover:bg-[#E23744] hover:text-white"
+          aria-label="Scroll Right"
         >
-          <ChevronRight size={24} />
+          <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
         </button>
 
         {/* The Marquee Container */}
@@ -75,11 +78,10 @@ const ImageGallery = () => {
           onMouseLeave={() => setIsPaused(false)}
         >
           <div className={`flex whitespace-nowrap w-max animate-marquee-gallery ${isPaused ? 'pause-animation' : ''}`}>
-            {/* Double set of images for seamless looping */}
             {[...galleryImages, ...galleryImages].map((img, i) => (
               <div 
                 key={i} 
-                className="inline-block w-[35rem] h-[30rem] mx-3 overflow-hidden rounded-2xl bg-[#F4F4F2] shadow-sm border border-gray-100 group/item"
+                className="inline-block w-[18rem] h-[22rem] sm:w-[25rem] sm:h-[25rem] md:w-[35rem] md:h-[30rem] mx-2 md:mx-3 overflow-hidden rounded-xl md:rounded-2xl bg-[#F4F4F2] shadow-sm border border-gray-100 group/item"
               >
                 <img 
                   src={img} 

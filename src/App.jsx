@@ -13,6 +13,7 @@ import TermsPage from "./pages/TermsPage";
 import "./index.css";
 import TariffPage from "./pages/TariffPage";
 import PackageSubPage from "./subpages/PackageSubPage";
+import BlogDetail from "./subpages/BlogDetails";
 
 const App = () => {
   return (
@@ -28,7 +29,6 @@ const App = () => {
           {/* The ':carId' parameter allows this one route to handle multiple car pages */}
           <Route path="/fleet/:carId" element={<FleetSubPage />} />
           <Route path="/packages/:type" element={<PackageSubPage />} />
-          
           <Route path="/gallery" element={<GalleryPage/>} />
           <Route path="/contact" element={<ContactPage/>} />
           <Route path="/about" element={<AboutUsPage/>} />
@@ -37,6 +37,7 @@ const App = () => {
           <Route path="/resources/blogs" element={<BlogsPage />} />
           <Route path="/resources/terms" element={<TermsPage />} />
           <Route path="/resources/tariff" element={<TariffPage/>}/>
+          <Route path="/resources/blogs/:blogId" element={<BlogDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>

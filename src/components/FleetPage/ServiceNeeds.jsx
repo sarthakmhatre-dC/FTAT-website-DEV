@@ -26,39 +26,41 @@ const ServiceNeeds = () => {
   ];
 
   return (
-    <section className="relative w-full py-24 bg-[#1e2542] overflow-hidden">
-      {/* 1. Enhanced Dark Blueberry Radial Gradient for depth */}
+    <section className="relative w-full py-16 md:py-24 bg-[#1e2542] overflow-hidden">
+      {/* 1. Enhanced Dark Blueberry Radial Gradient */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(62,77,134,0.3)_0%,rgba(20,26,48,1)_100%)] z-0" />
 
-      {/* 2. Container with max-width 8xl and balanced padding */}
-      <div className="relative z-10 max-w-8xl mx-10 px-8 lg:px-16">
+      {/* 2. Responsive Container */}
+      <div className="relative z-10 max-w-8xl mx-auto px-8 md:px-16 lg:px-20">
         
         {/* Header Section */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">
+        <div className="text-center mb-12 md:mb-20">
+          <h2 className="heading-2 text-white">
             Hire Premium Cars as per <span className="text-[#EDA749]">Your Need</span>
           </h2>
-          <div className="mt-6 h-1 w-24 bg-[#E23744] mx-auto rounded-full shadow-lg shadow-red-900/20" />
+          <div className="mt-4 md:mt-6 h-1 w-20 md:w-24 bg-[#E23744] mx-auto rounded-full shadow-lg shadow-red-900/20" />
         </div>
 
-        {/* 2x2 Grid Structure */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        {/* 2x2 Grid Structure - Responsive Gaps */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 lg:gap-16">
           {needs.map((item, idx) => (
             <div 
               key={idx} 
-              className="group bg-white rounded-[2rem] p-10 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(0,0,0,0.4)] hover:-translate-y-2 flex flex-col items-start"
+              className="group bg-white rounded-[1.5rem] md:rounded-[2rem] p-8 md:p-10 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(0,0,0,0.4)] hover:-translate-y-2 flex flex-col items-start"
             >
-              {/* 3. Fixed Icon Visibility: text color shifts on group hover */}
-              <div className="mb-8 p-5 rounded-2xl bg-[#F4F4F2] text-[#E23744] group-hover:bg-[#E23744] group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-red-900/30">
-                {item.icon}
+              {/* 3. Responsive Icon Container */}
+              <div className="mb-6 md:mb-8 p-4 md:p-5 rounded-2xl bg-[#F4F4F2] text-[#E23744] group-hover:bg-[#E23744] group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-red-900/30 shrink-0">
+                <div className="scale-90 md:scale-100">
+                   {item.icon}
+                </div>
               </div>
 
-              {/* Text Content */}
-              <h3 className="text-2xl font-black text-[#2D2D2D] mb-5 tracking-tight">
+              {/* Text Content using Custom Classes */}
+              <h3 className="heading-3 text-[#2D2D2D] mb-4 md:mb-5">
                 {item.title}
               </h3>
               
-              <p className="text-gray-500 leading-relaxed text-sm md:text-base font-medium">
+              <p className="para-md text-gray-500 font-medium">
                 {item.desc}
               </p>
             </div>

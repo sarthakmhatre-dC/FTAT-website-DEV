@@ -31,13 +31,13 @@ const CorporateSolutions = () => {
 
   return (
     <section className="w-full bg-white py-24">
-      <div className="max-w-8xl mx-10 px-6 lg:px-12">
+      <div className="max-w-8xl mx-auto px-8 md:px-16 lg:px-20">
         {/* Header Section */}
-        <div className="mb-16 text-center lg:text-left">
-          <span className="text-[#E23744] font-bold tracking-[0.3em] para-md uppercase">
+        <div className="mb-16 lg:text-left">
+          <span className="text-[#E23744] font-bold lg:tracking-[0.3em] para-md uppercase">
             Tailored Excellence
           </span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-black text-[#2D2D2D] tracking-tight">
+          <h2 className="mt-3 heading-2 font-black text-[#2D2D2D] tracking-tight">
             Our Corporate <span className="text-[#3E4D86]">Transportation Solutions</span>
           </h2>
           <div className="mt-6 h-1.5 w-20 bg-[#EDA749] rounded-full" />

@@ -27,8 +27,8 @@ const MetricStrip = () => {
   ];
 
   return (
-    <section className="w-full py-12 bg-linear-to-r from-[#2D2D2D] via-[#2D2D2D] to-[#3E4D86]/40">
-      <div className="w-full mx-auto px-6 lg:px-12">
+    <section className="w-full py-12 bg-linear-to-r from-[#2D2D2D] via-[#2D2D2D] to-[#3E4D86]/90">
+      <div className="w-full mx-auto px-6z lg:px-12">
         {/* Premium Gradient Bar */}
         <div className="relative overflow-hidden shadow-2xl shadow-blue-900/10">
           {/* Subtle Peppercorn to Dark Blueberry Gradient */}
@@ -47,16 +47,16 @@ const MetricStrip = () => {
 
                 {/* Number and Plus Sign */}
                 <div className="flex items-baseline gap-1">
-                  <span className="text-3xl font-black text-white tracking-tighter">
+                  <span className="heading-3 font-black text-white tracking-tighter">
                     {stat.value}{stat.unit}
                   </span>
                   {!stat.unit && (
-                    <span className="text-2xl font-bold text-[#E23744]">+</span>
+                    <span className="heading-3 font-bold text-[#E23744]">+</span>
                   )}
                 </div>
 
                 {/* Refined Label */}
-                <span className="mt-2 text-[10px] font-bold uppercase tracking-[0.3em] text-white/50 group-hover:text-white transition-colors">
+                <span className="mt-2 para-sm font-bold uppercase tracking-[0.3em] text-white/50 group-hover:text-white transition-colors justify-center text-center">
                   {stat.label}
                 </span>
               </div>

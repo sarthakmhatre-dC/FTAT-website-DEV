@@ -39,16 +39,16 @@ const ClientDirectory = ({
     ]
 }) => {
     return (
-        <section className="w-full py-32 bg-[#F4F4F2]/40">
-            <div className="max-w-8xl mx-auto px-6 lg:px-12">
+        <section className="w-full py-16 lg:py-32 bg-[#F4F4F2]/40">
+            <div className="max-w-8xl mx-auto px-8 md:px-16 lg:px-20">
 
                 {/* Page Header: Editorial Style */}
                 <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
                     <div className="max-w-2xl">
-                        <span className="text-[#E23744] font-bold tracking-[0.5em] text-[10px] uppercase block mb-4">
+                        <span className="text-[#E23744] font-bold lg:tracking-[0.3em] para-md uppercase block mb-4">
                             Corporate Ecosystem
                         </span>
-                        <h2 className="text-5xl md:text-7xl font-black text-[#2D2D2D] tracking-tighter uppercase leading-[0.9]">
+                        <h2 className="heading-1 font-black text-[#2D2D2D] tracking-tighter uppercase leading-[0.9]">
                             Our <span className="text-[#3E4D86]">Partners.</span>
                         </h2>
                     </div>
@@ -64,7 +64,7 @@ const ClientDirectory = ({
 
                             {/* Category Label */}
                             <div className="flex items-center gap-6 mb-12">
-                                <h3 className="text-sm font-black text-[#2D2D2D] uppercase tracking-[0.4em] whitespace-nowrap">
+                                <h3 className="para-sm font-black text-[#2D2D2D] uppercase lg:tracking-[0.4em] whitespace-nowrap">
                                     {category.name}
                                 </h3>
                                 <div className="h-px flex-grow bg-gradient-to-r from-gray-200 to-transparent" />
@@ -78,17 +78,20 @@ const ClientDirectory = ({
                                         className="relative group/logo bg-white p-6 flex flex-col items-center justify-between min-h-[200px] transition-all duration-500 hover:z-20"
                                     >
                                         {/* 1. Maximized Logo Area */}
-                                        <div className="w-full flex-grow flex items-center justify-center transition-transform duration-500 group-hover/logo:scale-110">
+                                        {/* 1. Maximized Logo Area */}
+                                        <div className="w-full flex-grow flex items-center justify-center transition-transform duration-500 group-hover/logo:scale-105">
                                             <img
                                                 src={client.logo}
                                                 alt={client.name}
-                                                className="w-full h-auto max-h-[90px] object-contain px-2"
+                                                /* Increased max-h from 90px to 120px and removed px-2 */
+                                                className="w-full h-auto max-h-[120px] object-contain"
                                             />
                                         </div>
 
                                         {/* 2. Persistent Client Label */}
-                                        <div className="pb-4 pt-4 text-center">
-                                            <span className="text-[10px] font-black text-gray-400 group-hover/logo:text-[#3E4D86] uppercase tracking-[0.15em] transition-colors duration-300">
+                                        {/* Reduced padding from pb-4 pt-4 to pb-2 pt-2 to allow logo expansion */}
+                                        <div className="pb-2 pt-2 text-center">
+                                            <span className="text-[10px] font-black text-gray-400 group-hover/logo:text-[#3E4D86] uppercase tracking-[0.15em] transition-colors duration-300 text-nowrap">
                                                 {client.name}
                                             </span>
                                         </div>

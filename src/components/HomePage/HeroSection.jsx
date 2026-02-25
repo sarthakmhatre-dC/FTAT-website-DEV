@@ -15,13 +15,13 @@ const HeroSection = () => {
       <div className="absolute inset-0 z-10 bg-linear-to-b from-[#2D2D2D]/60 via-[#2D2D2D]/40 to-[#2D2D2D]/70" />
 
       {/* Content Container */}
-      <div className="relative z-20 max-w-4xl px-6 text-center">
+      <div className="relative z-20 max-w-4xl px-6 text-center mb-5">
         {/* Animated Badge */}
         <span className="inline-block px-4 py-1.5 mb-6 para-xs font-bold tracking-[0.3em] uppercase bg-[#E23744] text-white rounded-full shadow-lg mt-5">
           Since 1997
         </span>
 
-        <h1 className="heading-1 font-semibold text-white leading-[1.1] mb-10 tracking-[-0.05em] ">
+        <h1 className="heading-1 font-bold text-white leading-[1.1] md:leading-[0.95] tracking-tighter sm:mb-10">
           Experience the World <br />
           <span className="text-[#EDA749]">Without Boundaries.</span>
         </h1>

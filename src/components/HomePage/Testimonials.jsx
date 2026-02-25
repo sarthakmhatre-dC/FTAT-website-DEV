@@ -81,17 +81,17 @@ const Testimonials = () => {
 
   return (
     <section className="w-full bg-[#F4F4F2] py-24 overflow-hidden">
-      <div className="max-w-8xl mx-auto px-8 lg:px-16">
+      <div className="max-w-8xl mx-auto px-8 lg:px-20">
         
         {/* Header Section */}
-        <div className="mb-16 md:ml-10">
+        <div className="mb-16">
           <div className="flex items-center gap-2 mb-4">
             <Quote size={20} className="text-[#E23744] fill-[#E23744]" />
             <span className="text-[#E23744] font-bold tracking-[0.3em] para-md uppercase">
               User Experiences
             </span>
           </div>
-          <h2 className="heading-1 font-bold text-[#2D2D2D] leading-tight tracking-tight max-w-4xl">
+          <h2 className="heading-2 font-bold text-[#2D2D2D] leading-tight tracking-tight max-w-4xl">
             Trusted by Professionals <br />
             Across <span className="text-[#3E4D86]">Mumbai.</span>
           </h2>
