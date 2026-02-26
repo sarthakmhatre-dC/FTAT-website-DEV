@@ -1,6 +1,6 @@
 import React from 'react';
 import { ShieldCheck, Clock, UserCheck, ArrowRight } from 'lucide-react';
-
+import { Link } from 'react-router-dom';
 const SplitHero = () => {
   return (
     <section 
@@ -35,7 +35,7 @@ const SplitHero = () => {
           
           {/* Top Label: Consistent with "Our Legacy" style */}
           <div className="flex flex-col md:flex-row items-center gap-4 mb-8">
-            <span className="text-[#E23744] font-black para-sm md:para-md uppercase tracking-[0.4em] md:tracking-[0.5em]">
+            <span className="text-[#E23744] font-black para-md md:para-md uppercase tracking-[0.4em] md:tracking-[0.5em]">
               Premier Mobility
             </span>
             <div className="h-px w-12 bg-[#2D2D2D]/10 hidden md:block" />
@@ -43,7 +43,7 @@ const SplitHero = () => {
           </div>
 
           {/* Primary Headline: Fluid heading-1 consistent with subpages */}
-          <h1 className="heading-1 font-bold text-[#2D2D2D] leading-[1.1] md:leading-[0.95] tracking-tighter mb-8 sm:mb-10 uppercase">
+          <h1 className="heading-1 font-bold text-[#2D2D2D] leading-[1.1] md:leading-[0.95] tracking-tighter mb-8 sm:mb-10">
             Redefining <br className="hidden sm:block" />
             <span className="text-[#3E4D86]">Excellence</span> <br/>
             in Travel
@@ -63,10 +63,12 @@ const SplitHero = () => {
               Request a Proposal
             </button>
             
-            <button className="w-full sm:w-auto group flex items-center justify-center gap-3 px-10 py-4 border-2 border-gray-100 text-[#2D2D2D] font-bold rounded-full hover:bg-[#F4F4F2] transition-all uppercase para-sm tracking-widest">
+            <Link
+            to ="/fleet"
+            className="w-full sm:w-auto group flex items-center justify-center gap-3 px-10 py-4 border-2 border-gray-100 text-[#2D2D2D] font-bold rounded-full hover:bg-[#F4F4F2] transition-all uppercase para-sm tracking-widest">
               Explore Fleet 
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </button>
+            </Link>
           </div>
         </div>
       </div>

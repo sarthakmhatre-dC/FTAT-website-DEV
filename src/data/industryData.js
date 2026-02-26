@@ -1,26 +1,51 @@
 export const industryLogos = {
   row1: [
-    { id: 1, name: "Reliance", src: "https://www.vectorlogo.zone/logos/reliance/reliance-ar21.svg" },
-    { id: 2, name: "Tata", src: "https://www.vectorlogo.zone/logos/tata/tata-ar21.svg" },
-    { id: 3, name: "Infosys", src: "https://www.vectorlogo.zone/logos/infosys/infosys-ar21.svg" },
-    { id: 4, name: "HDFC", src: "https://www.vectorlogo.zone/logos/hdfcbank/hdfcbank-ar21.svg" },
-    { id: 5, name: "Adani", src: "https://www.vectorlogo.zone/logos/adani/adani-ar21.svg" },
-    { id: 6, name: "ICICI", src: "https://www.vectorlogo.zone/logos/icicibank/icicibank-ar21.svg" },
-    { id: 7, name: "Mahindra", src: "https://www.vectorlogo.zone/logos/mahindra/mahindra-ar21.svg" },
-    { id: 8, name: "Wipro", src: "https://www.vectorlogo.zone/logos/wipro/wipro-ar21.svg" },
-    { id: 9, name: "L&T", src: "https://www.vectorlogo.zone/logos/larsentoubro/larsentoubro-ar21.svg" },
-    { id: 10, name: "Axis", src: "https://www.vectorlogo.zone/logos/axisbank/axisbank-ar21.svg" },
+    { id: 1, name: "Adani", src: "/logos/Adani.png" },
+    { id: 2, name: "Beckman Coulter", src: "/logos/BeckmanCoulter.webp" },
+    { id: 3, name: "Cello", src: "/logos/Cello.png" },
+    { id: 4, name: "Bharat Bijlee", src: "/logos/bharat-bijlee.png" },
+    { id: 5, name: "Dominos", src: "/logos/DominosPizzaLogo.png" },
+    { id: 6, name: "Welspun", src: "/logos/Welspun.jpg" },
+    { id: 7, name: "Eicher", src: "/logos/Eicher-logo.png" },
+    { id: 8, name: "Emerson", src: "/logos/EmersonElectricLogo.png" },
+    { id: 9, name: "Foton Motors", src: "/logos/Foton-logo.jpg" },
+    { id: 10, name: "Gansons", src: "/logos/Gansons.jpg" },
+    { id: 11, name: "Godrej", src: "/logos/GodrejKorber.jpg" },
   ],
   row2: [
-    { id: 11, name: "Amazon", src: "https://www.vectorlogo.zone/logos/amazon/amazon-ar21.svg" },
-    { id: 12, name: "Google", src: "https://www.vectorlogo.zone/logos/google/google-ar21.svg" },
-    { id: 13, name: "Microsoft", src: "https://www.vectorlogo.zone/logos/microsoft/microsoft-ar21.svg" },
-    { id: 14, name: "Accenture", src: "https://www.vectorlogo.zone/logos/accenture/accenture-ar21.svg" },
-    { id: 15, name: "Deloitte", src: "https://www.vectorlogo.zone/logos/deloitte/deloitte-ar21.svg" },
-    { id: 16, name: "KPMG", src: "https://www.vectorlogo.zone/logos/kpmg/kpmg-ar21.svg" },
-    { id: 17, name: "Capgemini", src: "https://www.vectorlogo.zone/logos/capgemini/capgemini-ar21.svg" },
-    { id: 18, name: "PwC", src: "https://www.vectorlogo.zone/logos/pwc/pwc-ar21.svg" },
-    { id: 19, name: "IBM", src: "https://www.vectorlogo.zone/logos/ibm/ibm-ar21.svg" },
-    { id: 20, name: "Oracle", src: "https://www.vectorlogo.zone/logos/oracle/oracle-ar21.svg" },
+    { id: 12, name: "Hapag Lloyds", src: "/logos/HapagLlyod.jpg" },
+    { id: 13, name: "Hawkins", src: "/logos/HawkinsCooker.svg" },
+    { id: 14, name: "Glanbia", src: "/logos/Glanbia.jpg" },
+    { id: 15, name: "Halsted Pharma", src: "/logos/Halsted-Pharma-Logo-1.png" },
+    { id: 16, name: "Raychem", src: "/logos/Raychem.jpg" },
+    { id: 17, name: "Mother Dairy", src: "/logos/Mother_Dairy.svg" },
+    { id: 18, name: "Raymond", src: "/logos/Raymond.jpg" },
+    { id: 19, name: "Vikran", src: "/logos/vikran-logo-footer.png" },
+    { id: 20, name: "Wimco", src: "/logos/Wimco.png" },
+    { id: 21, name: "Vertiv", src: "/logos/VertivLogo.png" },
+    { id: 22, name: "Vip", src: "/logos/VIPLogo.png" },
   ]
 };
+
+// Adani
+// Beckman Coulter
+// Cello
+// Bharat Bijlee
+// Dominos
+// Eicher
+// Emerson
+// Foton Motors
+// Gansons
+// Godrej
+// Hapag Lloyds
+// Hawkins
+// Glanbia
+// Halsted Pharma
+// Raychem
+// Mother Dairy
+// Raymond
+// Vikran
+// Vip
+// Wimco
+// Vertiv
+// Welspun

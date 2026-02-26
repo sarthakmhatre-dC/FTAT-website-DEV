@@ -14,10 +14,12 @@ import "./index.css";
 import TariffPage from "./pages/TariffPage";
 import PackageSubPage from "./subpages/PackageSubPage";
 import BlogDetail from "./subpages/BlogDetails";
+import ScrollToTop from "./components/ScrolltoTop";
 
 const App = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop/>
       <Routes>
         {/* All routes inside this parent Route will use the MainLayout */}
         <Route element={<MainLayout />}>

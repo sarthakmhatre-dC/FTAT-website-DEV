@@ -65,7 +65,7 @@ const SafetyOperations = () => {
         
         {/* Header Section: Left Aligned */}
         <div className="max-w-3xl mb-14">
-          <span className="text-[#E23744] font-bold lg:tracking-[0.4em] para-md uppercase mb-4 block">
+          <span className="text-[#E23744] font-bold lg:tracking-[0.3em] para-md uppercase mb-4 block">
             Institutional Safety
           </span>
           <h2 className="heading-2 font-bold tracking-tight mb-6 leading-tight text-white">

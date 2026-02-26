@@ -1,40 +1,74 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     User,
     Mail,
     Phone,
     MapPin,
-    MessageSquare,
     Briefcase,
-    Send,
-    Globe,
-    Clock,
     FileText,
     Car,
     Calendar,
-    Users// <--- Ensure this is here
+    Users
 } from 'lucide-react';
 
 const ContactHub = () => {
+    // 1. Functionality: Initial State and Logic from RentalForm
+    const today = new Date().toISOString().split('T')[0];
+    const initialState = {
+        name: '', email: '', phone: '', pickupCity: '',
+        vehicle: 'Select Vehicle', date: '', travelers: '',
+        purpose: 'Select Rental Purpose', details: ''
+    };
+
+    const [formData, setFormData] = useState(initialState);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        if (name === 'travelers' && value !== '' && parseInt(value) < 1) return;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const handleWhatsAppRedirect = (e) => {
+        e.preventDefault();
+        if (formData.vehicle === 'Select Vehicle' || formData.purpose === 'Select Rental Purpose') {
+            alert("Please select a vehicle and a rental purpose.");
+            return;
+        }
+        const ownerNumber = "9321685221";
+        const message = `New Booking Request%0a` +
+            `------------------------%0a` +
+            `Name: ${formData.name}%0a` +
+            `Email: ${formData.email}%0a` +
+            `Phone: ${formData.phone}%0a` +
+            `City: ${formData.pickupCity}%0a` +
+            `Vehicle: ${formData.vehicle}%0a` +
+            `Date: ${formData.date}%0a` +
+            `Travelers: ${formData.travelers}%0a` +
+            `Purpose: ${formData.purpose}%0a` +
+            `Details: ${formData.details}`;
+
+        window.open(`https://wa.me/${ownerNumber}?text=${message}`, '_blank');
+        setFormData(initialState);
+    };
+
     return (
         <section className="relative w-full bg-white pb-32 overflow-hidden">
-            {/* 1. Cinematic Hero Header */}
-            <div className="relative w-full h-[80vh] flex items-center overflow-hidden">
+            {/* Cinematic Hero Header */}
+            <div className="relative w-full h-[90vh] flex items-center overflow-hidden">
                 <div
                     className="absolute inset-0 z-0 bg-cover bg-fixed bg-center"
                     style={{
                         backgroundImage: `url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop')`,
                     }}
                 />
-                {/* Multi-layered Branding Gradient */}
                 <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#2D2D2D] via-[#2D2D2D]/90 to-[#3E4D86]/40" />
 
-                <div className="relative z-20 max-w-8xl mx-auto px-6 lg:px-12 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="relative z-20 max-w-8xl mx-auto px-8 sm:px-10 md:px-16 lg:px-20 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center -mt-30">
                     <div className="animate-in fade-in slide-in-from-left-8 duration-1000">
-                        <span className="text-[#E23744] font-bold tracking-[0.4em] text-[10px] uppercase mb-4 block">
+                        <span className="text-[#E23744] font-bold tracking-[0.3em] para-md uppercase mb-4 block">
                             Global Support Network
                         </span>
-                        <h1 className="text-5xl md:text-7xl font-black text-white leading-tight tracking-tighter">
+                        <h1 className="heading-1 font-black text-white leading-tight tracking-tighter">
                             Let’s Architect <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#EDA749] to-[#f3c681]">
                                 Your Movement.
@@ -42,194 +76,140 @@ const ContactHub = () => {
                         </h1>
                     </div>
 
-                    {/* Quick-Access Contact Pills */}
                     <div className="hidden lg:flex flex-col gap-4 items-end">
                         <div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl flex items-center gap-6 w-full max-w-sm">
                             <div className="p-3 bg-[#E23744] rounded-xl text-white"><Phone size={20} /></div>
                             <div>
-                                <p className="text-[10px] font-bold text-white/50 uppercase tracking-widest">Immediate Hotline</p>
-                                <p className="text-white font-bold">+91 98765 43210</p>
+                                <p className="para-sm font-bold text-white/50 uppercase tracking-widest">Immediate Hotline</p>
+                                <p className="text-white font-bold">+91 93216 85221</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* 2. Overlapping Contact Architecture */}
-            <div className="relative z-30 mx-auto px-6 lg:px-12 -mt-30 max-w-6xl">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 shadow-[0_50px_100px_rgba(0,0,0,0.15)] rounded-[3rem] overflow-hidden">
+            {/* 2. Form Container - UI strictly matched to RentalForm */}
+            <div className="relative z-30 mx-auto px-6 lg:px-12 -mt-50 max-w-6xl">
+                <div className="bg-white rounded-[2.5rem] shadow-[0_50px_100px_rgba(0,0,0,0.15)] border border-gray-100 p-8 md:p-12">
+                    
+                    <div className="mb-10">
+                        <span className="para-md text-[#E23744] uppercase font-bold tracking-[0.2em]">Reservation Details</span>
+                        <h3 className="heading-3 text-[#2D2D2D] mt-2">Instant Booking Request</h3>
+                        <p className="text-gray-400 para-sm mt-1">Please provide the strategic details of your requirement.</p>
+                    </div>
 
-                    {/* Left Side: Strategic Info (4 Columns) */}
-                    {/* <div className="lg:col-span-4 bg-[#3E4D86] p-12 lg:p-16 flex flex-col justify-between text-white">
-                        <div>
-                            <h3 className="text-3xl font-black mb-6 leading-tight">Expert <br />Consultation</h3>
-                            <p className="text-white/70 text-sm leading-relaxed mb-12">
-                                Our strategic account managers are available 24/7 to design custom
-                                SLA-backed mobility solutions for your enterprise.
-                            </p>
-
-                            <div className="space-y-8">
-                                <div className="flex gap-4">
-                                    <Globe className="text-[#EDA749]" size={20} />
-                                    <div>
-                                        <h4 className="text-xs font-bold uppercase tracking-widest text-[#EDA749]">Regional Hub</h4>
-                                        <p className="text-sm font-medium">Mumbai, Maharashtra, India</p>
-                                    </div>
+                    <form onSubmit={handleWhatsAppRedirect} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {/* Standard Inputs */}
+                        {[
+                            { name: 'name', icon: <User />, placeholder: 'Your Name', type: 'text' },
+                            { name: 'email', icon: <Mail />, placeholder: 'Email Address', type: 'email' },
+                            { name: 'phone', icon: <Phone />, placeholder: 'Phone Number', type: 'tel' },
+                            { name: 'pickupCity', icon: <MapPin />, placeholder: 'Pickup City', type: 'text' },
+                        ].map((input) => (
+                            <div key={input.name} className="relative group">
+                                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86] group-focus-within:text-[#E23744] transition-colors">
+                                    {React.cloneElement(input.icon, { size: 18 })}
                                 </div>
-                                <div className="flex gap-4">
-                                    <Clock className="text-[#EDA749]" size={20} />
-                                    <div>
-                                        <h4 className="text-xs font-bold uppercase tracking-widest text-[#EDA749]">Operation Hours</h4>
-                                        <p className="text-sm font-medium">24/7 Enterprise Support</p>
-                                    </div>
-                                </div>
+                                <input
+                                    type={input.type}
+                                    name={input.name}
+                                    value={formData[input.name]}
+                                    onChange={handleChange}
+                                    placeholder={input.placeholder}
+                                    className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-2 border-transparent focus:border-[#3E4D86]/20 rounded-xl outline-none para-sm font-medium text-[#2D2D2D] transition-all"
+                                    required
+                                />
                             </div>
-                        </div>
+                        ))}
 
-                        <div className="mt-16 pt-8 border-t border-white/10">
-                            <p className="text-[10px] font-bold uppercase tracking-widest opacity-50">Trusted Partner</p>
-                            <div className="mt-4 flex gap-4 grayscale opacity-50">
-                                
-                                <div className="h-6 w-20 bg-white/20 rounded-md" />
-                                <div className="h-6 w-20 bg-white/20 rounded-md" />
-                            </div>
-                        </div>
-                    </div> */}
-
-                    {/* Right Side: Re-engineered Contact Form (8 Columns) */}
-                    {/* <div className="lg:col-span-8 bg-white p-12 lg:p-16">
-                        <div className="mb-10">
-                            <h3 className="text-2xl font-bold text-[#2D2D2D]">Initiate Partnership</h3>
-                            <p className="text-gray-400 text-sm mt-1">Please provide the strategic details of your requirement.</p>
-                        </div>
-
-                        <form className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div className="group relative">
-                                <User className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86] group-focus-within:text-[#E23744] transition-colors" size={18} />
-                                <input type="text" placeholder="Full Name" className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border border-gray-100 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#E23744]/20 focus:border-[#E23744] outline-none font-medium text-[#2D2D2D] transition-all" />
-                            </div>
-
-                            <div className="group relative">
-                                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86] group-focus-within:text-[#E23744] transition-colors" size={18} />
-                                <input type="email" placeholder="Corporate Email" className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border border-gray-100 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#E23744]/20 focus:border-[#E23744] outline-none font-medium text-[#2D2D2D] transition-all" />
-                            </div>
-
-                            <div className="group relative">
-                                <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86] group-focus-within:text-[#E23744] transition-colors" size={18} />
-                                <input type="tel" placeholder="Mobile Number" className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border border-gray-100 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#E23744]/20 focus:border-[#E23744] outline-none font-medium text-[#2D2D2D] transition-all" />
-                            </div>
-
-                            <div className="group relative">
-                                <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86] group-focus-within:text-[#E23744] transition-colors" size={18} />
-                                <input type="text" placeholder="Organization City" className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border border-gray-100 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#E23744]/20 focus:border-[#E23744] outline-none font-medium text-[#2D2D2D] transition-all" />
-                            </div>
-
-                            <div className="group relative">
-                                <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86] group-focus-within:text-[#E23744] transition-colors" size={18} />
-                                <select className="w-full pl-12 pr-10 py-4 bg-[#F4F4F2] border border-gray-100 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#E23744]/20 focus:border-[#E23744] outline-none font-medium text-[#2D2D2D] appearance-none cursor-pointer">
-                                    <option>Strategic Interest</option>
-                                    <option>Employee Commute Solutions</option>
-                                    <option>Corporate Long-term Lease</option>
-                                    <option>VIP / Executive Movement</option>
-                                </select>
-                            </div>
-
-                            <div className="group relative">
-                                <MessageSquare className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86] group-focus-within:text-[#E23744] transition-colors" size={18} />
-                                <input type="text" placeholder="Project Scale (e.g. 50+ Employees)" className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border border-gray-100 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#E23744]/20 focus:border-[#E23744] outline-none font-medium text-[#2D2D2D] transition-all" />
-                            </div>
-
-                            <div className="group relative lg:col-span-2">
-                                <FileText className="absolute left-4 top-6 text-[#3E4D86] group-focus-within:text-[#E23744] transition-colors" size={18} />
-                                <textarea rows="4" placeholder="Briefly describe your requirements or challenges..." className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border border-gray-100 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#E23744]/20 focus:border-[#E23744] outline-none font-medium text-[#2D2D2D] transition-all resize-none"></textarea>
-                            </div>
-
-                            <div className="lg:col-span-2">
-                                <button className="group relative w-full overflow-hidden py-5 bg-[#E23744] text-white font-black rounded-2xl shadow-2xl shadow-red-900/20 hover:shadow-red-900/40 hover:-translate-y-1 transition-all duration-300 uppercase tracking-[0.3em] text-xs">
-                                    <span className="relative z-10 flex items-center justify-center gap-3">
-                                        Initiate Strategic Discussion <Send size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                                    </span>
-                                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                                </button>
-                            </div>
-                        </form>
-                    </div> */}
-                </div>
-            </div>
-
-            <div className="relative z-30 max-w-6xl mx-auto px-6 lg:px-12">
-                <div className="bg-white rounded-[1.5rem] shadow-[0_30px_100px_rgba(0,0,0,0.1)] border border-gray-100 p-4 md:p-6">
-
-                    <form className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                        {/* Input Groups */}
-                        <div className="relative">
-                            <User className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86]" size={18} />
-                            <input type="text" placeholder="Enter Your Name" className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl focus:ring-2 focus:ring-[#E23744] outline-none font-medium text-[#2D2D2D] placeholder:text-gray-400" />
-                        </div>
-
-                        <div className="relative">
-                            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86]" size={18} />
-                            <input type="email" placeholder="Enter Email Id" className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl focus:ring-2 focus:ring-[#E23744] outline-none font-medium text-[#2D2D2D] placeholder:text-gray-400" />
-                        </div>
-
-                        <div className="relative">
-                            <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86]" size={18} />
-                            <input type="tel" placeholder="Phone No" className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl focus:ring-2 focus:ring-[#E23744] outline-none font-medium text-[#2D2D2D] placeholder:text-gray-400" />
-                        </div>
-
-                        <div className="relative">
-                            <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86]" size={18} />
-                            <input type="text" placeholder="Enter Pickup City" className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl focus:ring-2 focus:ring-[#E23744] outline-none font-medium text-[#2D2D2D] placeholder:text-gray-400" />
-                        </div>
-
-                        <div className="relative">
+                        {/* Vehicle Select */}
+                        <div className="relative group">
                             <Car className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86]" size={18} />
-                            <select className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl focus:ring-2 focus:ring-[#E23744] outline-none font-medium text-[#2D2D2D] appearance-none">
-                                <option>Select Vehicle</option>
+                            <select 
+                                name="vehicle" 
+                                value={formData.vehicle} 
+                                onChange={handleChange} 
+                                className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl outline-none para-sm font-medium text-[#2D2D2D] appearance-none cursor-pointer" 
+                                required
+                            >
+                                <option disabled value="Select Vehicle">Select Vehicle</option>
                                 <option>Premium Sedan</option>
                                 <option>Luxury SUV</option>
                                 <option>Executive Coach</option>
                             </select>
                         </div>
 
-                        <div className="relative">
+                        {/* Date Input */}
+                        <div className="relative group">
                             <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86]" size={18} />
-                            <input type="date" className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl focus:ring-2 focus:ring-[#E23744] outline-none font-medium text-[#2D2D2D]" />
+                            <input 
+                                type="date" 
+                                name="date" 
+                                min={today} 
+                                value={formData.date} 
+                                onChange={handleChange} 
+                                className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl outline-none para-sm font-medium text-[#2D2D2D] cursor-pointer" 
+                                required 
+                            />
                         </div>
 
-                        <div className="relative">
+                        {/* Travelers Input */}
+                        <div className="relative group">
                             <Users className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86]" size={18} />
-                            <input type="number" placeholder="No. of Travelers" className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl focus:ring-2 focus:ring-[#E23744] outline-none font-medium text-[#2D2D2D] placeholder:text-gray-400" />
+                            <input 
+                                type="number" 
+                                name="travelers" 
+                                min="1" 
+                                value={formData.travelers} 
+                                onChange={handleChange} 
+                                placeholder="Travelers" 
+                                className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl outline-none para-sm font-medium text-[#2D2D2D]" 
+                                required 
+                            />
                         </div>
 
-                        <div className="relative">
+                        {/* Purpose Select */}
+                        <div className="relative group">
                             <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86]" size={18} />
-                            <select className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl focus:ring-2 focus:ring-[#E23744] outline-none font-medium text-[#2D2D2D] appearance-none">
-                                <option>Select Rental Purpose</option>
+                            <select 
+                                name="purpose" 
+                                value={formData.purpose} 
+                                onChange={handleChange} 
+                                className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl outline-none para-sm font-medium text-[#2D2D2D] appearance-none cursor-pointer" 
+                                required
+                            >
+                                <option disabled value="Select Rental Purpose">Select Purpose</option>
                                 <option>Corporate Event</option>
                                 <option>Airport Transfer</option>
                                 <option>Monthly Subscription</option>
                             </select>
                         </div>
 
-                        <div className="relative lg:col-span-1">
+                        {/* Details Input */}
+                        <div className="relative">
                             <FileText className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86]" size={18} />
-                            <input type="text" placeholder="Requirement Details" className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl focus:ring-2 focus:ring-[#E23744] outline-none font-medium text-[#2D2D2D] placeholder:text-gray-400" />
+                            <input 
+                                type="text" 
+                                name="details" 
+                                value={formData.details} 
+                                onChange={handleChange} 
+                                placeholder="Specific Requirements" 
+                                className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl outline-none para-sm font-medium text-[#2D2D2D]" 
+                            />
                         </div>
 
-                        {/* Submission Button */}
-                        <div className="lg:col-span-3 mt-4">
-                            <button className="w-full py-5 bg-[#E23744] text-white font-bold rounded-2xl shadow-xl shadow-red-900/10 hover:shadow-red-900/20 hover:-translate-y-1 transition-all duration-300 uppercase tracking-[0.2em] text-sm">
+                        {/* Submit Button */}
+                        <div className="sm:col-span-2 lg:col-span-3 mt-4">
+                            <button 
+                                type="submit" 
+                                className="w-full py-5 bg-[#E23744] text-white font-bold rounded-2xl shadow-xl hover:shadow-red-900/20 hover:-translate-y-1 transition-all duration-300 uppercase para-md !tracking-[0.2em]"
+                            >
                                 Confirm Booking Request
                             </button>
                         </div>
                     </form>
-
                 </div>
             </div>
-
-
         </section>
     );
 };

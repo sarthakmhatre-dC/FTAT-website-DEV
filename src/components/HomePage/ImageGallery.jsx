@@ -1,10 +1,11 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, ImageIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const ImageGallery = () => {
-  const [isPaused, setIsPaused] = useState(false);
   const scrollRef = useRef(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
   const galleryImages = [
     "/galleryImages/galleryImage1.webp",
@@ -16,80 +17,108 @@ const ImageGallery = () => {
     "/galleryImages/galleryImage10.webp",
   ];
 
-  const handleManualNav = (direction) => {
-    setIsPaused(true);
+  // Logic to handle scroll position and button states
+  const checkScroll = () => {
     if (scrollRef.current) {
-      // Dynamic scroll based on screen width
-      const scrollAmount = direction === 'left' ? -window.innerWidth * 0.7 : window.innerWidth * 0.7;
-      scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      setCanScrollLeft(scrollLeft > 5);
+      setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 5);
+    }
+  };
+
+  useEffect(() => {
+    checkScroll();
+    window.addEventListener('resize', checkScroll);
+    return () => window.removeEventListener('resize', checkScroll);
+  }, []);
+
+  const handleManualNav = (direction) => {
+    if (scrollRef.current) {
+      // Moves by exactly one card width + gap for smooth 1-by-1 transition
+      const isMobile = window.innerWidth < 768;
+      const scrollAmount = isMobile 
+        ? scrollRef.current.clientWidth 
+        : scrollRef.current.clientWidth / 3; 
+
+      scrollRef.current.scrollBy({ 
+        left: direction === 'left' ? -scrollAmount : scrollAmount, 
+        behavior: 'smooth' 
+      });
     }
   };
 
   return (
-    <section className="w-full bg-white py-12 md:py-24 overflow-hidden">
-      <div className="max-w-8xl mx-auto px-8 md:px-16 lg:px-20 mb-10 md:mb-16">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-8">
+    <section className="w-full bg-white py-24 md:py-40 overflow-hidden">
+      <div className="max-w-8xl mx-auto px-6 md:px-16 lg:px-20 mb-10 md:mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+          
           <div className="max-w-2xl">
-            <h2 className="heading-2 font-bold">
-              Platform's <span className="text-[#3E4D86]">Gallery</span>
+            <h2 className="heading-1 font-bold text-[#2D2D2D]">
+              Our <span className="text-[#3E4D86]">Gallery</span>
             </h2>
             <p className="mt-3 para-lg text-gray-500 font-medium">
-              Want to explore more images?
+              Want to explore our images?
             </p>
             <div className="mt-4 md:mt-6 h-1.5 w-16 md:w-20 bg-[#EDA749] rounded-full" />
           </div>
 
-          <Link 
-            to="/gallery" 
-            className="group flex items-center justify-center gap-3 px-8 py-4 bg-[#2D2D2D] text-white rounded-xl hover:bg-[#E23744] transition-all shadow-xl w-full md:w-auto"
-          >
-            <span className="para-muted text-white !tracking-widest !text-[10px] md:!text-xs">
-              Explore Full Gallery
-            </span>
-            <ImageIcon size={18} className="group-hover:rotate-12 transition-transform" />
-          </Link>
+          {/* Navigation Controls Beside CTA */}
+          <div className="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
+            <div className="flex items-center gap-3">
+              <button 
+                onClick={() => handleManualNav('left')}
+                disabled={!canScrollLeft}
+                className="p-4 bg-[#F4F4F2] text-[#2D2D2D] rounded-xl hover:bg-[#E23744] hover:text-white transition-all disabled:opacity-20 disabled:cursor-not-allowed shadow-sm active:scale-95"
+                aria-label="Previous"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button 
+                onClick={() => handleManualNav('right')}
+                disabled={!canScrollRight}
+                className="p-4 bg-[#F4F4F2] text-[#2D2D2D] rounded-xl hover:bg-[#E23744] hover:text-white transition-all disabled:opacity-20 disabled:cursor-not-allowed shadow-sm active:scale-95"
+                aria-label="Next"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </div>
+
+            <Link 
+              to="/gallery" 
+              className="group flex items-center justify-center gap-3 px-8 py-4 bg-[#2D2D2D] text-white rounded-xl hover:bg-[#E23744] transition-all shadow-xl w-full sm:w-auto"
+            >
+              <span className="para-md text-white !tracking-widest uppercase">
+                Explore Full Gallery
+              </span>
+              <ImageIcon size={18} className="group-hover:rotate-12 transition-transform" />
+            </Link>
+          </div>
         </div>
       </div>
 
-      <div className="relative group">
-        {/* Navigation Controls - Now visible on all screens */}
-        <button 
-          onClick={() => handleManualNav('left')}
-          className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-40 p-2.5 md:p-4 bg-white/90 backdrop-blur-md rounded-full shadow-xl opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all hover:bg-[#E23744] hover:text-white"
-          aria-label="Scroll Left"
-        >
-          <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
-        </button>
-        
-        <button 
-          onClick={() => handleManualNav('right')}
-          className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-40 p-2.5 md:p-4 bg-white/90 backdrop-blur-md rounded-full shadow-xl opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all hover:bg-[#E23744] hover:text-white"
-          aria-label="Scroll Right"
-        >
-          <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
-        </button>
+      <div className="relative">
+        {/* Desktop Elegant Fades */}
+        <div className="hidden md:block absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="hidden md:block absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
-        {/* The Marquee Container */}
+        {/* Gallery Grid Wrapper */}
         <div 
           ref={scrollRef}
-          className="overflow-x-hidden scroll-smooth"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
+          onScroll={checkScroll}
+          className="flex overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory px-6 md:px-32 gap-4 md:gap-6"
         >
-          <div className={`flex whitespace-nowrap w-max animate-marquee-gallery ${isPaused ? 'pause-animation' : ''}`}>
-            {[...galleryImages, ...galleryImages].map((img, i) => (
-              <div 
-                key={i} 
-                className="inline-block w-[18rem] h-[22rem] sm:w-[25rem] sm:h-[25rem] md:w-[35rem] md:h-[30rem] mx-2 md:mx-3 overflow-hidden rounded-xl md:rounded-2xl bg-[#F4F4F2] shadow-sm border border-gray-100 group/item"
-              >
-                <img 
-                  src={img} 
-                  alt={`Gallery ${i}`} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover/item:scale-110"
-                />
-              </div>
-            ))}
-          </div>
+          {galleryImages.map((img, i) => (
+            <div 
+              key={i} 
+              className="shrink-0 w-full md:w-[calc(33.333%-16px)] h-[22rem] md:h-[30rem] overflow-hidden rounded-2xl bg-[#F4F4F2] border border-gray-100 group/item snap-center shadow-md transition-all duration-500 hover:shadow-2xl hover:-translate-y-1"
+            >
+              <img 
+                src={img} 
+                alt={`Gallery Asset ${i}`} 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover/item:scale-110"
+              />
+            </div>
+          ))}
         </div>
       </div>
     </section>

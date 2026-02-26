@@ -8,6 +8,7 @@ import PackagesGrid from '../components/PackagePage/subPage/PackagesGrid';
 import MetricStrip from '../components/common/MetricStrip';
 import ValueBentoGrid from '../components/common/ValueBentoGrid';
 import FAQSection from '../components/common/FAQSection';
+import BottomCTA from '../components/common/bottomCTA';
 
 const PackageSubPage = () => {
   const { type } = useParams(); // URL will be /packages/vacation or /packages/corporate
@@ -29,9 +30,6 @@ const PackageSubPage = () => {
         image={data.hero.image}
       />
 
-      {/* 2. Common Metric Section */}
-      
-
       {/* 3. Dynamic Package Grid */}
       <PackagesGrid 
         title={data.grid.title}
@@ -43,7 +41,11 @@ const PackageSubPage = () => {
 
       {/* 4. Static Brand Sections */}
       <ValueBentoGrid />
-      <FAQSection />
+
+      <FAQSection setId='packages'/>
+
+      <BottomCTA/>
+
     </div>
   );
 };

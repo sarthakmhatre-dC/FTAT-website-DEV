@@ -27,7 +27,7 @@ const ContentStrategyBlock = ({
       {/* Decorative Brand Accent */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-[#F4F4F2]/30 -skew-x-12 translate-x-1/2 z-0" />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-16 lg:px-20">
         {/* 1. Main Header & Intro */}
         <div className="mb-16">
           <h2 className="text-4xl md:text-5xl font-black text-[#2D2D2D] leading-tight mb-8 tracking-tight">

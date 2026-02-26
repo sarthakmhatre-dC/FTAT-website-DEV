@@ -1,35 +1,20 @@
 // data/galleryData.js
 
-// Map your 10 public images to their actual extensions
-const imageExtensions = {
-  1: "webp", 2: "webp", 3: "webp", 4: "webp", 5: "webp",
-  6: "webp", 7: "jpg", 8: "webp", 9: "webp", 10: "webp"
-};
-
-const titles = [
-  "Corporate Excellence", "VIP Airport Transfer", "Executive Fleet", 
-  "Premium Charter", "Elite Business Travel", "Institutional Logistic"
+export const galleryImages = [
+  { id: 1, src: "/galleryImages/galleryImage1.webp", alt: "FTAT Luxury Sedan Front View" },
+  { id: 2, src: "/galleryImages/galleryImage2.webp", alt: "Executive SUV Interior" },
+  { id: 3, src: "/galleryImages/galleryImage3.webp", alt: "Corporate Coach Fleet" },
+  { id: 4, src: "/galleryImages/galleryImage4.webp", alt: "Premium Airport Transfer Vehicle" },
+  { id: 5, src: "/galleryImages/galleryImage5.webp", alt: "Enterprise Logistics Van" },
+  { id: 6, src: "/galleryImages/galleryImage6.webp", alt: "VIP Chauffeur Service" },
+  { id: 7, src: "/galleryImages/galleryImage7.jpg",  alt: "Meticulously Maintained Fleet" },
+  { id: 8, src: "/galleryImages/galleryImage8.webp", alt: "High-End Business Transport" },
+  { id: 9, src: "/galleryImages/galleryImage9.webp", alt: "Strategic Fleet Management" },
+  { id: 10, src: "/galleryImages/galleryImage10.webp", alt: "FTAT Operational Excellence" },
+  { id: 11, src: "/galleryImages/galleryImage11.webp", alt: "Enterprise Logistics Van" },
+  { id: 12, src: "/galleryImages/galleryImage12.webp", alt: "VIP Chauffeur Service" },
+  { id: 13, src: "/galleryImages/galleryImage13.webp",  alt: "Meticulously Maintained Fleet" },
+  { id: 14, src: "/galleryImages/galleryImage14.webp", alt: "High-End Business Transport" },
+  { id: 15, src: "/galleryImages/galleryImage15.webp", alt: "Strategic Fleet Management" },
+  // Duplicate or add more as needed for pagination testing
 ];
-
-const descriptions = [
-  "Industry standard sedan for executive movement.",
-  "Luxury SUV for high-profile airport transfers.",
-  "Spacious coach solutions for corporate events.",
-  "Meticulously maintained premium transport.",
-  "Dependable fleet for daily enterprise operations.",
-  "Customized logistics for large-scale events."
-];
-
-export const galleryImages = Array.from({ length: 30 }).map((_, i) => {
-  const imageId = (i % 10) + 1; // Logic to cycle through your 10 images
-  const ext = imageExtensions[imageId]; // Get the correct extension (webp or jpg)
-  
-  return {
-    id: i + 1,
-    title: titles[i % titles.length],
-    // Construct the path dynamically with the correct extension
-    src: `/galleryImages/galleryImage${imageId}.${ext}`, 
-    category: i % 2 === 0 ? "Premium" : "Executive",
-    description: "Industry-leading transport solutions tailored for Mumbai's corporate landscape."
-  };
-});

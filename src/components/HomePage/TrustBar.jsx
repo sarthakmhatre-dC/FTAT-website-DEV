@@ -1,22 +1,22 @@
 import React from 'react';
-import { Car, UserCheck, MapPin, Headset } from 'lucide-react';
+import { Car, UserCheck, CalendarClock, Headset } from 'lucide-react';
 
 const TrustBar = () => {
   const metrics = [
     {
       icon: <Car className="w-5 h-5 lg:w-6 lg:h-6 text-[#3E4D86]" />,
       label: "New & Clean Cars",
-      value: "500"
+      value: "150"
     },
     {
       icon: <UserCheck className="w-5 h-5 lg:w-6 lg:h-6 text-[#3E4D86]" />,
-      label: "Trained Drivers",
-      value: "450"
+      label: "Verified Drivers",
+      value: "100"
     },
     {
-      icon: <MapPin className="w-5 h-5 lg:w-6 lg:h-6 text-[#3E4D86]" />,
-      label: "GPS-Tracked",
-      value: "100"
+      icon: <CalendarClock className="w-5 h-5 lg:w-6 lg:h-6 text-[#3E4D86]" />,
+      label: "Years of Experience",
+      value: "29"
     },
     {
       icon: <Headset className="w-5 h-5 lg:w-6 lg:h-6 text-[#3E4D86]" />,

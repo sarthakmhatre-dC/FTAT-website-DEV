@@ -14,7 +14,7 @@ const PackageHeroCTA = () => {
                     {/* Left Content: Typography & Introduction */}
                     <div className="flex-1 max-w-2xl">
                         <div className="flex items-center gap-3 mb-6">
-                            <span className="text-[#E23744] font-black para-sm md:para-md uppercase tracking-[0.4em] md:tracking-[0.5em]">Curated Travel</span>
+                            <span className="text-[#E23744] font-black para-md md:para-md uppercase tracking-[0.4em] md:tracking-[0.5em]">Curated Travel</span>
                             <div className="h-px w-12 bg-gray-200" />
                         </div>
 
@@ -29,7 +29,7 @@ const PackageHeroCTA = () => {
                             institutional reliability with a touch of personal refinement.
                         </p>
 
-                        <div className="flex flex-col gap-6 p-8 bg-[#F4F4F2] rounded-[2rem] border-l-8 border-[#EDA749]">
+                        <div className="flex flex-col gap-6 p-8 bg-[#F4F4F2] rounded-4xl border-l-8 border-[#EDA749]">
                             <div>
                                 <p className="text-xs font-black text-[#2D2D2D] uppercase tracking-widest flex items-center gap-2 mb-2">
                                     <Globe2 size={16} className="text-[#3E4D86]" /> Checkout Our Packages:
@@ -60,7 +60,7 @@ const PackageHeroCTA = () => {
                                 alt="Vacation"
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#2D2D2D] via-transparent to-transparent opacity-80" />
+                            <div className="absolute inset-0 bg-linear-to-t from-[#2D2D2D] via-transparent to-transparent opacity-80" />
                             <div className="absolute bottom-8 left-8">
                                 <Palmtree className="text-[#EDA749] mb-3" size={32} />
                                 <h3 className="text-white font-black uppercase text-xl tracking-tighter">Vacation</h3>
@@ -74,7 +74,7 @@ const PackageHeroCTA = () => {
                                 alt="Corporate"
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#3E4D86] via-transparent to-transparent opacity-80" />
+                            <div className="absolute inset-0 bg-linear-to-t from-[#3E4D86] via-transparent to-transparent opacity-80" />
                             <div className="absolute bottom-8 left-8">
                                 <Building2 className="text-[#E23744] mb-3" size={32} />
                                 <h3 className="text-white font-black uppercase text-xl tracking-tighter">Corporate</h3>

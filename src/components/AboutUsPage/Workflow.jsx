@@ -75,7 +75,7 @@ const Workflow = () => {
                   </div>
                   
                   {/* Institutional Numbering */}
-                  <div className="absolute -top-3 -right-3 w-8 h-8 rounded-lg bg-white text-[#2D2D2D] text-[9px] font-black flex items-center justify-center shadow-lg border border-gray-100 uppercase">
+                  <div className="absolute -top-3 -right-3 w-8 h-8 rounded-lg bg-white text-[#2D2D2D] para-xs font-black flex items-center justify-center shadow-lg border border-gray-100 uppercase">
                     {step.id}
                   </div>
                 </div>

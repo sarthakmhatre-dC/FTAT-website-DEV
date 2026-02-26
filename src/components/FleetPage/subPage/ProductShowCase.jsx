@@ -45,7 +45,7 @@ const ProductShowCase = ({
         {/* 2. Header Section: Aligned with AboutUsCTA Label Logic */}
         <div className="mb-12 md:mb-16 text-center md:text-left">
           <div className="flex flex-col md:flex-row items-center gap-4 mb-8">
-            <span className="text-[#E23744] font-black para-sm md:para-md uppercase tracking-[0.4em] md:tracking-[0.5em]">
+            <span className="text-[#E23744] font-black para-md md:para-md uppercase tracking-[0.4em] md:tracking-[0.5em]">
               Fleet Excellence
             </span>
             <div className="h-px w-12 bg-[#2D2D2D]/10 hidden md:block" />

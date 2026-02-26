@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Users, Luggage, Thermometer, ShieldCheck, ArrowRight, FileText } from 'lucide-react';
-
+import { Link } from 'react-router-dom';
 const TariffRateList = () => {
   const [activeTab, setActiveTab] = useState('rental');
 
@@ -113,11 +113,13 @@ const TariffRateList = () => {
                 The rates above reflect base packages. For full details including 8Hr/80Km, 12Hr/120Km, 
                 Outstation rates, and detailed station-wise drops, please refer to our complete price list.
             </p>
-            <button className="w-full sm:w-auto group flex items-center justify-center gap-3 px-6 sm:px-12 py-5 bg-[#3E4D86] text-white font-bold rounded-2xl hover:bg-[#2D2D2D] transition-all duration-300 shadow-xl uppercase para-xs !tracking-[0.2em] whitespace-nowrap">
+            <Link
+            to="/resources/tariff"
+            className="w-full sm:w-auto group flex items-center justify-center gap-3 px-6 sm:px-12 py-5 bg-[#3E4D86] text-white font-bold rounded-2xl hover:bg-[#2D2D2D] transition-all duration-300 shadow-xl uppercase para-xs !tracking-[0.2em] whitespace-nowrap">
                 <FileText size={20} className="text-[#EDA749]" /> 
                 <span className="shrink-0">Detailed Tariff Rates</span>
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </button>
+            </Link>
         </div>
       </div>
     </section>

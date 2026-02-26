@@ -28,7 +28,7 @@ const CorporateProposalCTA = () => {
 
             <div className="flex flex-wrap gap-8 items-center">
               <button className="w-full sm:w-auto px-6 md:px-10 py-4 md:py-5 bg-[#E23744] text-white font-black para-md uppercase tracking-[0.1em] md:tracking-[0.2em] rounded-2xl shadow-xl shadow-black/20 hover:bg-white hover:text-[#2D2D2D] transition-all duration-500 flex items-center justify-center gap-3 group">
-                Request a Corporate Proposal 
+                Book a Package 
                 <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
               </button>
             </div>

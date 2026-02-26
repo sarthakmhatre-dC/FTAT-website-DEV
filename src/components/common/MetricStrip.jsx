@@ -1,28 +1,27 @@
 import React from 'react';
-import { Users, Building2, Map, ShieldCheck } from 'lucide-react';
+import { Users, Building2, Car, Trophy } from 'lucide-react';
 
 const MetricStrip = () => {
   const stats = [
     {
       icon: <Users size={20} />,
-      label: "Active Passengers",
-      value: "25,000"
+      label: "Happy Customers",
+      value: "10K"
     },
     {
       icon: <Building2 size={20} />,
-      label: "Corporate Partners",
-      value: "150"
+      label: "Employees",
+      value: "1100"
     },
     {
-      icon: <Map size={20} />,
-      label: "Cities Covered",
-      value: "12"
+      icon: <Car size={20} />,
+      label: "Available cars",
+      value: "9000"
     },
     {
-      icon: <ShieldCheck size={20} />,
-      label: "Safety Compliance",
-      value: "100",
-      unit: "%"
+      icon: <Trophy size={20} />,
+      label: "Award wins",
+      value: "10",
     }
   ];
 

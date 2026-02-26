@@ -49,14 +49,14 @@ const PremiumFleetCTA = () => {
           </h2>
 
           <div className="max-w-6xl mx-auto space-y-6">
-            <p className="para-md text-gray-600 text-justify font-medium">
+            <p className="para-lg text-gray-600 text-center font-medium">
               Our premium car rental range includes some of the most trusted and admired models in India.
               The Toyota Innova Hycross is known for its modern design and smooth performance, making it
               ideal for groups who prefer style with practicality. For those who want a bold
               and powerful presence on the road, the Toyota Fortuner stands out with its commanding design
               and superior road performance.
             </p>
-            <p className="para-md text-gray-600 text-justify font-medium">
+            <p className="para-lg text-gray-600 text-center font-medium">
               Renting a premium car from us ensures the chosen car delivers reliability, comfort, and a refined
               travel experience for any occasion. Hiring a premium car on rent from our collection always
               provides you with a way to ride in style.

@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
-import { X, MapPin, Calendar, Users, ArrowRight, Info } from 'lucide-react';
+import { X, MapPin, Calendar, Users, ArrowRight, Info, Banknote } from 'lucide-react';
 
-const PackagesGrid = ({ 
-  title = "Our Curated Collections", 
+const PackagesGrid = ({
+  title = "Our Curated Collections",
   subtitle = "Hand-picked institutional travel experiences",
-  packages = [] 
+  packages = []
 }) => {
   const [selectedPackage, setSelectedPackage] = useState(null);
+
+  const handleBookNow = (pkg) => {
+    const ownerNumber = "9321685221";
+    const message = `Inquiry for ${pkg.title}%0aRegion: ${pkg.location}%0aPrice: ${pkg.price}%0a------------------------%0aI would like to know more about this package.`;
+    window.open(`https://wa.me/${ownerNumber}?text=${message}`, '_blank');
+  };
 
   return (
     <section className="w-full py-24 bg-[#F4F4F2]/30">
       <div className="max-w-8xl mx-auto px-8 md:px-16 lg:px-20">
-        
+
         {/* Header Section */}
         <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="max-w-2xl">
@@ -27,90 +33,112 @@ const PackagesGrid = ({
           </div>
         </div>
 
-        {/* Premium Separator Line: Faded with Centered Circle */}
+        {/* Premium Separator Line */}
         <div className="relative w-full h-px mb-20 flex items-center justify-center">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
           <div className="relative w-6 h-6 rounded-full border-4 border-[#3E4D86] bg-[#F4F4F2]/30 backdrop-blur-sm z-10 shadow-sm" />
         </div>
 
-        {/* 3x3 Responsive Grid */}
+        {/* Grid View */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {packages.map((pkg) => (
-            <div 
+            <div
               key={pkg.id}
               onClick={() => setSelectedPackage(pkg)}
               className="group relative h-[400px] rounded-[2.5rem] overflow-hidden cursor-pointer shadow-xl shadow-gray-200/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
             >
-              {/* Image Layer */}
-              <img 
-                src={pkg.image} 
-                alt={pkg.title} 
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-              />
-              
-              {/* Overlay Gradient */}
+              <img src={pkg.image} alt={pkg.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#2D2D2D] via-[#2D2D2D]/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
-
-              {/* Content Layer */}
               <div className="absolute bottom-0 left-0 p-10 w-full transform transition-transform duration-500 group-hover:translate-y-[-10px]">
-                <h3 className="text-xl font-black text-white uppercase tracking-tight mb-2">
-                  {pkg.title}
-                </h3>
+                <h3 className="text-xl font-black text-white uppercase tracking-tight mb-2">{pkg.title}</h3>
                 <div className="flex items-center gap-4 text-white/60 text-[10px] font-bold uppercase tracking-widest">
                   <span className="flex items-center gap-1.5"><MapPin size={12} className="text-[#EDA749]" /> {pkg.location}</span>
                   <span className="flex items-center gap-1.5"><Calendar size={12} className="text-[#EDA749]" /> {pkg.duration}</span>
-                </div>
-              </div>
-
-              {/* Hover Interaction Label */}
-              <div className="absolute top-8 right-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-[#3E4D86]">
-                  <Info size={20} />
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Premium Information Modal */}
+        {/* --- RESTRUCTURED MODAL --- */}
         {selectedPackage && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-[#2D2D2D]/90 backdrop-blur-md animate-in fade-in duration-300">
-            <div className="relative bg-white w-full max-w-5xl rounded-[3.5rem] overflow-hidden flex flex-col md:flex-row shadow-2xl">
-              <button 
+            <div className="relative bg-white w-full max-w-5xl rounded-[3.5rem] overflow-hidden flex flex-col md:flex-row shadow-2xl max-h-[90vh]">
+              <button
                 onClick={() => setSelectedPackage(null)}
-                className="absolute top-8 right-8 z-20 w-12 h-12 bg-white/20
-                text-[#E23744] hover:rotate-90 transition-transform z-10
-                rounded-2xl flex items-center justify-center transition-all backdrop-blur-md"
+                className="absolute top-8 right-8 z-20 w-12 h-12 bg-white/20 text-[#E23744] hover:rotate-90 transition-transform rounded-2xl flex items-center justify-center backdrop-blur-md"
               >
                 <X size={24} />
               </button>
 
-              <div className="w-full md:w-1/2 h-80 md:h-auto overflow-hidden">
+              {/* Modal Left: Image */}
+              <div className="w-full md:w-1/2 h-64 md:h-auto overflow-hidden">
                 <img src={selectedPackage.image} className="w-full h-full object-cover" alt={selectedPackage.title} />
               </div>
 
-              <div className="w-full md:w-1/2 p-12 md:p-16 flex flex-col justify-center">
-                <span className="text-[#E23744] font-bold text-[10px] uppercase tracking-[0.5em] mb-6 block">Package Details</span>
-                <h2 className="text-3xl md:text-5xl font-black text-[#2D2D2D] uppercase tracking-tighter mb-8 leading-none">
+              {/* Modal Right: Restructured Content */}
+              <div className="w-full md:w-1/2 p-10 md:p-14 flex flex-col justify-center overflow-y-auto">
+                <span className="text-[#E23744] font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Package Overview</span>
+                <h2 className="text-3xl md:text-4xl font-black text-[#2D2D2D] uppercase tracking-tighter mb-6 leading-none">
                   {selectedPackage.title}
                 </h2>
-                
-                <p className="text-gray-500 text-sm md:text-base leading-relaxed mb-10 text-justify font-medium">
+
+                {/* 1. Description */}
+                <p className="text-gray-500 text-sm md:text-base leading-relaxed mb-8 text-justify font-medium">
                   {selectedPackage.description}
                 </p>
 
-                <div className="grid grid-cols-2 gap-8 mb-12 p-8 bg-[#F4F4F2] rounded-3xl">
-                  <div>
-                    <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">Duration</p>
-                    <p className="text-sm font-black text-[#3E4D86] uppercase">{selectedPackage.duration}</p>
+                {/* 2. Specs Grid: Region, Timeframe, Occupancy */}
+                <div className="flex items-center justify-between gap-0 mb-8 p-8 bg-[#F4F4F2] rounded-[2rem] border border-gray-100">
+
+                  {/* Left Section: Region */}
+                  <div className="flex-1 flex flex-col items-start px-2">
+                    <p className="text-[10px] font-black text-[#E23744] uppercase tracking-[0.3em] mb-2">
+                      Region
+                    </p>
+                    <p className="text-xl md:text-2xl font-black text-[#2D2D2D] uppercase leading-none truncate w-full">
+                      {selectedPackage.location}
+                    </p>
                   </div>
+
+                  {/* Clean Vertical Separator */}
+                  <div className="h-12 w-px bg-gray-300 mx-4 md:mx-8" />
+
+                  {/* Right Section: Timeframe */}
+                  <div className="flex-1 flex flex-col items-start px-2">
+                    <p className="text-[10px] font-black text-[#E23744] uppercase tracking-[0.3em] mb-2">
+                      Timeframe
+                    </p>
+                    <p className="text-xl md:text-2xl font-black text-[#2D2D2D] uppercase leading-none">
+                      {selectedPackage.duration}
+                    </p>
+                  </div>
+
+                </div>
+
+                {/* 3. Pricing Section */}
+                <div className="mb-8 px-2 flex items-center justify-between">
                   <div>
-                    <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">Capacity</p>
-                    <p className="text-sm font-black text-[#3E4D86] uppercase">{selectedPackage.capacity}</p>
+                    <p className="text-[10px] font-black text-[#EDA749] uppercase tracking-[0.2em] mb-1">Institutional Rate</p>
+                    <p className="text-3xl font-black text-[#2D2D2D]">{selectedPackage.price}</p>
+                  </div>
+                  <div className="p-4 bg-[#3E4D86]/5 rounded-2xl">
+                    <Banknote size={24} className="text-[#3E4D86]" />
                   </div>
                 </div>
 
-                <button className="w-full py-5 bg-[#3E4D86] text-white font-black text-[11px] uppercase tracking-[0.2em] rounded-2xl hover:bg-[#E23744] transition-all duration-300 flex items-center justify-center gap-3 shadow-xl shadow-blue-900/10">
+                {/* 4. Extra Charges Note */}
+                <div className="flex items-start gap-3 mb-10 p-4 border border-dashed border-gray-200 rounded-2xl bg-gray-50/50">
+                  <Info size={16} className="text-[#E23744] mt-0.5 shrink-0" />
+                  <p className="text-[11px] font-bold text-gray-400 uppercase leading-tight tracking-wide">
+                    Please Note: Toll, Parking, and GST will be charged extra as per actuals.
+                  </p>
+                </div>
+
+                <button
+                  onClick={() => handleBookNow(selectedPackage)}
+                  className="w-full py-5 bg-[#3E4D86] text-white font-black text-[11px] uppercase tracking-[0.2em] rounded-2xl hover:bg-[#E23744] transition-all duration-300 flex items-center justify-center gap-3 shadow-xl shadow-blue-900/10 active:scale-95"
+                >
                   Book This Journey <ArrowRight size={16} />
                 </button>
               </div>

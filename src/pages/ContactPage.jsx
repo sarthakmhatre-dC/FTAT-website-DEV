@@ -4,6 +4,7 @@ import FAQSection from '../components/common/FAQSection';
 import MetricStrip from '../components/common/MetricStrip';
 import ValueBentoGrid from '../components/common/ValueBentoGrid';
 import ContactHub from '../components/ContactPage/ContactHub';
+import BottomCTA from '../components/common/bottomCTA';
 
 const ContactPage = () => {
   return (
@@ -13,6 +14,7 @@ const ContactPage = () => {
       <MetricStrip />
       <ValueBentoGrid />
       <FAQSection />
+      <BottomCTA/>
     </div>
   );
 };

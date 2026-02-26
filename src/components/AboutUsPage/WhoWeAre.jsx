@@ -7,7 +7,7 @@ const WhoWeAre = () => {
       {/* Architectural Background Element */}
       <div className="absolute top-1/2 right-0 w-1/3 h-1/2 bg-[#F4F4F2]/50 -translate-y-1/2 translate-x-1/4 rounded-full blur-3xl z-0" />
 
-      <div className="relative z-10 max-w-8xl mx-10 px-8 lg:px-16">
+      <div className="relative z-10 max-w-8xl mx-auto px-8 md:px-16 lg:px-20">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
           
           {/* Left Content: Title & Paras (Approx 40% Width) */}

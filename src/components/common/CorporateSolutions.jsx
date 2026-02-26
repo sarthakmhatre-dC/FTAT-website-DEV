@@ -1,31 +1,31 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
-
+import { Link } from 'react-router-dom';
 const CorporateSolutions = () => {
   const solutions = [
     {
       title: "Employee Pickup & Drop Services",
       description: "Daily shift transport with SLA-backed reliability",
-      image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2069&auto=format&fit=crop",
-      tag: "🚐 Daily Shift"
+      image: "/corporateSolutions/Passenger.jpg",
+      tag: "Daily Shift"
     },
     {
       title: "Corporate & Airport Transfers",
       description: "Executive and client movement solutions",
-      image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=2070&auto=format&fit=crop",
-      tag: "✈️ Executive"
+      image: "/corporateSolutions/AirportImage.jpg",
+      tag: "Executive"
     },
     {
       title: "Long-Term Corporate Car Packages",
       description: "Monthly and contract-based vehicle deployments",
-      image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2070&auto=format&fit=crop",
-      tag: "📦 Monthly"
+      image: "/corporateSolutions/Guest.jpg",
+      tag: "Guest"
     },
     {
       title: "Dedicated Fleet for Enterprises",
       description: "Customized vehicles for your business operations",
-      image: "https://images.unsplash.com/photo-1494905998402-395d579af36f?q=80&w=2070&auto=format&fit=crop",
-      tag: "🧭 Customized"
+      image: "/corporateSolutions/Driver.jpg",
+      tag: "Customized"
     }
   ];
 
@@ -37,7 +37,7 @@ const CorporateSolutions = () => {
         <div className="mb-12 md:mb-16 lg:text-left">
           <div className="max-w-2xl">
             <span className="text-[#E23744] font-bold lg:tracking-[0.3em] para-md uppercase">
-              Tailored Excellence
+              Tailored Packages
             </span>
             <h2 className="heading-2 font-black text-[#2D2D2D] tracking-tight">
               Our Corporate <br className="hidden sm:block" />
@@ -84,9 +84,11 @@ const CorporateSolutions = () => {
                   </p>
 
                   {/* Premium Action Button */}
-                  <button className="flex items-center gap-2 text-white text-[10px] font-black uppercase tracking-widest hover:text-[#EDA749] transition-colors">
+                  <Link 
+                  to="/packages/corporate"
+                  className="flex items-center gap-2 text-white text-[10px] font-black uppercase tracking-widest hover:text-[#EDA749] transition-colors">
                     Learn More <ArrowUpRight size={14} className="text-[#E23744]" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
