@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { galleryImages } from '../../data/galleryData';
@@ -15,22 +15,25 @@ const ImageGalleryGrid = () => {
   const indexOfFirstImage = indexOfLastImage - imagesPerPage;
   const currentImages = galleryImages.slice(indexOfFirstImage, indexOfLastImage);
 
-  // 1. SCROLL FIX: This effect runs every time currentPage changes
-  useEffect(() => {
-    if (galleryRef.current) {
-      const yOffset = -100; // Adjust for your navbar height
-      const y = galleryRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      
-      window.scrollTo({
-        top: y,
-        behavior: 'smooth'
-      });
-    }
-  }, [currentPage]); // Triggers on arrow clicks, number clicks, and back/forward navigation
-
+  // Scroll function explicitly tied to user clicks
   const handlePageChange = (pageNumber) => {
     if (pageNumber >= 1 && pageNumber <= totalPages) {
+      // 1. Update the URL and page state
       setSearchParams({ page: pageNumber });
+
+      // 2. Force the scroll immediately ONLY on this button click
+      if (galleryRef.current) {
+        const yOffset = -100; // Adjust for your navbar height
+        const y = galleryRef.current.getBoundingClientRect().top + window.scrollY + yOffset;
+        
+        // Slight delay ensures React processes the page change before scrolling
+        setTimeout(() => {
+          window.scrollTo({
+            top: y,
+            behavior: 'smooth'
+          });
+        }, 50);
+      }
     }
   };
 
@@ -56,8 +59,8 @@ const ImageGalleryGrid = () => {
             <div className="mt-4 md:mt-6 h-1.5 w-24 bg-[#E23744] rounded-full shadow-[0_0_20px_rgba(226,55,104,0.3)]" />
           </div>
           
-          <div className="bg-white/5 backdrop-blur-md border border-white/10 px-6 py-3 rounded-2xl">
-            <p className="text-white/60 text-xs font-bold uppercase tracking-widest">
+          <div className="bg-white/5 backdrop-blur-md border border-white/10 px-6 py-3 rounded-2xl flex items-center justify-center">
+            <p className="text-white/60 text-xs font-bold uppercase tracking-widest text-center">
               View {indexOfFirstImage + 1} - {Math.min(indexOfLastImage, galleryImages.length)} / {galleryImages.length}
             </p>
           </div>
@@ -75,11 +78,6 @@ const ImageGalleryGrid = () => {
                 alt={img.alt}
                 className="w-full h-full object-cover opacity-85 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105 ease-out"
               />
-              {/* <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-8 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none">
-                <p className="text-white text-sm font-bold uppercase tracking-widest leading-relaxed">
-                  {img.alt}
-                </p>
-              </div> */}
             </div>
           ))}
         </div>

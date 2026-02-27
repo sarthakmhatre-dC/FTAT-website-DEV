@@ -11,9 +11,7 @@ function TariffPage() {
         <TariffIntro/>
         <RentalTariffTable/>
         <TransferTariffTable/>
-
         <TariffNotes/>
-        
         <ContactBanner/>
     </>
   )

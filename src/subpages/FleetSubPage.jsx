@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { fleetContent } from '../data/fleetData';
+import { ChevronRight } from 'lucide-react';
 
 // Modular Components
 import ProductShowCase from '../components/FleetPage/subPage/ProductShowCase';
@@ -11,6 +12,7 @@ import ContactBanner from '../components/common/ContactBanner';
 
 const CommonFleetSubPage = () => {
   const { carId } = useParams();
+  // Ensure the route param matches the new Category Keys (e.g., 'premium-suvs')
   const data = fleetContent[carId];
 
   useEffect(() => {
@@ -21,29 +23,37 @@ const CommonFleetSubPage = () => {
 
   return (
     <div className="bg-white">
-      {/* Dynamic Data injection for each section */}
-      <ProductShowCase 
-        title={data.showcase.title}
-        images={data.showcase.images}
-        rating={data.showcase.rating}
-        reviews={data.showcase.reviews}
+      {/* Pass the array of cars and the category title to handle the toggle internally */}
+      <div className="pt-6 lg:pt-8 px-8 md:px-16 lg:px-20 border-b border-gray-300">
+        <div className="max-w-[1800px] mx-auto flex items-center gap-2 para-sm font-black uppercase tracking-widest text-gray-400 pb-8">
+          <Link to="/" className="hover:text-[#3E4D86] transition-colors">Home</Link>
+          <ChevronRight className="w-3 h-3" />
+          <Link to="/fleet" className="hover:text-[#3E4D86] transition-colors">Fleet</Link>
+          <ChevronRight className="w-3 h-3" />
+          <span className="text-[#E23744]">{carId}</span>
+        </div>
+      </div>
+      <ProductShowCase
+        categoryTitle={data.showcase.categoryTitle}
+        cars={data.showcase.cars}
       />
 
       <RentalForm />
-      
-      <ContentStrategyBlock 
+
+      <ContentStrategyBlock
         title={data.strategy.title}
         description={data.strategy.description}
         sectionHeading={data.strategy.sectionHeading}
-        footerHeading={data.strategy.footerHeading}
-        footerPara={data.strategy.footerPara}
+        points={data.strategy.points}
+        bottomTitle={data.strategy.bottomTitle}
+        bottomDescription={data.strategy.bottomDescription}
       />
 
       {/* Static Reusable Sections */}
-      <ServiceFleetShowcase />
+      <ServiceFleetShowcase currentCategoryId={carId} />
 
-      <ContactBanner/>
-      
+      <ContactBanner />
+
     </div>
   );
 };

@@ -1,7 +1,10 @@
-import React, { useState, useRef } from 'react';
-import { ChevronLeft, ChevronRight, CheckCircle, Shield, Clock, MapPin, Star, MoveRight } from 'lucide-react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { CheckCircle, Shield, Clock, MapPin, Star, MoveRight } from 'lucide-react';
 
 const ServiceFleetShowcase = ({
+  // Accepts the current category from the parent component (e.g., from useParams)
+  currentCategoryId = "sedans", 
   services = [
     { icon: <CheckCircle size={22} />, text: "Quality Vehicles" },
     { icon: <Shield size={22} />, text: "Safe Travels" },
@@ -9,29 +12,20 @@ const ServiceFleetShowcase = ({
     { icon: <MapPin size={22} />, text: "Multiple Locations" },
     { icon: <Star size={22} />, text: "Premium Service" }
   ],
-  fleetImages = [
-    { src: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800", name: "Luxury Sedan", category: "Executive" },
-    { src: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=800", name: "Executive SUV", category: "Premium" },
-    { src: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=800", name: "Corporate Coach", category: "Institutional" },
-    { src: "https://images.unsplash.com/photo-1555214107-f2e7c48c636f?q=80&w=800", name: "Premium Van", category: "Standard" }
+  // Updated to match your new data structure keys exactly
+  fleetCategories = [
+    { id: "sedans", src: "/fleet/Sedan/Maruti_Swift_Dzire/Dezire.avif", name: "Premium Sedans", category: "Smart" },
+    { id: "suvs", src: "/fleet/SUV/Maruti_Eritiga/ex_img03.jpg", name: "Spacious SUVs", category: "Rugged" },
+    { id: "buses", src: "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?q=80&w=800", name: "Luxury Coaches", category: "Mass Transit" }
   ]
 }) => {
-  const scrollRef = useRef(null);
-
-  const scroll = (direction) => {
-    if (scrollRef.current) {
-      const { clientWidth } = scrollRef.current;
-      // Scroll by one full card width plus gap
-      const scrollAmount = direction === 'left' ? -clientWidth : clientWidth;
-      scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
-  };
+  const navigate = useNavigate();
 
   return (
     <section className="relative w-full py-16 md:py-24 lg:py-32 bg-white px-8 md:px-16 lg:px-20 overflow-hidden">
       <div className="max-w-8xl mx-auto">
         
-        {/* 1. Optimized Service Bar: Fixed "Absolute Mess" on Mobile */}
+        {/* 1. Optimized Service Bar */}
         <div className="mb-10 md:mb-16">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-12 lg:gap-8">
             <div className="flex-shrink-0 text-center lg:text-left">
@@ -41,7 +35,6 @@ const ServiceFleetShowcase = ({
               </h3>
             </div>
             
-            {/* Mobile: 2-Column Grid | Desktop: Row with Dividers */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:flex lg:flex-row items-center justify-center lg:justify-end gap-y-10 lg:gap-0 flex-grow">
               {services.map((service, idx) => (
                 <div key={idx} className="flex flex-col items-center lg:items-start lg:flex-row lg:px-10 first:pl-0 border-r-0 lg:border-r-[2px] border-gray-100 last:border-none group/service">
@@ -57,67 +50,71 @@ const ServiceFleetShowcase = ({
               ))}
             </div>
           </div>
-          {/* Decorative Divider: Hidden on mobile to prevent clipping */}
           <div className="mt-12 w-full h-px bg-gradient-to-r from-gray-100 via-gray-200 to-transparent hidden lg:block" />
         </div>
 
-        {/* 2. Fleet Slider Architecture: Smooth & Responsive */}
+        {/* 2. Fleet Categories Grid */}
         <div className="relative group">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
-            <div className="max-w-md">
-              <h4 className="heading-2 font-black text-[#2D2D2D] tracking-tighter mb-4">
-                Premier <span className="text-[#3E4D86]">Fleet</span> Selections.
-              </h4>
-              <p className="para-md text-gray-400 font-medium">Institutionalized safety and luxury across every car class.</p>
-            </div>
-            
-            <div className="flex gap-3 self-end md:self-auto">
-              <button 
-                onClick={() => scroll('left')}
-                className="p-4 rounded-2xl bg-[#F4F4F2] text-[#2D2D2D] hover:bg-[#E23744] hover:text-white transition-all shadow-sm active:scale-90"
-              >
-                <ChevronLeft size={22} />
-              </button>
-              <button 
-                onClick={() => scroll('right')}
-                className="p-4 rounded-2xl bg-[#F4F4F2] text-[#2D2D2D] hover:bg-[#E23744] hover:text-white transition-all shadow-sm active:scale-90"
-              >
-                <ChevronRight size={22} />
-              </button>
-            </div>
+          <div className="mb-12 max-w-md">
+            <h4 className="heading-2 font-black text-[#2D2D2D] tracking-tighter mb-4">
+              Premier <span className="text-[#3E4D86]">Fleet</span> Selections.
+            </h4>
+            <p className="para-md text-gray-400 font-medium">Institutionalized safety and luxury across every car class.</p>
           </div>
 
-          {/* Slider Track: Optimized for touch-swipe and overflow visibility */}
-          <div 
-            ref={scrollRef}
-            className="flex gap-6 md:gap-8 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-10"
-          >
-            {fleetImages.map((car, idx) => (
-              <div 
-                key={idx} 
-                className="min-w-[85%] sm:min-w-[45%] lg:min-w-[calc(33.333%-22px)] snap-start group/card relative h-[450px] md:h-[500px] rounded-[2.5rem] md:rounded-[3rem] overflow-hidden bg-[#F4F4F2] shadow-xl shadow-gray-200/40 no-scrollbar"
-              >
-                <img 
-                  src={car.src} 
-                  alt={car.name} 
-                  className="w-full h-full object-cover scale-110 group-hover/card:scale-100 transition-transform duration-1000 ease-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#2D2D2D] via-transparent to-transparent opacity-80 group-hover/card:opacity-90 transition-opacity" />
-                
-                <div className="absolute inset-0 p-8 md:p-10 flex flex-col justify-end translate-y-4 group-hover/card:translate-y-0 transition-transform duration-500">
-                  <span className="text-[#EDA749] para-xs !font-bold tracking-[0.4em] uppercase mb-3 block">
-                    {car.category} Class
-                  </span>
-                  <h5 className="text-white heading-4 font-black uppercase mb-6">
-                    {car.name}
-                  </h5>
+          {/* 3-Column Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 pb-10">
+            {fleetCategories.map((car, idx) => {
+              // Checks if this card matches the URL param passed from the parent
+              const isActive = car.id === currentCategoryId;
+
+              return (
+                <div 
+                  key={idx} 
+                  // Clicking an inactive card navigates to its respective fleet page
+                  onClick={() => !isActive && navigate(`/fleet/${car.id}`)}
+                  className={`group/card relative h-[450px] md:h-[500px] rounded-[2.5rem] md:rounded-[3rem] overflow-hidden bg-[#F4F4F2] shadow-xl shadow-gray-200/40 transition-all duration-500 ${
+                    isActive ? 'cursor-default' : 'cursor-pointer hover:-translate-y-2 hover:shadow-2xl'
+                  }`}
+                >
+                  <img 
+                    src={car.src} 
+                    alt={car.name} 
+                    className={`w-full h-full object-cover transition-transform duration-1000 ease-out ${
+                      isActive 
+                        ? 'grayscale opacity-60 scale-100' 
+                        : 'scale-110 group-hover/card:scale-100'
+                    }`}
+                  />
                   
-                  {/* <button className="flex items-center gap-3 text-white para-xs !font-bold uppercase tracking-widest opacity-100 lg:opacity-0 group-hover/card:opacity-100 transition-all duration-500">
-                    Explore Details <MoveRight size={16} className="text-[#E23744]" />
-                  </button> */}
+                  <div className={`absolute inset-0 bg-gradient-to-t from-[#2D2D2D] via-[#2D2D2D]/40 to-transparent transition-opacity duration-500 ${
+                    isActive ? 'opacity-90' : 'opacity-80 group-hover/card:opacity-90'
+                  }`} />
+                  
+                  <div className="absolute inset-0 p-8 md:p-10 flex flex-col justify-end translate-y-4 group-hover/card:translate-y-0 transition-transform duration-500">
+                    <span className="text-[#EDA749] para-sm !font-black tracking-[0.3em] uppercase mb-3 block drop-shadow-md">
+                      {car.category} Class
+                    </span>
+                    <h5 className="text-white heading-3 font-black uppercase mb-6 drop-shadow-md">
+                      {car.name}
+                    </h5>
+                    
+                    {/* Dynamic Hover Text */}
+                    <div className="flex items-center gap-3 text-white para-sm !font-bold uppercase tracking-widest opacity-0 group-hover/card:opacity-100 transition-all duration-500">
+                      {isActive ? (
+                        <span className="text-gray-300 leading-tight">
+                          You are currently exploring this page
+                        </span>
+                      ) : (
+                        <>
+                          Explore Now <MoveRight size={16} className="text-[#E23744]" />
+                        </>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 

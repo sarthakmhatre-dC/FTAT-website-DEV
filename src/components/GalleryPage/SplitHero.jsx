@@ -16,14 +16,14 @@ const SplitHero = () => {
       {/* 1. Integrated Hero Image & Consistent Gradients */}
       <div className="absolute inset-0 lg:left-[35%] z-0 overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center animate-ken-burns scale-110"
+          className="absolute inset-0 bg-cover bg-center animate-ken-burns -mt-40"
           style={{ 
-            backgroundImage: `url('https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=3200&auto=format&fit=crop&crop=focalpoint&fp-y=0.5')`, 
+            backgroundImage: `url('/galleryBackground.jpg')`, 
           }}
         />
         
         {/* Consistent Dynamic Overlay: Matches the depth of your CTA components */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-b md:bg-gradient-to-r from-white via-white/95 md:via-white/80 to-white/60 md:to-transparent" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-b md:bg-gradient-to-r from-white via-white/95 md:via-transparent to-transparent md:to-transparent" />
         
         {/* Bottom Fade to blend with next sections */}
         <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent z-10" />

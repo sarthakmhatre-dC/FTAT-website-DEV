@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { packageContent } from '../data/packageData';
-
+import { ChevronRight } from 'lucide-react';
 // Modular Components
 import BlendedPackageHero from '../components/PackagePage/subPage/BlendedPackageHero';
 import PackagesGrid from '../components/PackagePage/subPage/PackagesGrid';
@@ -23,7 +23,17 @@ const PackageSubPage = () => {
   return (
     <div className="bg-white">
       {/* 1. Dynamic Hero Section */}
-      <BlendedPackageHero 
+      <div className="pt-6 lg:pt-8 px-8 md:px-16 lg:px-20 border-b border-gray-300">
+        <div className="max-w-[1800px] mx-auto flex items-center gap-2 para-sm font-black uppercase tracking-widest text-gray-400 pb-8">
+          <Link to="/" className="hover:text-[#3E4D86] transition-colors">Home</Link>
+          <ChevronRight className="w-3 h-3" />
+          <Link to="/packages" className="hover:text-[#3E4D86] transition-colors">Packages</Link>
+          <ChevronRight className="w-3 h-3" />
+          <span className="text-[#E23744]">{type}</span>
+        </div>
+      </div>
+
+      <BlendedPackageHero
         tag={data.hero.tag}
         title={data.hero.title}
         description={data.hero.description}
@@ -31,7 +41,7 @@ const PackageSubPage = () => {
       />
 
       {/* 3. Dynamic Package Grid */}
-      <PackagesGrid 
+      <PackagesGrid
         title={data.grid.title}
         subtitle={data.grid.subtitle}
         packages={data.grid.packages}
@@ -42,9 +52,9 @@ const PackageSubPage = () => {
       {/* 4. Static Brand Sections */}
       <ValueBentoGrid />
 
-      <FAQSection setId='packages'/>
+      <FAQSection setId='packages' />
 
-      <ContactBanner/>
+      <ContactBanner />
 
     </div>
   );

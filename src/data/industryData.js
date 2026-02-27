@@ -3,7 +3,7 @@ export const industryLogos = {
     { id: 1, name: "Adani", src: "/logos/Adani.png" },
     { id: 2, name: "Beckman Coulter", src: "/logos/BeckmanCoulter.webp" },
     { id: 3, name: "Cello", src: "/logos/Cello.png" },
-    { id: 4, name: "Bharat Bijlee", src: "/logos/bharat-bijlee.png" },
+    { id: 4, name: "Bharat Bijlee", src: "/logos/bharat_bijlee.jpeg" },
     { id: 5, name: "Dominos", src: "/logos/DominosPizzaLogo.png" },
     { id: 6, name: "Welspun", src: "/logos/Welspun.jpg" },
     { id: 7, name: "Eicher", src: "/logos/Eicher-logo.png" },
@@ -15,37 +15,14 @@ export const industryLogos = {
   row2: [
     { id: 12, name: "Hapag Lloyds", src: "/logos/HapagLlyod.jpg" },
     { id: 13, name: "Hawkins", src: "/logos/HawkinsCooker.svg" },
-    { id: 14, name: "Glanbia", src: "/logos/Glanbia.jpg" },
+    { id: 14, name: "Glanbia", src: "/logos/Glanbia.png" },
     { id: 15, name: "Halsted Pharma", src: "/logos/Halsted-Pharma-Logo-1.png" },
     { id: 16, name: "Raychem", src: "/logos/Raychem.jpg" },
     { id: 17, name: "Mother Dairy", src: "/logos/Mother_Dairy.svg" },
-    { id: 18, name: "Raymond", src: "/logos/Raymond.jpg" },
+    { id: 18, name: "Raymond", src: "/logos/Raymond.png" },
     { id: 19, name: "Vikran", src: "/logos/vikran-logo-footer.png" },
     { id: 20, name: "Wimco", src: "/logos/Wimco.png" },
     { id: 21, name: "Vertiv", src: "/logos/VertivLogo.png" },
     { id: 22, name: "Vip", src: "/logos/VIPLogo.png" },
   ]
 };
-
-// Adani
-// Beckman Coulter
-// Cello
-// Bharat Bijlee
-// Dominos
-// Eicher
-// Emerson
-// Foton Motors
-// Gansons
-// Godrej
-// Hapag Lloyds
-// Hawkins
-// Glanbia
-// Halsted Pharma
-// Raychem
-// Mother Dairy
-// Raymond
-// Vikran
-// Vip
-// Wimco
-// Vertiv
-// Welspun
