@@ -8,7 +8,7 @@ import PackagesGrid from '../components/PackagePage/subPage/PackagesGrid';
 import MetricStrip from '../components/common/MetricStrip';
 import ValueBentoGrid from '../components/common/ValueBentoGrid';
 import FAQSection from '../components/common/FAQSection';
-import BottomCTA from '../components/common/BottomCTA';
+import ContactBanner from '../components/common/ContactBanner';
 
 const PackageSubPage = () => {
   const { type } = useParams(); // URL will be /packages/vacation or /packages/corporate
@@ -44,7 +44,7 @@ const PackageSubPage = () => {
 
       <FAQSection setId='packages'/>
 
-      <BottomCTA/>
+      <ContactBanner/>
 
     </div>
   );

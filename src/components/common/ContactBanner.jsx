@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ArrowRight, Headset, X, User, Mail, MessageSquare } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 
-const BottomCTA = () => {
+const ContactBanner = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [queryData, setQueryData] = useState({ name: '', email: '', query: '' });
 
@@ -124,4 +124,4 @@ const BottomCTA = () => {
   );
 };
 
-export default BottomCTA;
+export default ContactBanner;

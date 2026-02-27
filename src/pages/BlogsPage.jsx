@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, MessageSquare, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import { blogPostsArray } from "../data/blogData";
-import BottomCTA from "../components/common/bottomCTA";
+import ContactBanner from "../components/common/ContactBanner";
 
 const BlogsPage = ({ posts = blogPostsArray }) => {
   const INITIAL_COUNT = 6;
@@ -125,7 +125,7 @@ const BlogsPage = ({ posts = blogPostsArray }) => {
         </div>
       </section>
 
-      <BottomCTA/>
+      <ContactBanner/>
     </div>
   );
 };

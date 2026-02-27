@@ -9,7 +9,7 @@ import Testimonials from '../components/HomePage/Testimonials';
 import ContactCTA from '../components/HomePage/ContactCTA';
 import FAQSection from '../components/common/FAQSection';
 import ImageGallery from '../components/HomePage/ImageGallery';
-import BottomCTA from '../components/common/bottomCTA';
+import ContactBanner from '../components/common/ContactBanner';
 
 const HomePage = () => {
   return (
@@ -35,7 +35,7 @@ const HomePage = () => {
 
       <FAQSection setId='home'/>
       
-      <BottomCTA/>
+      <ContactBanner/>
     </div>
   );
 };

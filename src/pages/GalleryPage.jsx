@@ -1,7 +1,7 @@
 import React from 'react';
 import SplitHero from '../components/GalleryPage/SplitHero';
 import ImageGalleryGrid from '../components/GalleryPage/ImageGalleryGrid';
-import BottomCTA from '../components/common/bottomCTA';
+import ContactBanner from '../components/common/ContactBanner';
 
 const GalleryPage = () => {
   return (
@@ -11,7 +11,7 @@ const GalleryPage = () => {
 
         <ImageGalleryGrid/>
 
-        <BottomCTA/>
+        <ContactBanner/>
 
     </div>
   );

@@ -6,7 +6,8 @@ import CorporateSolutions from "../components/common/CorporateSolutions"
 import CorporateProposalCTA from "../components/AboutUsPage/CorporateProposalCTA"
 import AboutTrustBar from "../components/AboutUsPage/AboutTrustbar"
 import FAQSection from "../components/common/FAQSection"
-import BottomCTA from "../components/common/bottomCTA"
+import ContactBanner from "../components/common/ContactBanner"
+
 
 function AboutUsPage() {
   return (
@@ -19,7 +20,7 @@ function AboutUsPage() {
     <Workflow/>
     <CorporateProposalCTA/>
     <FAQSection setId="aboutUs"/>
-    <BottomCTA/>
+    <ContactBanner/>
     </>
   )
 }

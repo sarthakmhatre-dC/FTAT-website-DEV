@@ -7,6 +7,7 @@ import ProductShowCase from '../components/FleetPage/subPage/ProductShowCase';
 import ContentStrategyBlock from '../components/FleetPage/subPage/ContentStrategyBlock';
 import ServiceFleetShowcase from '../components/FleetPage/subPage/ServiceFleetShowCase';
 import RentalForm from '../components/FleetPage/RentalForm';
+import ContactBanner from '../components/common/ContactBanner';
 
 const CommonFleetSubPage = () => {
   const { carId } = useParams();
@@ -40,6 +41,8 @@ const CommonFleetSubPage = () => {
 
       {/* Static Reusable Sections */}
       <ServiceFleetShowcase />
+
+      <ContactBanner/>
       
     </div>
   );
