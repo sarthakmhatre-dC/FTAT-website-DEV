@@ -56,7 +56,7 @@ const PackageHeroCTA = () => {
                         {/* Vacation Package Card - Now Clickable */}
                         <Link to="/packages/vacation" className="group relative h-90 rounded-[2.5rem] overflow-hidden shadow-2xl transition-transform duration-500 hover:-translate-y-2 cursor-pointer">
                             <img
-                                src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800"
+                                src="/packages/ParaglidingImage.avif"
                                 alt="Vacation"
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             />

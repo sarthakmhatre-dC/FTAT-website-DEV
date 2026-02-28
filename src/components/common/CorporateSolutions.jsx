@@ -6,7 +6,7 @@ const CorporateSolutions = () => {
     {
       title: "Employee Pickup & Drop Services",
       description: "Daily shift transport with SLA-backed reliability",
-      image: "/corporateSolutions/Passenger.jpg",
+      image: "/corporateSolutions/Passenger.png",
       tag: "Daily Shift"
     },
     {

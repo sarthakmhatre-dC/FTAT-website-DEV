@@ -8,19 +8,19 @@ const PremiumFleetCTA = () => {
     {
       id: "sedans",
       name: "Premium Sedans",
-      image: "https://images.unsplash.com/photo-1541348263662-e0c8de4259ba?q=80&w=2070&auto=format&fit=crop", // Elegant sedan image
+      image: "/fleet/Sedan/Maruti_Swift_Dzire/Dezire.avif", // Elegant sedan image
       path: "/fleet/sedans"
     },
     {
       id: "suvs",
       name: "Spacious SUVs",
-      image: "https://images.unsplash.com/photo-1632245889029-e406fbdd14ec?q=80&w=2070&auto=format&fit=crop", // Strong SUV image
+      image: "/fleet/SUV/Maruti_Eritiga/front-left-side-47.avif", // Strong SUV image
       path: "/fleet/suvs"
     },
     {
       id: "buses",
       name: "Luxury Coaches",
-      image: "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?q=80&w=2070&auto=format&fit=crop", // High-quality bus/coach image
+      image: "/fleet/Bus/Force_Urbania/exterior-5-1.jpg", // High-quality bus/coach image
       path: "/fleet/buses"
     },
   ];

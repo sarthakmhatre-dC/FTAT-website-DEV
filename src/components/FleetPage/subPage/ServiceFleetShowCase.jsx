@@ -15,8 +15,8 @@ const ServiceFleetShowcase = ({
   // Updated to match your new data structure keys exactly
   fleetCategories = [
     { id: "sedans", src: "/fleet/Sedan/Maruti_Swift_Dzire/Dezire.avif", name: "Premium Sedans", category: "Smart" },
-    { id: "suvs", src: "/fleet/SUV/Maruti_Eritiga/ex_img03.jpg", name: "Spacious SUVs", category: "Rugged" },
-    { id: "buses", src: "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?q=80&w=800", name: "Luxury Coaches", category: "Mass Transit" }
+    { id: "suvs", src: "/fleet/SUV/Maruti_Eritiga/front-left-side-47.avif", name: "Spacious SUVs", category: "Rugged" },
+    { id: "buses", src: "/fleet/Bus/Force_Urbania/exterior-5-1.jpg", name: "Luxury Coaches", category: "Mass Transit" }
   ]
 }) => {
   const navigate = useNavigate();

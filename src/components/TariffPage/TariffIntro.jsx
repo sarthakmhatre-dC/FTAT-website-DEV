@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, FileText, ArrowDown } from 'lucide-react';
+import { ShieldCheck, Download, ArrowDown, IndianRupee } from 'lucide-react';
 
 const TariffIntro = () => {
   return (
@@ -36,7 +36,7 @@ const TariffIntro = () => {
 
             {/* Description Block: Border-left logic matches subpage partnership/legacy style */}
             <div className="border-t-2 md:border-t-0 md:border-l-4 border-[#E23744] pt-8 md:pt-0 md:pl-8">
-              <p className="para-md lg:para-lg text-gray-500 font-medium text-justify leading-relaxed max-w-2xl">
+              <p className="para-lg lg:para-lg text-gray-500 font-medium text-justify leading-relaxed max-w-2xl">
                 At Facilities Tours and Travels, we maintain a strictly transparent pricing architecture designed for corporate mobility.
                 Our rates are structured on a standardized rental basis and specific airport/railway transfer slabs to ensure your
                 logistics planning is seamless and predictable.
@@ -58,11 +58,11 @@ const TariffIntro = () => {
 
             <div className="flex items-center gap-4 p-6 bg-[#3E4D86] text-white rounded-[1.5rem] md:rounded-3xl shadow-xl shadow-blue-900/20">
               <div className="p-3 bg-white/10 text-[#EDA749] rounded-2xl">
-                <FileText size={24} />
+                <IndianRupee size={24} />
               </div>
               <div>
-                <p className="para-md !font-black uppercase tracking-widest">PDF Ready</p>
-                <p className="para-xs text-white/60 !font-bold uppercase mt-1">Institutional Quotation</p>
+                <p className="para-md !font-black uppercase tracking-widest">Reasonable Rates</p>
+                <p className="para-xs text-white/60 !font-bold uppercase mt-1">Transparent Pricing</p>
               </div>
             </div>
           </div>
@@ -72,15 +72,19 @@ const TariffIntro = () => {
         <div className="mt-16 md:mt-24 group cursor-pointer w-full sm:w-auto">
           <div className="flex flex-col sm:flex-row items-center gap-6">
             {/* 1. Main Action Button: Matches AboutUsCTA styling */}
-            <button className="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-[#E23744] text-white font-bold rounded-full hover:bg-[#E23744]/90 transition-all transform hover:-translate-y-1 shadow-xl uppercase para-sm tracking-widest">
-              Explore Rate Matrices
-              <ArrowDown size={18} className="animate-bounce" />
-            </button>
+            <a
+              href="https://drive.google.com/uc?export=download&id=1ULPsq3mRoO5SVAJBeD0H--WEYxdK3G3p"
+              className="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-[#E23744] text-white font-bold rounded-full hover:bg-[#E23744]/90 transition-all transform hover:-translate-y-1 shadow-xl uppercase para-sm tracking-widest"
+              download="Rate-Lists"
+            >
+              <Download size={20} className="shrink-0" />
+              Download Rate Lists
+            </a>
 
             {/* 2. Optional Institutional Detail (Consistent with subpage design) */}
             <div className="hidden md:flex items-center gap-3">
               <div className="h-[2px] w-8 bg-[#2D2D2D]/10" />
-              <span className="para-md text-gray-600 uppercase tracking-widest">
+              <span className="para-md text-gray-600 uppercase tracking-widest font-bold">
                 Official 2026 Tariffs
               </span>
             </div>

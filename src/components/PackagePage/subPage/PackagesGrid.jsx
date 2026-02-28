@@ -43,8 +43,8 @@ const PackagesGrid = ({
   const handleWhatsAppSubmit = (e) => {
     e.preventDefault();
 
-    const ownerNumber = "9321685221"; 
-    
+    const ownerNumber = import.meta.env.VITE_CLIENT_CONTACT;
+
     // Combine Form Data with Selected Package Data
     const message = `*New Package Booking Request*%0a` +
       `------------------------%0a` +
@@ -65,13 +65,13 @@ const PackagesGrid = ({
   };
 
   return (
-    <section className="w-full py-24 bg-[#F4F4F2]/30">
+    <section id="packages-grid" className="w-full py-24 bg-[#F4F4F2]/30 ">
       <div className="max-w-8xl mx-auto px-8 md:px-16 lg:px-20">
 
         {/* Header Section */}
         <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="max-w-2xl">
-            <span className="text-[#E23744] font-black para-sm md:para-md uppercase tracking-[0.4em] md:tracking-[0.5em]">
+            <span className="text-[#E23744] font-black para-md md:para-md uppercase tracking-[0.2em] md:tracking-[0.3em]">
               Explore Excellence
             </span>
             <h2 className="heading-1 font-black text-[#2D2D2D] tracking-tighter leading-none mt-5">
@@ -131,25 +131,25 @@ const PackagesGrid = ({
                   alt={selectedPackage.title}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                
+
                 {/* Package Info Overlay on Image */}
                 <div className="absolute bottom-0 left-0 p-8 w-full text-white">
-                   <p className="text-[10px] font-bold uppercase tracking-widest text-[#EDA749] mb-1">
-                     {selectedPackage.location}
-                   </p>
-                   <h3 className="text-2xl font-black leading-tight tracking-tight shadow-sm">
-                     {selectedPackage.title}
-                   </h3>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-[#EDA749] mb-1">
+                    {selectedPackage.location}
+                  </p>
+                  <h3 className="text-2xl font-black leading-tight tracking-tight shadow-sm">
+                    {selectedPackage.title}
+                  </h3>
                 </div>
               </div>
 
               {/* Right Side: Dynamic Content Area */}
               <div className="w-full md:w-[55%] p-8 md:p-12 lg:p-14 flex flex-col overflow-y-auto">
-                
+
                 {!showBookingForm ? (
                   // VIEW 1: PREMIUM PACKAGE DETAILS
                   <div className="animate-in slide-in-from-right-8 duration-500 flex flex-col h-full">
-                    
+
                     <div className="mb-8">
                       <span className="text-[#E23744] font-black text-[10px] md:text-xs uppercase tracking-widest mb-3 block">
                         Package Overview
@@ -211,7 +211,7 @@ const PackagesGrid = ({
                     </div>
 
                     {/* CTA Button */}
-                    <button 
+                    <button
                       onClick={() => setShowBookingForm(true)}
                       className="mt-auto w-full py-5 bg-[#E23744] hover:bg-[#2D2D2D] text-white font-black rounded-2xl shadow-xl shadow-[#E23744]/20 transition-all duration-300 flex items-center justify-center gap-3 uppercase text-sm tracking-[0.2em] group shrink-0"
                     >
@@ -235,7 +235,7 @@ const PackagesGrid = ({
                     </div>
 
                     <form onSubmit={handleWhatsAppSubmit} className="space-y-4 flex-1">
-                      
+
                       <div className="relative group">
                         <User className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86] transition-colors group-focus-within:text-[#E23744]" size={18} />
                         <input type="text" name="name" value={formData.name} onChange={handleFormChange} placeholder="Full Name" className="w-full pl-12 pr-4 py-3.5 bg-gray-50 border border-gray-100 focus:bg-white focus:border-[#3E4D86]/20 rounded-xl outline-none text-sm font-semibold text-[#2D2D2D] transition-all" required />

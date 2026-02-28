@@ -102,7 +102,7 @@ export const clientCategories = [
       { id: 601, name: "Cenmar Maritime Agencies", logo: "/logos/CenmarMaritimeAgencies.png" },
       { id: 602, name: "Hapag Lloyd Global Services", logo: "/logos/HapagLlyod.jpg" },
       { id: 603, name: "IGOPL Offshore Pvt Ltd", logo: "/logos/IGOPL-logo.png" },
-      { id: 604, name: "Lloyds Register Marine & Offshore", logo: "/logos/Lloyd_sRegisterMarine.png" },
+      { id: 604, name: "Lloyds Register Marine & Offshore", logo: "/logos/LlyodRegister.png" },
       // { id: 605, name: "Impel Services Pvt Ltd", logo: "/logos/impel.png" },
     ]
   },

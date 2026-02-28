@@ -8,7 +8,7 @@ const FleetShowCase = () => {
     {
       title: "Compliance & Safety First",
       description: "Ensures safety and compliance through rigorous driver verification, meticulous documentation, and standardized SOPs.",
-      image: "/fleetShowCase/Compliance.png",
+      image: "/fleetShowCase/Complaince.png",
     },
     {
       title: "On-Time, Every Day",
@@ -95,34 +95,37 @@ const FleetShowCase = () => {
             <div
               key={index}
               className={`absolute inset-0 transition-all duration-1000 ease-in-out transform ${index === currentIndex
-                ? "opacity-100 scale-100 translate-x-0"
-                : "opacity-0 scale-105 pointer-events-none"
+                  ? "opacity-100 scale-100 translate-x-0"
+                  : "opacity-0 scale-105 pointer-events-none"
                 }`}
             >
               <img
                 src={slide.image}
                 alt={slide.title}
-                // Maintained main image opacity for mobile view
-                className="w-full h-full object-cover opacity-60 scale-110"
+                // Removed opacity-60 so the image is fully bright and clear
+                className="w-full h-full object-cover scale-110"
               />
 
-              {/* UPDated: Increased opacity to 50% for a noticeable but subtle desktop overlay */}
-              <div className="absolute inset-0 bg-black/60 hidden md:block pointer-events-none" />
+              {/* Subtle gradient overlay restricted to bottom-left area for text readability.
+                On mobile: covers the bottom 2/3 and fades up.
+                On desktop: covers the left 3/4 and fades right.
+              */}
+              <div className="absolute bottom-0 left-0 w-full h-2/3 md:h-full md:w-3/4 bg-gradient-to-t md:bg-gradient-to-r from-black/90 via-black/40 to-transparent pointer-events-none" />
 
-              {/* Existing text gradient overlay (unchanged) */}
-              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-tr from-black/90 via-black/40 to-transparent pointer-events-none" />
+              <div className="absolute top-0 right-0 w-full h-2/3 md:h-full md:w-3/4 bg-gradient-to-b md:bg-gradient-to-l from-black/90 via-black/40 to-transparent pointer-events-none" />
 
               <div className="absolute bottom-0 left-0 p-6 md:p-16 w-full md:max-w-2xl z-10">
-                <h3 className="heading-3 text-white mb-3 md:mb-4">
+                <h3 className="heading-3 text-white mb-3 md:mb-4 drop-shadow-md">
                   {slide.title}
                 </h3>
-                <p className="para-lg text-gray-300 mb-6 md:mb-8 max-w-xl">
+                <p className="para-lg text-gray-200 mb-6 md:mb-8 max-w-xl drop-shadow">
                   {slide.description}
                 </p>
               </div>
 
-              <div className="absolute top-6 right-6 md:top-10 md:right-10 pointer-events-none">
-                <span className="text-white/10 text-6xl md:text-8xl font-black tracking-tighter">
+              <div className="absolute top-6 right-6 md:top-10 md:right-10 pointer-events-none z-10">
+                {/* Slightly increased opacity and added a drop shadow so the number stays visible on bright images */}
+                <span className="text-white/30 text-6xl md:text-8xl font-black tracking-tighter drop-shadow-lg">
                   0{index + 1}
                 </span>
               </div>

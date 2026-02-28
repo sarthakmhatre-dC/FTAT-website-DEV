@@ -12,7 +12,7 @@ const ContactBanner = () => {
 
   const handleQuerySubmit = (e) => {
     e.preventDefault();
-    const ownerNumber = "9321685221";
+    const ownerNumber = import.meta.env.VITE_CLIENT_CONTACT;
     const message = `New Inquiry%0a------------------------%0aHi, I am ${queryData.name}%0aEmail: ${queryData.email}%0aQuery: ${queryData.query}`;
     window.open(`https://wa.me/${ownerNumber}?text=${message}`, '_blank');
     setQueryData({ name: '', email: '', query: '' });
@@ -20,7 +20,7 @@ const ContactBanner = () => {
   };
 
   return (
-    <section 
+    <section
       className="relative w-full overflow-hidden bg-[#262626] border-t border-white/5"
       style={{
         paddingTop: 'clamp(5rem, 8vw, 7.5rem)',
@@ -31,17 +31,17 @@ const ContactBanner = () => {
           - On mobile, the vertical gradient now stays transparent for 40% of the height, 
             ensuring the image is much clearer.
       */}
-      <div 
+      <div
         className="absolute inset-0 z-0 bg-no-repeat bg-right-bottom md:bg-right"
-        style={{ 
+        style={{
           backgroundImage: `url('/galleryImages/galleryImage5.webp')`,
           backgroundSize: 'auto 100%',
           /* Blending logic: Pushed the 'black' stop further back on mobile for more visibility */
-          maskImage: window.innerWidth < 768 
-            ? 'none' 
+          maskImage: window.innerWidth < 768
+            ? 'none'
             : 'linear-gradient(to bottom, transparent 0%, black 100%), linear-gradient(to right, transparent 0%, transparent 40%, black 85%)',
-          WebkitMaskImage: window.innerWidth < 768 
-            ? 'none' 
+          WebkitMaskImage: window.innerWidth < 768
+            ? 'none'
             : 'linear-gradient(to bottom, transparent 0%, black 100%), linear-gradient(to right, transparent 0%, transparent 40%, black 85%)',
           maskComposite: 'intersect',
           WebkitMaskComposite: 'source-in'
@@ -55,7 +55,7 @@ const ContactBanner = () => {
 
       <div className="relative z-20 max-w-8xl mx-auto px-6 sm:px-10 md:px-16 lg:px-20 w-full text-center md:text-left">
         <div className="max-w-3xl mx-auto md:mx-0">
-          
+
           <div className="flex flex-col md:flex-row items-center gap-3 mb-8 md:mb-10">
             <div className="flex items-center gap-3">
               <Headset size={18} className="text-[#E23744]" />
@@ -71,14 +71,14 @@ const ContactBanner = () => {
           </h2>
 
           <div className="flex flex-col sm:flex-row items-center gap-6">
-            <button 
+            <button
               onClick={() => setIsModalOpen(true)}
               className="w-full sm:w-auto px-10 py-5 bg-[#E23744] text-white font-black text-[11px] uppercase tracking-[0.2em] rounded-2xl md:rounded-full shadow-2xl shadow-black/40 hover:bg-white hover:text-[#2D2D2D] transition-all duration-500 flex items-center justify-center gap-3 group active:scale-95"
             >
               Get in touch now
               <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
             </button>
-            
+
             <span className="para-md text-white/80 hidden sm:block drop-shadow-sm">Available 24/7 for Institutional Support</span>
             <span className="para-xs text-white/60 md:hidden uppercase tracking-widest font-bold">Available 24/7</span>
           </div>

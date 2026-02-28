@@ -20,7 +20,7 @@ const BookingModal = ({ isOpen, onClose }) => {
     } else {
       document.body.style.overflow = 'unset';
     }
-    return () => {document.body.style.overflow = 'unset';};
+    return () => { document.body.style.overflow = 'unset'; };
   }, [isOpen]);
 
   const handleChange = (e) => {
@@ -35,8 +35,8 @@ const BookingModal = ({ isOpen, onClose }) => {
       alert("Please select a vehicle and a rental purpose.");
       return;
     }
-    
-    const ownerNumber = "9321685221"; 
+
+    const ownerNumber = import.meta.env.VITE_CLIENT_CONTACT;
     const message = `*New Booking Request*%0a` +
       `------------------------%0a` +
       `*Name:* ${formData.name}%0a` +
@@ -50,7 +50,7 @@ const BookingModal = ({ isOpen, onClose }) => {
       `*Details:* ${formData.details}`;
 
     window.open(`https://wa.me/${ownerNumber}?text=${message}`, '_blank');
-    
+
     // Self-reset and close after action
     setFormData(initialState);
     onClose();
@@ -61,14 +61,14 @@ const BookingModal = ({ isOpen, onClose }) => {
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6">
       {/* Premium Backdrop with Blur */}
-      <div 
+      <div
         className="absolute inset-0 bg-[#2D2D2D]/70 backdrop-blur-md transition-opacity duration-300 animate-in fade-in"
         onClick={onClose}
       />
 
       {/* Modal Card */}
       <div className="relative w-full max-w-5xl bg-white rounded-[2rem] md:rounded-[3rem] shadow-2xl overflow-hidden animate-in zoom-in slide-in-from-bottom-10 duration-500 max-h-[95vh] flex flex-col">
-        
+
         {/* Header Area */}
         <div className="p-8 md:p-12 pb-0 flex justify-between items-start">
           <div className="max-w-xl">
@@ -80,8 +80,8 @@ const BookingModal = ({ isOpen, onClose }) => {
             </h2>
             <div className="mt-4 h-1.5 w-16 bg-[#EDA749] rounded-full" />
           </div>
-          
-          <button 
+
+          <button
             onClick={onClose}
             className="p-3 bg-[#F4F4F2] text-[#2D2D2D] rounded-full hover:bg-[#E23744] hover:text-white transition-all duration-300 group shadow-md"
           >
@@ -102,14 +102,14 @@ const BookingModal = ({ isOpen, onClose }) => {
                 <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86] group-focus-within:text-[#E23744] transition-colors">
                   {React.cloneElement(input.icon, { size: 18 })}
                 </div>
-                <input 
-                  type={input.type} 
-                  name={input.name} 
-                  value={formData[input.name]} 
-                  onChange={handleChange} 
-                  placeholder={input.placeholder} 
-                  className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-2 border-transparent focus:bg-white focus:border-[#3E4D86]/10 rounded-2xl outline-none text-sm font-semibold text-[#2D2D2D] transition-all shadow-inner" 
-                  required 
+                <input
+                  type={input.type}
+                  name={input.name}
+                  value={formData[input.name]}
+                  onChange={handleChange}
+                  placeholder={input.placeholder}
+                  className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-2 border-transparent focus:bg-white focus:border-[#3E4D86]/10 rounded-2xl outline-none text-sm font-semibold text-[#2D2D2D] transition-all shadow-inner"
+                  required
                 />
               </div>
             ))}
@@ -145,8 +145,8 @@ const BookingModal = ({ isOpen, onClose }) => {
             </div>
 
             <div className="relative sm:col-span-2 lg:col-span-1">
-               <FileText className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86]" size={18} />
-               <input type="text" name="details" value={formData.details} onChange={handleChange} placeholder="Specific Requirements" className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-2xl outline-none text-sm font-semibold text-[#2D2D2D]" />
+              <FileText className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86]" size={18} />
+              <input type="text" name="details" value={formData.details} onChange={handleChange} placeholder="Specific Requirements" className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-2xl outline-none text-sm font-semibold text-[#2D2D2D]" />
             </div>
 
             <div className="sm:col-span-2 lg:col-span-3 mt-4 mb-6">

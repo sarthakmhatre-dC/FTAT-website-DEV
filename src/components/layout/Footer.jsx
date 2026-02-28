@@ -9,10 +9,10 @@ const Footer = () => {
   const quickLinks = [
     { name: 'Home', href: '/home' },
     { name: 'About Us', href: '/about' },
-    { name: 'Services', href: '/fleet' },
+    { name: 'Fleet', href: '/fleet' },
     { name: 'Packages', href: '/packages' },
-    { name: 'Testimonials', href: '/clients' },
-    { name: 'Terms & Conditions', href: '/resources/terms' },
+    { name: 'Gallery', href: '/gallery' },
+    { name: 'Clients', href: '/clients' },
   ];
 
   return (
@@ -38,6 +38,13 @@ const Footer = () => {
               <FaWhatsapp size={22} />
               <span className="para-md !text-white !tracking-[0.2em] font-black uppercase">Live Support</span>
             </a>
+            <Link
+              to="/contact"
+              className="group flex items-center gap-3 px-8 py-4 bg-[#3E4D86] rounded-full hover:shadow-[0_0_25px_rgba(37,211,102,0.4)] transition-all duration-300 w-full sm:w-auto justify-center"
+            >
+              <Phone size={22} />
+              <span className="para-md !text-white !tracking-[0.2em] font-black uppercase">Contact Us</span>
+            </Link>
           </div>
         </div>
       </div>

@@ -55,7 +55,7 @@ const WhoWeAre = () => {
             {/* Design Element: Floating Frame */}
             <div className="absolute -top-6 -left-6 w-32 h-32 border-t-4 border-l-4 border-[#EDA749] z-0 rounded-tl-[3rem]" />
             
-            <div className="relative z-10 rounded-[3.5rem] overflow-hidden shadow-2xl shadow-gray-300/60 aspect-[16/10]">
+            <div className="relative z-10 rounded-[3.5rem] overflow-hidden shadow-2xl shadow-gray-300/60 aspect-[16/10] hover:scale-105 transition-transform duration-1000 ease-out">
               <img 
                 src="/who_we_are.webp" 
                 alt="FTAT Operations Team" 

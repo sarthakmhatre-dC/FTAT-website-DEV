@@ -24,7 +24,7 @@ const RentalForm = () => {
       alert("Please select a vehicle and a rental purpose.");
       return;
     }
-    const ownerNumber = "9321685221"; 
+    const ownerNumber = import.meta.env.VITE_CLIENT_CONTACT;
     const message = `New Booking Request%0a` +
       `------------------------%0a` +
       `Name: ${formData.name}%0a` +
@@ -45,7 +45,7 @@ const RentalForm = () => {
     <section className="relative w-full pb-16 md:pb-24">
       {/* 1. Integrated Hero Background - Height managed via flex/padding */}
       <div className="min-h-[90vh] absolute top-0 inset-x-0 h-[70%] md:h-[65%] z-0 overflow-hidden">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url('/backgroundImages/FleetPageCTA.webp')` }}
         />
@@ -65,10 +65,10 @@ const RentalForm = () => {
         {/* 2. Form Container - Negative margin pulls it into the image area */}
         <div className="max-w-6xl mx-auto px-4 md:px-6 lg:px-12">
           <div className="bg-white rounded-[1.5rem] md:rounded-[2.5rem] shadow-2xl border border-gray-100 p-6 md:p-10 lg:p-12">
-            
+
             <div className="mb-8 md:mb-10">
-               <span className="para-md text-[#E23744] uppercase font-bold tracking-[0.2em]">Reservation Details</span>
-               <h3 className="heading-3 text-[#2D2D2D] mt-2">Instant Booking Request</h3>
+              <span className="para-md text-[#E23744] uppercase font-bold tracking-[0.2em]">Reservation Details</span>
+              <h3 className="heading-3 text-[#2D2D2D] mt-2">Instant Booking Request</h3>
             </div>
 
             <form onSubmit={handleWhatsAppRedirect} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
@@ -82,14 +82,14 @@ const RentalForm = () => {
                   <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86] group-focus-within:text-[#E23744] transition-colors">
                     {React.cloneElement(input.icon, { size: 18 })}
                   </div>
-                  <input 
-                    type={input.type} 
-                    name={input.name} 
-                    value={formData[input.name]} 
-                    onChange={handleChange} 
-                    placeholder={input.placeholder} 
-                    className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-2 border-transparent focus:border-[#3E4D86]/20 rounded-xl outline-none para-sm font-medium text-[#2D2D2D] transition-all" 
-                    required 
+                  <input
+                    type={input.type}
+                    name={input.name}
+                    value={formData[input.name]}
+                    onChange={handleChange}
+                    placeholder={input.placeholder}
+                    className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-2 border-transparent focus:border-[#3E4D86]/20 rounded-xl outline-none para-sm font-medium text-[#2D2D2D] transition-all"
+                    required
                   />
                 </div>
               ))}
@@ -125,8 +125,8 @@ const RentalForm = () => {
               </div>
 
               <div className="relative sm:col-span-2 lg:col-span-1">
-                 <FileText className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86]" size={18} />
-                 <input type="text" name="details" value={formData.details} onChange={handleChange} placeholder="Specific Requirements" className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl outline-none para-sm font-medium text-[#2D2D2D]" />
+                <FileText className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86]" size={18} />
+                <input type="text" name="details" value={formData.details} onChange={handleChange} placeholder="Specific Requirements" className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl outline-none para-sm font-medium text-[#2D2D2D]" />
               </div>
 
               <div className="sm:col-span-2 lg:col-span-3 mt-4">

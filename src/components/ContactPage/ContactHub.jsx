@@ -34,7 +34,7 @@ const ContactHub = () => {
             alert("Please select a vehicle and a rental purpose.");
             return;
         }
-        const ownerNumber = "9321685221";
+        const ownerNumber = import.meta.env.VITE_CLIENT_CONTACT;
         const message = `New Booking Request%0a` +
             `------------------------%0a` +
             `Name: ${formData.name}%0a` +
@@ -58,7 +58,7 @@ const ContactHub = () => {
                 <div
                     className="absolute inset-0 z-0 bg-cover bg-fixed bg-center"
                     style={{
-                        backgroundImage: `url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop')`,
+                        backgroundImage: `url('/blogs/image.png')`,
                     }}
                 />
                 <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#2D2D2D] via-[#2D2D2D]/90 to-[#3E4D86]/40" />
@@ -68,10 +68,10 @@ const ContactHub = () => {
                         <span className="text-[#E23744] font-bold tracking-[0.3em] para-md uppercase mb-4 block">
                             Global Support Network
                         </span>
-                        <h1 className="heading-1 font-black text-white leading-tight tracking-tighter">
-                            Let’s Architect <br />
+                        <h1 className="heading-1 font-black text-white leading-tight tracking-[0.02em]">
+                            Your Journey, <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#EDA749] to-[#f3c681]">
-                                Your Movement.
+                                Our Priority
                             </span>
                         </h1>
                     </div>
@@ -81,7 +81,7 @@ const ContactHub = () => {
                             <div className="p-3 bg-[#E23744] rounded-xl text-white"><Phone size={20} /></div>
                             <div>
                                 <p className="para-sm font-bold text-white/50 uppercase tracking-widest">Immediate Hotline</p>
-                                <p className="text-white font-bold">+91 93216 85221</p>
+                                <p className="text-white font-bold">+91 {import.meta.env.VITE_CLIENT_CONTACT}</p>
                             </div>
                         </div>
                     </div>
@@ -91,7 +91,7 @@ const ContactHub = () => {
             {/* 2. Form Container - UI strictly matched to RentalForm */}
             <div className="relative z-30 mx-auto px-6 lg:px-12 -mt-50 max-w-6xl">
                 <div className="bg-white rounded-[2.5rem] shadow-[0_50px_100px_rgba(0,0,0,0.15)] border border-gray-100 p-8 md:p-12">
-                    
+
                     <div className="mb-10">
                         <span className="para-md text-[#E23744] uppercase font-bold tracking-[0.2em]">Reservation Details</span>
                         <h3 className="heading-3 text-[#2D2D2D] mt-2">Instant Booking Request</h3>
@@ -125,11 +125,11 @@ const ContactHub = () => {
                         {/* Vehicle Select */}
                         <div className="relative group">
                             <Car className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86]" size={18} />
-                            <select 
-                                name="vehicle" 
-                                value={formData.vehicle} 
-                                onChange={handleChange} 
-                                className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl outline-none para-sm font-medium text-[#2D2D2D] appearance-none cursor-pointer" 
+                            <select
+                                name="vehicle"
+                                value={formData.vehicle}
+                                onChange={handleChange}
+                                className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl outline-none para-sm font-medium text-[#2D2D2D] appearance-none cursor-pointer"
                                 required
                             >
                                 <option disabled value="Select Vehicle">Select Vehicle</option>
@@ -142,40 +142,40 @@ const ContactHub = () => {
                         {/* Date Input */}
                         <div className="relative group">
                             <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86]" size={18} />
-                            <input 
-                                type="date" 
-                                name="date" 
-                                min={today} 
-                                value={formData.date} 
-                                onChange={handleChange} 
-                                className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl outline-none para-sm font-medium text-[#2D2D2D] cursor-pointer" 
-                                required 
+                            <input
+                                type="date"
+                                name="date"
+                                min={today}
+                                value={formData.date}
+                                onChange={handleChange}
+                                className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl outline-none para-sm font-medium text-[#2D2D2D] cursor-pointer"
+                                required
                             />
                         </div>
 
                         {/* Travelers Input */}
                         <div className="relative group">
                             <Users className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86]" size={18} />
-                            <input 
-                                type="number" 
-                                name="travelers" 
-                                min="1" 
-                                value={formData.travelers} 
-                                onChange={handleChange} 
-                                placeholder="Travelers" 
-                                className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl outline-none para-sm font-medium text-[#2D2D2D]" 
-                                required 
+                            <input
+                                type="number"
+                                name="travelers"
+                                min="1"
+                                value={formData.travelers}
+                                onChange={handleChange}
+                                placeholder="Travelers"
+                                className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl outline-none para-sm font-medium text-[#2D2D2D]"
+                                required
                             />
                         </div>
 
                         {/* Purpose Select */}
                         <div className="relative group">
                             <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86]" size={18} />
-                            <select 
-                                name="purpose" 
-                                value={formData.purpose} 
-                                onChange={handleChange} 
-                                className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl outline-none para-sm font-medium text-[#2D2D2D] appearance-none cursor-pointer" 
+                            <select
+                                name="purpose"
+                                value={formData.purpose}
+                                onChange={handleChange}
+                                className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl outline-none para-sm font-medium text-[#2D2D2D] appearance-none cursor-pointer"
                                 required
                             >
                                 <option disabled value="Select Rental Purpose">Select Purpose</option>
@@ -188,20 +188,20 @@ const ContactHub = () => {
                         {/* Details Input */}
                         <div className="relative">
                             <FileText className="absolute left-4 top-1/2 -translate-y-1/2 text-[#3E4D86]" size={18} />
-                            <input 
-                                type="text" 
-                                name="details" 
-                                value={formData.details} 
-                                onChange={handleChange} 
-                                placeholder="Specific Requirements" 
-                                className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl outline-none para-sm font-medium text-[#2D2D2D]" 
+                            <input
+                                type="text"
+                                name="details"
+                                value={formData.details}
+                                onChange={handleChange}
+                                placeholder="Specific Requirements"
+                                className="w-full pl-12 pr-4 py-4 bg-[#F4F4F2] border-none rounded-xl outline-none para-sm font-medium text-[#2D2D2D]"
                             />
                         </div>
 
                         {/* Submit Button */}
                         <div className="sm:col-span-2 lg:col-span-3 mt-4">
-                            <button 
-                                type="submit" 
+                            <button
+                                type="submit"
                                 className="w-full py-5 bg-[#E23744] text-white font-bold rounded-2xl shadow-xl hover:shadow-red-900/20 hover:-translate-y-1 transition-all duration-300 uppercase para-md !tracking-[0.2em]"
                             >
                                 Confirm Booking Request

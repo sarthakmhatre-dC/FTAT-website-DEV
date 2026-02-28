@@ -52,7 +52,7 @@ const TariffNotes = () => {
 
   const handleQuerySubmit = (e) => {
     e.preventDefault();
-    const ownerNumber = "9321685221";
+    const ownerNumber = import.meta.env.VITE_CLIENT_CONTACT;
     const message = `Tariff Inquiry%0a------------------------%0aHi, I am ${queryData.name}%0aEmail: ${queryData.email}%0aQuery: ${queryData.query}`;
     window.open(`https://wa.me/${ownerNumber}?text=${message}`, '_blank');
     setQueryData({ name: '', email: '', query: '' });
@@ -62,7 +62,7 @@ const TariffNotes = () => {
   return (
     <section className="w-full px-6 md:px-8 lg:px-16 py-12 md:py-24 bg-[#F4F4F2]/40">
       <div className="max-w-7xl mx-auto">
-        
+
         {/* Section Header */}
         <div className="flex items-center gap-6 mb-16">
           <div className="h-px flex-grow bg-gray-200" />
@@ -75,8 +75,8 @@ const TariffNotes = () => {
         {/* Enhanced Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {notes.map((note, idx) => (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               className={`relative bg-white p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border-l-[10px] ${note.accent} shadow-2xl shadow-gray-200/40 hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between min-h-[240px] group`}
             >
               <div className="flex flex-col gap-6">
@@ -98,7 +98,7 @@ const TariffNotes = () => {
               {/* Enhanced Action Button: Consistent with AboutUsCTA and SplitHero buttons */}
               {note.isCTA && (
                 <div className="mt-6">
-                  <button 
+                  <button
                     onClick={() => setIsModalOpen(true)}
                     className="w-full sm:w-auto flex items-center justify-center gap-3 px-6 py-3.5 bg-[#E23744] text-white font-black rounded-full shadow-lg hover:bg-[#2D2D2D] transition-all transform hover:-translate-y-1 active:scale-95 uppercase para-xs tracking-widest"
                   >
