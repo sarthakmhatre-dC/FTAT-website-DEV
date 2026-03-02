@@ -30,7 +30,7 @@ const Footer = () => {
           <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-8">
             <span className="para-sm font-medium tracking-wide text-white/60 hidden lg:block italic">Ready to book your next journey?</span>
             <a
-              href="https://wa.me/9321685221"
+              href="https://wa.me/9820943077"
               target="_blank"
               rel="noreferrer"
               className="group flex items-center gap-3 px-8 py-4 bg-[#25D366] rounded-full hover:shadow-[0_0_25px_rgba(37,211,102,0.4)] transition-all duration-300 w-full sm:w-auto justify-center"

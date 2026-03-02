@@ -68,7 +68,7 @@ const Header = () => {
                 Contact Us
               </Link>
               <a
-                href="https://wa.me/9321685221"
+                href="https://wa.me/9820943077"
                 target="_blank"
                 rel="noreferrer"
                 className="group flex items-center gap-2 px-4 py-2 bg-[#25D366] text-white rounded-full hover:shadow-lg transition-all"
@@ -210,7 +210,7 @@ const Header = () => {
                   Contact Us
                 </Link>
                 <a
-                  href="https://wa.me/9321685221"
+                  href="https://wa.me/9820943077"
                   className="w-full py-4 bg-[#25D366] text-white text-center rounded-full font-bold uppercase tracking-widest flex items-center justify-center gap-2"
                 >
                   <FaWhatsapp size={22} /> WhatsApp
