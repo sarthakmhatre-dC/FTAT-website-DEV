@@ -12,7 +12,7 @@ const ContactBanner = () => {
 
   const handleQuerySubmit = (e) => {
     e.preventDefault();
-    const ownerNumber = import.meta.env.VITE_CLIENT_CONTACT;
+    const ownerNumber = import.meta.env.VITE_CLIENT_CONTACT || "9820943077" ;
     const message = `New Inquiry%0a------------------------%0aHi, I am ${queryData.name}%0aEmail: ${queryData.email}%0aQuery: ${queryData.query}`;
     window.open(`https://wa.me/${ownerNumber}?text=${message}`, '_blank');
     setQueryData({ name: '', email: '', query: '' });

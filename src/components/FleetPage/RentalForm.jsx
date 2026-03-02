@@ -24,7 +24,7 @@ const RentalForm = () => {
       alert("Please select a vehicle and a rental purpose.");
       return;
     }
-    const ownerNumber = import.meta.env.VITE_CLIENT_CONTACT;
+    const ownerNumber = import.meta.env.VITE_CLIENT_CONTACT || "9820943077" ;
     const message = `New Booking Request%0a` +
       `------------------------%0a` +
       `Name: ${formData.name}%0a` +

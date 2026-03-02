@@ -43,7 +43,7 @@ const PackagesGrid = ({
   const handleWhatsAppSubmit = (e) => {
     e.preventDefault();
 
-    const ownerNumber = import.meta.env.VITE_CLIENT_CONTACT;
+    const ownerNumber = import.meta.env.VITE_CLIENT_CONTACT || "9820943077" ;
 
     // Combine Form Data with Selected Package Data
     const message = `*New Package Booking Request*%0a` +

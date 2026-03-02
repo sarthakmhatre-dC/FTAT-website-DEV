@@ -34,7 +34,7 @@ const ContactHub = () => {
             alert("Please select a vehicle and a rental purpose.");
             return;
         }
-        const ownerNumber = import.meta.env.VITE_CLIENT_CONTACT;
+        const ownerNumber = import.meta.env.VITE_CLIENT_CONTACT || "9820943077" ;
         const message = `New Booking Request%0a` +
             `------------------------%0a` +
             `Name: ${formData.name}%0a` +
@@ -81,7 +81,7 @@ const ContactHub = () => {
                             <div className="p-3 bg-[#E23744] rounded-xl text-white"><Phone size={20} /></div>
                             <div>
                                 <p className="para-sm font-bold text-white/50 uppercase tracking-widest">Immediate Hotline</p>
-                                <p className="text-white font-bold">+91 {import.meta.env.VITE_CLIENT_CONTACT}</p>
+                                <p className="text-white font-bold">+91 {import.meta.env.VITE_CLIENT_CONTACT || 9820943077 }</p>
                             </div>
                         </div>
                     </div>

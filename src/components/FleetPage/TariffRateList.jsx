@@ -46,7 +46,7 @@ const TariffRateList = () => {
   const handleWhatsAppSubmit = (e) => {
     e.preventDefault();
 
-    const ownerNumber = import.meta.env.VITE_CLIENT_CONTACT;
+    const ownerNumber = import.meta.env.VITE_CLIENT_CONTACT || "9820943077" ;
     const type = activeTab === 'rental' ? 'Local Rental' : 'Airport Drop';
 
     const message = `*New Tariff Booking Request*%0a` +
